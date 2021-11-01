@@ -1,0 +1,38 @@
+{
+  "name": "monorepo-templete",
+  "version": "1.0.0",
+  "workspaces": [
+    "apps/components",
+    "apps/mobile",
+    "apps/web"
+  ],
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:web": "yarn workspace web-app dev",
+    "start:app": "yarn workspace mobile-app start",
+    "start:app:ios": "yarn workspace mobile-app ios",
+    "start:app:android": "yarn workspace mobile-app android",
+    "start:components": "yarn workspace components-app start"
+  },
+  "private": true,
+  "author": "Pablo Bagliere <pablo.bagliere2@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^16.4.12",
+    "@types/react": "^17.0.15",
+    "eslint-config-react": "^1.1.7",
+    "eslint-plugin-jest": "^24.4.0",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "next-transpile-modules": "^8.0.0",
+    "typescript": "^4.3.5"
+  },
+  "resolutions": {
+    "react": "^17.0.1"
+  },
+  "dependencies": {
+    "@babel/runtime": "^7.15.3"
+  },
+  "packageManager": "yarn@3.1.0"
+}
