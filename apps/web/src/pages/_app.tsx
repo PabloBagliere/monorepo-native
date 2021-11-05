@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { NativeBaseProvider } from 'native-base';

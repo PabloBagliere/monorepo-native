@@ -4,3 +4,4 @@ export * from './LearnNativeBase';
 export * from './NativeBaseIcon';
 export * from './NativeBaseLogo';
 export * from './ToggleDarkMode';
+export * from './LoginForm';
