@@ -6,7 +6,7 @@ import {
   NativeBaseIcon,
   theme,
   ToggleDarkMode,
-} from 'components-app';
+} from 'components-app-histrix';
 
 export default function App() {
   return (

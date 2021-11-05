@@ -18,7 +18,7 @@ const withTM = require('next-transpile-modules')([
   '@react-native-aria/utils',
   '@react-stately/combobox',
   '@react-stately/radio',
-  'universal-components',
+  'components-app-histrix',
 ]);
 
 module.exports = withPlugins([withTM], {

@@ -13,7 +13,7 @@
     "start:app": "yarn workspace mobile-app start",
     "start:app:ios": "yarn workspace mobile-app ios",
     "start:app:android": "yarn workspace mobile-app android",
-    "start:components": "yarn workspace components-app start",
+    "start:components": "yarn workspace components-app-histrix start",
     "lint": "yarn web:lint && yarn com:lint && yarn mo:lint",
     "com:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/components/src",
     "mo:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/mobile",

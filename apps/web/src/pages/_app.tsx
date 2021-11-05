@@ -2,7 +2,7 @@ import * as React from 'react';
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { NativeBaseProvider } from 'native-base';
-import { theme } from 'components-app';
+import { theme } from 'components-app-histrix';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

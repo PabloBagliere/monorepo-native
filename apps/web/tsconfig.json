@@ -14,7 +14,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "paths": {
-      "universal-components": ["../../apps/components"]
+      "components-app-histrix": ["../../apps/components"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "babel.config.js"],

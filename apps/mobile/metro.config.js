@@ -1,7 +1,7 @@
 const path = require('path');
 
 const extraNodeModules = {
-  'universal-components': path.resolve(__dirname, '..', 'components'),
+  'components-app-histrix': path.resolve(__dirname, '..', 'components'),
 };
 
 const watchFolders = [

@@ -6,7 +6,7 @@ import {
   LearnNativeBase,
   NativeBaseIcon,
   ToggleDarkMode,
-} from 'components-app';
+} from 'components-app-histrix';
 
 // Start editing here, save and see your changes.
 export default function App() {

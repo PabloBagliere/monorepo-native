@@ -1,5 +1,5 @@
 {
-  "name": "components-app",
+  "name": "components-app-histrix",
   "version": "1.0.0",
   "main": "./src/export.ts",
   "dependencies": {
