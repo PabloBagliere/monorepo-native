@@ -1,5 +1,5 @@
-import React from "react";
-import { VStack } from "native-base";
+import React from 'react';
+import { VStack } from 'native-base';
 
 import {
   AppBackground,
@@ -7,7 +7,7 @@ import {
   LearnNativeBase,
   NativeBaseLogo,
   ToggleDarkMode,
-} from "./components";
+} from './components';
 
 export function App() {
   return (

@@ -1,13 +1,16 @@
-import React, { Children } from "react";
+/* eslint-disable react/jsx-key */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+import { Children } from 'react';
 import NextDocument, {
   Html,
   Head,
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
-import { AppRegistry } from "react-native";
-import config from "../../app.json";
+} from 'next/document';
+import { AppRegistry } from 'react-native';
+
+import config from '../../app.json';
 
 // Force Next-generated DOM elements to fill their parent's height
 const normalizeNextElements = `
@@ -33,9 +36,9 @@ export default class MyDocument extends NextDocument {
 
   render() {
     return (
-      <Html lang="en" style={{ height: "100%" }}>
+      <Html lang="en" style={{ height: '100%' }}>
         <Head />
-        <body style={{ height: "100%", overflow: "hidden" }}>
+        <body style={{ height: '100%', overflow: 'hidden' }}>
           <Main />
           <NextScript />
         </body>

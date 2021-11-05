@@ -1,6 +1,6 @@
-import React from "react";
-import { Icon } from "native-base";
-import { G, Path } from "react-native-svg";
+import React from 'react';
+import { Icon } from 'native-base';
+import { G, Path } from 'react-native-svg';
 
 export const NativeBaseIcon = () => {
   return (

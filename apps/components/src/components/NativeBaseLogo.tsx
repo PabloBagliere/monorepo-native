@@ -1,7 +1,7 @@
-import React from "react";
-import { Image } from "native-base";
+import React from 'react';
+import { Image } from 'native-base';
 
-import { logo } from "../assets";
+import { logo } from '../assets';
 
 export function NativeBaseLogo() {
   return (

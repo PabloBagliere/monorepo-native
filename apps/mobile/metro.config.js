@@ -4,7 +4,10 @@ const extraNodeModules = {
   'universal-components': path.resolve(__dirname, '..', 'components'),
 };
 
-const watchFolders = [path.resolve(__dirname, '..', '..'), path.resolve(__dirname, '..', 'components')];
+const watchFolders = [
+  path.resolve(__dirname, '..', '..'),
+  path.resolve(__dirname, '..', 'components'),
+];
 
 module.exports = {
   transformer: {

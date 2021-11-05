@@ -1,5 +1,5 @@
-import React from "react";
-import { Code, Heading, HStack, Text } from "native-base";
+import React from 'react';
+import { Code, Heading, HStack, Text } from 'native-base';
 
 interface GreetingProps {
   filePath: string;

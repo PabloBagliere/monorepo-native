@@ -1,13 +1,12 @@
-import React from "react";
-import { VStack } from "native-base";
-
+import React from 'react';
+import { VStack } from 'native-base';
 import {
   AppBackground,
   Greeting,
   LearnNativeBase,
   NativeBaseIcon,
   ToggleDarkMode,
-} from "universal-components";
+} from 'components-app';
 
 // Start editing here, save and see your changes.
 export default function App() {

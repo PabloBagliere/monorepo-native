@@ -1,10 +1,11 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { NativeBaseProvider } from "native-base";
-import { App } from "./App";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { NativeBaseProvider } from 'native-base';
 
-import "./index.css";
-import { theme } from "./theme";
+import { App } from './App';
+
+import './index.css';
+import { theme } from './theme';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -12,5 +13,5 @@ ReactDOM.render(
       <App />
     </NativeBaseProvider>
   </React.StrictMode>,
-  document.getElementById("root"),
+  document.getElementById('root'),
 );

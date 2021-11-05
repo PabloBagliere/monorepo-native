@@ -1,20 +1,19 @@
-import React from "react";
-import { Center, NativeBaseProvider, VStack } from "native-base";
-
+import React from 'react';
+import { Center, NativeBaseProvider, VStack } from 'native-base';
 import {
   Greeting,
   LearnNativeBase,
   NativeBaseIcon,
   theme,
   ToggleDarkMode,
-} from "universal-components";
+} from 'components-app';
 
 export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
       <Center
-        _dark={{ bg: "blueGray.900" }}
-        _light={{ bg: "blueGray.50" }}
+        _dark={{ bg: 'blueGray.900' }}
+        _light={{ bg: 'blueGray.50' }}
         px={4}
         flex={1}
       >

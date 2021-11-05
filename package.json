@@ -13,7 +13,11 @@
     "start:app": "yarn workspace mobile-app start",
     "start:app:ios": "yarn workspace mobile-app ios",
     "start:app:android": "yarn workspace mobile-app android",
-    "start:components": "yarn workspace components-app start"
+    "start:components": "yarn workspace components-app start",
+    "lint": "yarn web:lint && yarn com:lint && yarn mo:lint",
+    "com:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/components/src",
+    "mo:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/mobile",
+    "web:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/web/src"
   },
   "private": true,
   "author": "Pablo Bagliere <pablo.bagliere2@gmail.com>",
@@ -21,11 +25,18 @@
   "devDependencies": {
     "@types/node": "^16.4.12",
     "@types/react": "^17.0.15",
+    "@typescript-eslint/eslint-plugin": "^5.3.0",
+    "@typescript-eslint/parser": "^5.3.0",
+    "eslint": "7.32.0",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-config-react": "^1.1.7",
+    "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-jest": "^24.4.0",
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "next-transpile-modules": "^8.0.0",
+    "prettier": "^2.4.1",
     "typescript": "^4.3.5"
   },
   "resolutions": {
