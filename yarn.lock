@@ -13890,7 +13890,8 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-native: "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz"
-    react-native-svg: 12.1.1
+    react-native-safe-area-context: 3.3.2
+    react-native-svg: ^12.1.1
     react-native-web: ~0.17.5
     styled-components: ^5.3.3
     styled-system: ^5.1.5
@@ -16678,19 +16679,6 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 4feda1bbc9e18b3b279b972303f1866c46e37f331ef22cd2ff630599fdd8b2b8c7a84cc53420df595b89d95d0bce7496333fe28ea5c4b2330d9d1b7beab8f389
-  languageName: node
-  linkType: hard
-
-"react-native-svg@npm:12.1.1":
-  version: 12.1.1
-  resolution: "react-native-svg@npm:12.1.1"
-  dependencies:
-    css-select: ^2.1.0
-    css-tree: ^1.0.0-alpha.39
-  peerDependencies:
-    react: "*"
-    react-native: ">=0.50.0"
-  checksum: 20a9b2987bf5836821e51a0497fc2b598a859032fe168f80c6dcab3727bf26dc34bcb3197059e1e5775dfc91b6b20633502292d8c82e9aeb3e76807d03e0189d
   languageName: node
   linkType: hard
 
