@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "app-histrix-core-skeleton",
-    "slug": "app-histrix-core-skeleton",
+    "name": "nativebase-universal-app-mobile",
+    "slug": "nativebase-universal-app-mobile",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
