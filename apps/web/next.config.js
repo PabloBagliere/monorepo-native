@@ -22,7 +22,6 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 module.exports = withPlugins([withTM], {
-  swcMinify: true,
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),

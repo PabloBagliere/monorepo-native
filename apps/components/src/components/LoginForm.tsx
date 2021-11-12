@@ -1,10 +1,10 @@
 import { FormControl, Input } from 'native-base';
 import { FC } from 'react';
 
-import { propsFormLogin } from '../Interfaces';
+import { propsForm } from '../Interfaces';
 
 interface props {
-  Inputs: Array<propsFormLogin>;
+  Inputs: Array<propsForm>;
 }
 
 export const LoginForm: FC<props> = ({ Inputs }): JSX.Element => {

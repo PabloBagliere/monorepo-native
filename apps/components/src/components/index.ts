@@ -5,3 +5,5 @@ export * from './NativeBaseIcon';
 export * from './NativeBaseLogo';
 export * from './ToggleDarkMode';
 export * from './LoginForm';
+export * from './DynamicForm';
+export * from './InputHistrix';

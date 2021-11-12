@@ -2,15 +2,16 @@ import {
   IFormControlLabelProps,
   IFormControlProps,
   IInputProps,
+  IFormControlErrorMessageProps,
 } from 'native-base';
 
-import { ErrorMessageFormControl, HelperMessageFormControler } from '.';
+import { HelperMessageFormControler } from './HelperMessajes';
 
-export interface propsFormLogin {
+export interface propsForm {
   inputProps: IInputProps;
   labelProps: IFormControlLabelProps;
   labelString: string;
   formProps?: IFormControlProps;
-  errorMessaje?: ErrorMessageFormControl;
+  errorMessaje?: IFormControlErrorMessageProps;
   helperMessaje?: HelperMessageFormControler;
 }
