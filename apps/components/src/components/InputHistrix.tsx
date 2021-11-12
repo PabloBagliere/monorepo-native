@@ -30,8 +30,7 @@ export const InputHistrix: FC<Props> = ({
           <Input
             {...inputProp.propsForms.inputProps}
             onChangeText={(val) => field.onChange(val)}
-            value={field.value}
-            onBlur={field.onBlur}
+            {...field}
           />
         )}
       />

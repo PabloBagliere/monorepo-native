@@ -7,7 +7,7 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'emailInput',
     type: typeFormController.INPUT,
-    value: '',
+    value: 'Hola',
     propsForms: {
       inputProps: { type: 'text' },
       labelProps: {
