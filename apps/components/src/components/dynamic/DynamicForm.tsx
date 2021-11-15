@@ -1,12 +1,10 @@
-import { FC, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { createContext, FC } from 'react';
+import { useForm, UseFormHandleSubmit } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 import * as Yup from 'yup';
-import { Button, IButtonProps } from 'native-base';
 
-import { dynamicForm, T } from '../Interfaces';
-
-import { InputHistrix } from './InputHistrix';
+import { dynamicForm, T } from '../../Interfaces';
+import { InputHistrix } from '../InputHistrix';
 
 const defaultDataSeparator = (value): { [key: string]: T } => {
   const dataSeparator = {};
@@ -34,18 +32,20 @@ const dataRequiredValidation = (value): { [key: string]: T } => {
   }
   return prueba;
 };
-interface props {
+export interface props {
   dataInputs: Array<dynamicForm>;
-  onSubmit: (value: T) => void;
-  textButton: string;
-  propsButton?: IButtonProps;
+  children?: React.ReactElement | React.ReactElement[];
 }
 
-export const DynamicForm: FC<props> = ({
+interface dynamicContextProps {
+  handleSubmit: UseFormHandleSubmit<{ [key: string]: T }>;
+}
+
+export const dynamicContext = createContext({} as dynamicContextProps);
+
+export const DynamicFormHOC: FC<props> = ({
   dataInputs,
-  onSubmit,
-  textButton,
-  propsButton,
+  children,
 }): JSX.Element => {
   const defaultValues: { [key: string]: T } = defaultDataSeparator(dataInputs);
   const requiredField: { [key: string]: T } =
@@ -59,7 +59,7 @@ export const DynamicForm: FC<props> = ({
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) });
 
   return (
-    <>
+    <dynamicContext.Provider value={{ handleSubmit }}>
       {dataInputs.map((value, index) => {
         return (
           <InputHistrix
@@ -70,9 +70,7 @@ export const DynamicForm: FC<props> = ({
           />
         );
       })}
-      <Button onPress={handleSubmit(onSubmit)} {...propsButton}>
-        {textButton}
-      </Button>
-    </>
+      {children}
+    </dynamicContext.Provider>
   );
 };
