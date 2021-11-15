@@ -17,27 +17,25 @@ export const InputHistrix: FC<Props> = ({
   control,
   error,
 }): JSX.Element => {
-  const Component = ({ field }) => {
+  const Component = ({ field: { onChange, value } }) => {
     switch (inputProp.type) {
       case typeFormController.INPUT:
         return (
           <AtomicInput
             {...(inputProp.propsForms.inputProps as IInputProps)}
-            onChangeText={(val) => field.onChange(val)}
-            {...field}
+            onChangeText={(val) => onChange(val)}
           />
         );
       case typeFormController.SELECT:
         return (
           <AtomicSelect
             {...(inputProp.propsForms.inputProps as ISelectProps)}
-            selectedValue={field.value}
+            selectedValue={value}
             onValueChange={(val: string) => {
-              field.onChange(val);
+              onChange(val);
             }}
             options={inputProp.options}
-            ref={field.ref}
-            {...field}
+            // refPersonal={ref}
           />
         );
       default:
@@ -53,37 +51,7 @@ export const InputHistrix: FC<Props> = ({
       <FormControl.Label {...inputProp.propsForms.labelProps}>
         {inputProp.propsForms.labelString}
       </FormControl.Label>
-      <Controller
-        control={control}
-        name={inputProp.name}
-        render={({ field }) => {
-          switch (inputProp.type) {
-            case typeFormController.INPUT:
-              return (
-                <AtomicInput
-                  {...(inputProp.propsForms.inputProps as IInputProps)}
-                  onChangeText={(val) => field.onChange(val)}
-                  {...field}
-                />
-              );
-            case typeFormController.SELECT:
-              return (
-                <AtomicSelect
-                  {...field}
-                  {...(inputProp.propsForms.inputProps as ISelectProps)}
-                  selectedValue={field.value}
-                  onValueChange={(val: string) => {
-                    field.onChange(val);
-                  }}
-                  options={inputProp.options}
-                  refPersonal={field.ref}
-                />
-              );
-            default:
-              break;
-          }
-        }}
-      />
+      <Controller control={control} name={inputProp.name} render={Component} />
       {inputProp.propsForms.helperMessaje ? (
         <FormControl.HelperText {...inputProp.propsForms.helperMessaje.props}>
           {inputProp.propsForms.helperMessaje.Messaje}
