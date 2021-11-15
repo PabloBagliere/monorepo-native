@@ -15,6 +15,7 @@
     "start:app:android": "yarn workspace mobile-app android",
     "start:components": "yarn workspace components-app-histrix start",
     "lint": "yarn web:lint && yarn com:lint && yarn mo:lint",
+    "start:storybook": "yarn workspace components-app-histrix storybook",
     "com:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/components/src",
     "mo:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/mobile",
     "web:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/web/src"
