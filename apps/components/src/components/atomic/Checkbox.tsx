@@ -1,8 +1,28 @@
-import { ICheckboxProps, Checkbox } from 'native-base';
+import { Options } from 'Interfaces';
+import { Checkbox, ICheckboxGroupProps, ICheckboxProps } from 'native-base';
 import { FC } from 'react';
 
-type props = ICheckboxProps;
+interface props extends ICheckboxGroupProps {
+  options: Array<Options>;
+}
 
-export const AtomicInput: FC<props> = ({ ...props }): JSX.Element => {
-  return <Checkbox {...props} />;
+export const AtomicCheckbox: FC<props> = ({
+  options,
+  ...props
+}): JSX.Element => {
+  return (
+    <Checkbox.Group {...props}>
+      {options.map((value) => {
+        return (
+          <Checkbox
+            value={value.value}
+            key={value.id}
+            {...(value.props as ICheckboxProps)}
+          >
+            {value.label}
+          </Checkbox>
+        );
+      })}
+    </Checkbox.Group>
+  );
 };

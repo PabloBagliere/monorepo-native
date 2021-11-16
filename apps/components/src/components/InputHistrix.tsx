@@ -1,10 +1,28 @@
-import { FormControl, IInputProps, ISelectProps } from 'native-base';
+import {
+  FormControl,
+  ICheckboxGroupProps,
+  IInputProps,
+  ISelectProps,
+  WarningOutlineIcon,
+  IRadioGroupProps,
+  ISliderProps,
+  ISwitchProps,
+} from 'native-base';
+import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
 import React, { FC } from 'react';
 import { Control, Controller } from 'react-hook-form';
 
 import { dynamicForm, T, typeFormController } from '../Interfaces';
 
-import { AtomicInput, AtomicSelect } from './atomic';
+import {
+  AtomicInput,
+  AtomicSelect,
+  AtomicCheckbox,
+  AtomicRadio,
+  AtomicSlider,
+  AtomicTextarea,
+  AtomicSwitch,
+} from './atomic';
 
 interface Props {
   inputProp: dynamicForm;
@@ -31,11 +49,47 @@ export const InputHistrix: FC<Props> = ({
           <AtomicSelect
             {...(inputProp.propsForms.inputProps as ISelectProps)}
             selectedValue={value}
-            onValueChange={(val: string) => {
-              onChange(val);
-            }}
+            onValueChange={(val) => onChange(val)}
             options={inputProp.options}
-            // refPersonal={ref}
+          />
+        );
+      case typeFormController.CHECKBOX:
+        return (
+          <AtomicCheckbox
+            onChange={(val) => onChange(val)}
+            options={inputProp.options}
+            {...(inputProp.propsForms.inputProps as ICheckboxGroupProps)}
+          />
+        );
+      case typeFormController.RADIO:
+        return (
+          <AtomicRadio
+            options={inputProp.options}
+            onChange={(val) => onChange(val)}
+            {...(inputProp.propsForms.inputProps as IRadioGroupProps)}
+          />
+        );
+      case typeFormController.SLIDER:
+        return (
+          <AtomicSlider
+            onChange={(val) => onChange(val)}
+            defaultValue={value}
+            {...(inputProp.propsForms.inputProps as ISliderProps)}
+          />
+        );
+      case typeFormController.TEXTAREA:
+        return (
+          <AtomicTextarea
+            onChangeText={(val) => onChange(val)}
+            {...(inputProp.propsForms.inputProps as ITextAreaProps)}
+          />
+        );
+      case typeFormController.SWITCH:
+        return (
+          <AtomicSwitch
+            onToggle={() => onChange(!value)}
+            isChecked={value}
+            {...(inputProp.propsForms.inputProps as ISwitchProps)}
           />
         );
       default:
@@ -57,7 +111,10 @@ export const InputHistrix: FC<Props> = ({
           {inputProp.propsForms.helperMessaje.Messaje}
         </FormControl.HelperText>
       ) : null}
-      <FormControl.ErrorMessage {...inputProp.propsForms.errorMessaje}>
+      <FormControl.ErrorMessage
+        leftIcon={<WarningOutlineIcon size="xs" />}
+        {...inputProp.propsForms.errorMessaje}
+      >
         {error[inputProp.name]?.message}
       </FormControl.ErrorMessage>
     </FormControl>
