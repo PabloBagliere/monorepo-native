@@ -3,8 +3,10 @@ import {
   Actionsheet,
   Badge,
   Button,
+  CloseIcon,
   HStack,
   ICheckboxGroupProps,
+  IconButton,
   useDisclose,
 } from 'native-base';
 import { FC, useState } from 'react';
@@ -42,6 +44,11 @@ export const MultipleSelect: FC<props> = ({
           return (
             <Badge key={index} colorScheme="info">
               {value}
+              <IconButton
+                onPress={() => setSelect(select.filter((val) => val !== value))}
+                variant="ghost"
+                icon={<CloseIcon size="4" />}
+              />
             </Badge>
           );
         })}
