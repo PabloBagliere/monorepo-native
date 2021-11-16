@@ -25,6 +25,7 @@ const dataRequiredValidation = (
     let schema;
     switch (input.type) {
       case typeFormController.CHECKBOX:
+      case typeFormController.MULTISELECT:
         schema = Yup.array();
         break;
       case typeFormController.SLIDER:
