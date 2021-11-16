@@ -3,10 +3,12 @@ import { useForm, UseFormHandleSubmit } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 import * as Yup from 'yup';
 
-import { dynamicForm, T } from '../../Interfaces';
+import { dynamicForm, T, typeFormController } from '../../Interfaces';
 import { InputHistrix } from '../InputHistrix';
 
-const defaultDataSeparator = (value): { [key: string]: T } => {
+const defaultDataSeparator = (
+  value: Array<dynamicForm>,
+): { [key: string]: T } => {
   const dataSeparator = {};
   for (const input of value) {
     dataSeparator[input.name] = input.value;
@@ -14,12 +16,26 @@ const defaultDataSeparator = (value): { [key: string]: T } => {
   return dataSeparator;
 };
 
-const dataRequiredValidation = (value): { [key: string]: T } => {
-  const prueba = {};
+const dataRequiredValidation = (
+  value: Array<dynamicForm>,
+): { [key: string]: T } => {
+  const requiredValidation: { [key: string]: T } = {};
   for (const input of value) {
     if (!input.validations) continue;
-
-    let schema = Yup.string();
+    let schema;
+    switch (input.type) {
+      case typeFormController.CHECKBOX:
+        schema = Yup.array();
+        break;
+      case typeFormController.SLIDER:
+        schema = Yup.number();
+        break;
+      case typeFormController.SWITCH:
+        schema = Yup.boolean();
+        break;
+      default:
+        schema = Yup.string();
+    }
 
     for (const rule of input.validations) {
       if (rule.value) {
@@ -28,9 +44,9 @@ const dataRequiredValidation = (value): { [key: string]: T } => {
         schema = schema[rule.type](rule.message);
       }
     }
-    prueba[input.name] = schema;
+    requiredValidation[input.name] = schema;
   }
-  return prueba;
+  return requiredValidation;
 };
 export interface props {
   dataInputs: Array<dynamicForm>;
