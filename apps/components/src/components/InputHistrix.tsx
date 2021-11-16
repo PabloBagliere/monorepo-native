@@ -28,6 +28,7 @@ import {
   AtomicTextarea,
   AtomicSwitch,
 } from './atomic';
+import { MultipleSelect } from './molecule';
 
 interface Props {
   inputProp: dynamicForm;
@@ -53,6 +54,15 @@ const FuntionSelectComponentDynamic = (
           selectedValue={value}
           onValueChange={(val) => onChange(val)}
           options={inputProp.options}
+        />
+      );
+    case typeFormController.MULTISELECT:
+      return (
+        <MultipleSelect
+          label={inputProp.propsForms.labelString}
+          onChange={(val) => onChange(val)}
+          options={inputProp.options}
+          {...(inputProp.propsForms.inputProps as ICheckboxGroupProps)}
         />
       );
     case typeFormController.CHECKBOX:
@@ -109,9 +119,11 @@ export const InputHistrix: FC<Props> = ({
       {...inputProp.propsForms.formProps}
       isInvalid={inputProp.name in error}
     >
-      <FormControl.Label {...inputProp.propsForms.labelProps}>
-        {inputProp.propsForms.labelString}
-      </FormControl.Label>
+      {inputProp.type === typeFormController.MULTISELECT ? null : (
+        <FormControl.Label {...inputProp.propsForms.labelProps}>
+          {inputProp.propsForms.labelString}
+        </FormControl.Label>
+      )}
       <Controller
         control={control}
         name={inputProp.name}

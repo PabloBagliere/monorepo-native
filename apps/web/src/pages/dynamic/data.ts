@@ -275,4 +275,50 @@ export const mock: Array<dynamicForm> = [
       formProps: { isRequired: true },
     },
   },
+  {
+    name: 'MultiSelectPrueba',
+    type: typeFormController.MULTISELECT,
+    value: '',
+    propsForms: {
+      inputProps: {
+        colorScheme: 'green',
+        mt: '2',
+        defaultValue: ['prueba'],
+        alignItems: 'flex-start',
+        accessibilityLabel: 'prueba de multiselect',
+      },
+      labelProps: {
+        _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
+      },
+      labelString: 'prueba multiselect',
+      formProps: { isRequired: true },
+    },
+    options: [
+      {
+        id: 1,
+        label: 'prueba 1',
+        value: 'prueba',
+      },
+      {
+        id: 2,
+        label: 'prueba 2',
+        value: 'prueba2',
+      },
+      {
+        id: 3,
+        label: 'prueba 3',
+        value: 'prueba3',
+      },
+      {
+        id: 4,
+        label: 'prueba 4',
+        value: 'prueba4',
+      },
+      {
+        id: 5,
+        label: 'prueba 5',
+        value: 'prueba5',
+      },
+    ],
+  },
 ];
