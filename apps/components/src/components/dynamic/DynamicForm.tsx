@@ -1,10 +1,10 @@
 import { createContext, FC } from 'react';
-import { useForm, UseFormHandleSubmit } from 'react-hook-form';
+import { Control, useForm, UseFormHandleSubmit } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 
 import useFormValidation from '../../hooks/useFormValidation';
 import { dynamicForm, T } from '../../Interfaces';
-import { InputHistrix } from '../InputHistrix';
+import { FieldHistrix } from '../molecule/fieldHistrix';
 
 export interface props {
   dataInputs: Array<dynamicForm>;
@@ -13,6 +13,10 @@ export interface props {
 
 interface dynamicContextProps {
   handleSubmit: UseFormHandleSubmit<{ [key: string]: T }>;
+  controlComponent: Control;
+  errorComponent: { [x: number]: T; [x: string]: T };
+  updateDataDefault: T;
+  updateValidation: T;
 }
 
 export const dynamicContext = createContext({} as dynamicContextProps);
@@ -21,7 +25,12 @@ export const DynamicFormHOC: FC<props> = ({
   dataInputs,
   children,
 }): JSX.Element => {
-  const { defaultValues, validationSchema } = useFormValidation(dataInputs);
+  const {
+    defaultValues,
+    validationSchema,
+    updateStateDefault,
+    updateStateValidation,
+  } = useFormValidation(dataInputs);
 
   const {
     control,
@@ -33,17 +42,14 @@ export const DynamicFormHOC: FC<props> = ({
     <dynamicContext.Provider
       value={{
         handleSubmit,
+        controlComponent: control,
+        errorComponent: errors,
+        updateDataDefault: updateStateDefault,
+        updateValidation: updateStateValidation,
       }}
     >
       {dataInputs.map((value, index) => {
-        return (
-          <InputHistrix
-            key={index}
-            inputProp={value}
-            control={control}
-            error={errors}
-          />
-        );
+        return <FieldHistrix key={index} inputProp={value} />;
       })}
       {children}
     </dynamicContext.Provider>

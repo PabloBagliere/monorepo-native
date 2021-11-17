@@ -9,16 +9,14 @@ import {
   ISwitchProps,
 } from 'native-base';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
-import React, { FC } from 'react';
+import { FC, useContext } from 'react';
 import {
-  Control,
   Controller,
   ControllerRenderProps,
   FieldValues,
 } from 'react-hook-form';
 
-import { dynamicForm, T, typeFormController } from '../Interfaces';
-
+import { dynamicForm, typeFormController } from '../../../Interfaces';
 import {
   AtomicInput,
   AtomicSelect,
@@ -27,14 +25,10 @@ import {
   AtomicSlider,
   AtomicTextarea,
   AtomicSwitch,
-} from './atomic';
-import { MultipleSelect } from './molecule';
+} from '../../atomic';
+import { dynamicContext } from '../../dynamic/DynamicForm';
+import { MultipleSelect } from '../MultipleSelect';
 
-interface Props {
-  inputProp: dynamicForm;
-  control: Control;
-  error: T;
-}
 const FuntionSelectComponentDynamic = (
   { onChange, value }: ControllerRenderProps<FieldValues, string>,
   inputProp,
@@ -109,15 +103,16 @@ const FuntionSelectComponentDynamic = (
   }
 };
 
-export const InputHistrix: FC<Props> = ({
-  inputProp,
-  control,
-  error,
-}): JSX.Element => {
+interface Props {
+  inputProp: dynamicForm;
+}
+
+export const FieldHistrix: FC<Props> = ({ inputProp }): JSX.Element => {
+  const { errorComponent, controlComponent } = useContext(dynamicContext);
   return (
     <FormControl
       {...inputProp.propsForms.formProps}
-      isInvalid={inputProp.name in error}
+      isInvalid={inputProp.name in errorComponent}
     >
       {inputProp.type === typeFormController.MULTISELECT ? null : (
         <FormControl.Label {...inputProp.propsForms.labelProps}>
@@ -125,7 +120,7 @@ export const InputHistrix: FC<Props> = ({
         </FormControl.Label>
       )}
       <Controller
-        control={control}
+        control={controlComponent}
         name={inputProp.name}
         render={({ field }) => FuntionSelectComponentDynamic(field, inputProp)}
       />
@@ -138,7 +133,7 @@ export const InputHistrix: FC<Props> = ({
         leftIcon={<WarningOutlineIcon size="xs" />}
         {...inputProp.propsForms.errorMessaje}
       >
-        {error[inputProp.name]?.message}
+        {errorComponent[inputProp.name]?.message}
       </FormControl.ErrorMessage>
     </FormControl>
   );

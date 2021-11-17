@@ -5,9 +5,9 @@ import * as Yup from 'yup';
 
 import {
   dynamicForm,
+  schemaValidation,
   T,
   typeFormController,
-  typeValidation,
 } from '../Interfaces';
 
 const defaultDataSeparator = (
@@ -58,11 +58,18 @@ const dataRequiredValidation = (
   return requiredValidation;
 };
 
+interface valueUpdateValidation extends schemaValidation {
+  typeBase: T;
+}
+
+let defaultValuesInit: { [key: string]: T };
+let requiredField: { [key: string]: T };
+
 const useFormValidation = (dataInputs?: Array<dynamicForm>) => {
-  const defaultValuesInit: { [key: string]: T } =
-    defaultDataSeparator(dataInputs);
-  const requiredField: { [key: string]: T } =
-    dataRequiredValidation(dataInputs);
+  if (dataInputs) {
+    defaultValuesInit = defaultDataSeparator(dataInputs);
+    requiredField = dataRequiredValidation(dataInputs);
+  }
 
   const validationSchemaInit = Yup.object({ ...requiredField });
 
@@ -77,19 +84,18 @@ const useFormValidation = (dataInputs?: Array<dynamicForm>) => {
       return { ...prevState, ...temp };
     });
   };
-  const updateStateValidation = (value: {
-    typeBase: T;
-    typeValidation: typeValidation;
-    value?: T;
-    message?: string;
-  }) => {
-    const temp = Yup[value.typeBase]();
-    if (value.value) {
-      temp[value.typeValidation](value.value, value.message);
-    } else {
-      temp[value.typeValidation](value.message);
+  const updateStateValidation = (value: Array<valueUpdateValidation>) => {
+    let a = {};
+    for (const iterator of value) {
+      const temp = Yup[iterator.typeBase]();
+      if (iterator.value) {
+        temp[iterator.type](iterator.value, iterator.message);
+      } else {
+        temp[iterator.type](iterator.message);
+      }
+      a = { ...a, ...temp };
     }
-    const tempYup = Yup.object({ ...requiredField, ...temp });
+    const tempYup = Yup.object({ ...requiredField, ...a });
     setvalidationSchema(tempYup);
   };
 

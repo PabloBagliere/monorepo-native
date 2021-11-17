@@ -6,4 +6,4 @@ export * from './NativeBaseLogo';
 export * from './ToggleDarkMode';
 export * from './LoginForm';
 export * from './dynamic';
-export * from './InputHistrix';
+export * from './molecule';
