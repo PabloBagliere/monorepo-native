@@ -17,6 +17,10 @@ const defaultDataSeparator = (
 ): { [key: string]: T } => {
   const dataSeparator = {};
   for (const input of value) {
+    if (input.type === typeFormController.DATEPICKER) {
+      dataSeparator[input.name] = new Date(input.value);
+      continue;
+    }
     dataSeparator[input.name] = input.value;
   }
   return dataSeparator;

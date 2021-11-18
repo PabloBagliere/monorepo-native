@@ -3711,6 +3711,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-community/datetimepicker@npm:^3.5.2":
+  version: 3.5.2
+  resolution: "@react-native-community/datetimepicker@npm:3.5.2"
+  dependencies:
+    invariant: ^2.2.4
+  checksum: 8f0d3bc7014b17c696a415565c6fc591591b29ba5a438f2c1692a96ffc185693266eb950229ed3e9bf6b035d61a720ee402cbe9750d5bef81fd19e7647a24229
+  languageName: node
+  linkType: hard
+
 "@react-native/normalize-color@npm:^2.0.0":
   version: 2.0.0
   resolution: "@react-native/normalize-color@npm:2.0.0"
@@ -9054,6 +9063,7 @@ __metadata:
   dependencies:
     "@hookform/resolvers": ^2.8.3
     "@mdx-js/react": ^1.6.22
+    "@react-native-community/datetimepicker": ^3.5.2
     "@storybook/addon-actions": ^6.3.12
     "@storybook/addon-docs": ^6.3.12
     "@storybook/addon-essentials": ^6.3.12

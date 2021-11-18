@@ -25,6 +25,7 @@ import {
   AtomicSlider,
   AtomicTextarea,
   AtomicSwitch,
+  AtomicDatapicker,
 } from '../../atomic';
 import { dynamicContext } from '../../dynamic/DynamicForm';
 import { MultipleSelect } from '../MultipleSelect';
@@ -104,6 +105,8 @@ const FuntionSelectComponentDynamic = (
           {...(inputProp.propsForms.inputProps as ISwitchProps)}
         />
       );
+    case typeFormController.DATEPICKER:
+      return <AtomicDatapicker setNewDate={onChange} value={value} />;
     default:
       break;
   }

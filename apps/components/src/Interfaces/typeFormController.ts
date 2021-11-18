@@ -7,4 +7,5 @@ export enum typeFormController {
   SLIDER = 'Slider',
   SWITCH = 'Switch',
   TEXTAREA = 'TextArea',
+  DATEPICKER = 'DataPicker',
 }

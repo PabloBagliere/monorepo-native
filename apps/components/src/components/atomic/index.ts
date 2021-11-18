@@ -5,3 +5,4 @@ export * from './Radio';
 export * from './Slider';
 export * from './Textarea';
 export * from './Switch';
+export * from './Datapicker';

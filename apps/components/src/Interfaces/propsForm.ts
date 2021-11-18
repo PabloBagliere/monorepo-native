@@ -9,6 +9,7 @@ import {
   ISliderProps,
   ISwitchProps,
 } from 'native-base';
+import { BaseProps } from '@react-native-community/datetimepicker';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
 
 import { HelperMessageFormControler } from './HelperMessajes';
@@ -21,7 +22,8 @@ export interface propsForm {
     | IRadioGroupProps
     | ITextAreaProps
     | ISliderProps
-    | ISwitchProps;
+    | ISwitchProps
+    | BaseProps;
   labelProps: IFormControlLabelProps;
   labelString: string;
   formProps?: IFormControlProps;

@@ -317,4 +317,17 @@ export const mock: Array<dynamicForm> = [
       },
     ],
   },
+  {
+    name: 'PruebaDataPicker',
+    type: typeFormController.DATEPICKER,
+    value: '18/10/2000',
+    propsForms: {
+      inputProps: {},
+      labelProps: {
+        _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
+      },
+      labelString: 'Prueba de datapicker',
+      formProps: { isRequired: true },
+    },
+  },
 ];
