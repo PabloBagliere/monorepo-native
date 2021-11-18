@@ -1,5 +1,3 @@
-// eslint-disable-next-line @typescript-eslint/ban-ts-comment
-/* @ts-ignore */
 import { useState } from 'react';
 import { OptionalArraySchema } from 'yup/lib/array';
 import { AnyObject } from 'yup/lib/types';
@@ -18,7 +16,11 @@ const defaultDataSeparator = (
   const dataSeparator = {};
   for (const input of value) {
     if (input.type === typeFormController.DATEPICKER) {
-      dataSeparator[input.name] = new Date(input.value);
+      dataSeparator[input.name] = new Date(`${input.value}`);
+      continue;
+    }
+    if (input.type === typeFormController.TIMEPICKER) {
+      dataSeparator[input.name] = new Date(`0000T${input.value}`);
       continue;
     }
     dataSeparator[input.name] = input.value;

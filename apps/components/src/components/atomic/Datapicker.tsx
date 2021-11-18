@@ -2,18 +2,19 @@ import React, { FC, useState } from 'react';
 import { Platform } from 'react-native';
 import { View, Button } from 'native-base';
 import DateTimePicker, {
-  BaseProps,
+  AndroidNativeProps,
 } from '@react-native-community/datetimepicker';
 
 import { T } from '../../Interfaces';
 
-interface props extends BaseProps {
+interface props extends AndroidNativeProps {
   setNewDate: T;
+  label: string;
 }
 
 export const AtomicDatapicker: FC<props> = ({
   setNewDate,
-  value,
+  label,
   ...props
 }): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -25,17 +26,14 @@ export const AtomicDatapicker: FC<props> = ({
   const showMode = () => {
     setShow(true);
   };
-
   return (
     <View>
       <View>
-        <Button onPress={showMode}>Selecionar</Button>
+        <Button onPress={showMode}>{label}</Button>
       </View>
       <View></View>
       {show && (
         <DateTimePicker
-          value={new Date()}
-          mode="date"
           is24Hour={true}
           display="default"
           onChange={change}

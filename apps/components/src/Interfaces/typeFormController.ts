@@ -8,4 +8,5 @@ export enum typeFormController {
   SWITCH = 'Switch',
   TEXTAREA = 'TextArea',
   DATEPICKER = 'DataPicker',
+  TIMEPICKER = 'TimePicker',
 }

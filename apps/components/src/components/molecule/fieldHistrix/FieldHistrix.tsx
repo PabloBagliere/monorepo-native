@@ -106,7 +106,23 @@ const FuntionSelectComponentDynamic = (
         />
       );
     case typeFormController.DATEPICKER:
-      return <AtomicDatapicker setNewDate={onChange} value={value} />;
+      return (
+        <AtomicDatapicker
+          setNewDate={onChange}
+          label={inputProp.propsForms.labelString}
+          mode="date"
+          value={value}
+        />
+      );
+    case typeFormController.TIMEPICKER:
+      return (
+        <AtomicDatapicker
+          setNewDate={onChange}
+          label={inputProp.propsForms.labelString}
+          mode="time"
+          value={value}
+        />
+      );
     default:
       break;
   }
@@ -123,7 +139,9 @@ export const FieldHistrix: FC<Props> = ({ inputProp }): JSX.Element => {
       {...inputProp.propsForms.formProps}
       isInvalid={inputProp.name in errorComponent}
     >
-      {inputProp.type === typeFormController.MULTISELECT ? null : (
+      {inputProp.type === typeFormController.MULTISELECT ||
+      inputProp.type === typeFormController.DATEPICKER ||
+      inputProp.type === typeFormController.TIMEPICKER ? null : (
         <FormControl.Label {...inputProp.propsForms.labelProps}>
           {inputProp.propsForms.labelString}
         </FormControl.Label>

@@ -256,7 +256,7 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'SwitchPrueba',
     type: typeFormController.SWITCH,
-    value: '',
+    value: false,
     propsForms: {
       inputProps: {
         defaultIsChecked: true,
@@ -320,13 +320,26 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'PruebaDataPicker',
     type: typeFormController.DATEPICKER,
-    value: '18/10/2000',
+    value: '2021-11-27',
     propsForms: {
       inputProps: {},
       labelProps: {
         _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
       },
       labelString: 'Prueba de datapicker',
+      formProps: { isRequired: true },
+    },
+  },
+  {
+    name: 'PruebaTimePicker',
+    type: typeFormController.TIMEPICKER,
+    value: '12:50:10',
+    propsForms: {
+      inputProps: {},
+      labelProps: {
+        _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
+      },
+      labelString: 'Prueba de timepicker',
       formProps: { isRequired: true },
     },
   },
