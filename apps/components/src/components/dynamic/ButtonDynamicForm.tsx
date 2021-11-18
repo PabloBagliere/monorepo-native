@@ -1,25 +1,24 @@
-import { Button, IButtonProps } from 'native-base';
+import { IButtonProps } from 'native-base';
 import React, { FC, useContext } from 'react';
 
 import { T } from '../../Interfaces';
 import { dynamicContext } from '../../context';
+import { AtomicButton } from '../atomic';
 
-export interface props {
+export interface props extends IButtonProps {
   onSubmit: (value: T) => void;
-  buttonProps?: IButtonProps;
-  children?: React.ReactElement | React.ReactElement[] | string;
 }
 
 export const ButtonDynamicForm: FC<props> = ({
   onSubmit,
-  buttonProps,
   children,
+  ...props
 }): JSX.Element => {
   const { handleSubmit } = useContext(dynamicContext);
 
   return (
-    <Button {...buttonProps} onPress={handleSubmit(onSubmit)}>
+    <AtomicButton {...props} onSubmit={handleSubmit(onSubmit)}>
       {children}
-    </Button>
+    </AtomicButton>
   );
 };

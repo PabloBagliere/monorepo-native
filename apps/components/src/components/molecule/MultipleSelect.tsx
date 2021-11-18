@@ -1,9 +1,9 @@
 import {
   Actionsheet,
   Badge,
-  Button,
   CloseIcon,
   HStack,
+  IButtonProps,
   ICheckboxGroupProps,
   IconButton,
   useDisclose,
@@ -11,16 +11,18 @@ import {
 import React, { FC, useState } from 'react';
 
 import { Options, T } from '../../Interfaces';
-import { AtomicCheckbox } from '../atomic';
+import { AtomicButton, AtomicCheckbox } from '../atomic';
 
 interface props extends ICheckboxGroupProps {
   label: string;
   options: Array<Options>;
+  propsButton?: IButtonProps;
 }
 
 export const MultipleSelect: FC<props> = ({
   options,
   label,
+  propsButton,
   defaultValue,
   ...props
 }): JSX.Element => {
@@ -28,7 +30,9 @@ export const MultipleSelect: FC<props> = ({
   const [select, setSelect] = useState<Array<T>>(defaultValue);
   return (
     <>
-      <Button onPress={onOpen}>{label}</Button>
+      <AtomicButton onSubmit={onOpen} {...propsButton}>
+        {label}
+      </AtomicButton>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>
           <AtomicCheckbox

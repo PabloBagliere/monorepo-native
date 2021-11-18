@@ -5,7 +5,7 @@ Requerimientos para paquete de componente histrix
 ## Feature a agregar / Arrelgar
 
 - Liberar metodo watch para ser usado ✅
-- Liberar cambios en los botones
+- Liberar cambios en los botones ✅
 - Mejorar validaciones para multiples
 - Poder poner validacion manualmente sin necesidad de editar el json TODO: No recarga el hooks resolver
 - Cambiar estilo y formato del multiple select si esta en web

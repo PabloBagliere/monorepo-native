@@ -1,20 +1,24 @@
 import React, { FC, useState } from 'react';
 import { Platform } from 'react-native';
-import { View, Button } from 'native-base';
+import { IButtonProps, View } from 'native-base';
 import DateTimePicker, {
   AndroidNativeProps,
 } from '@react-native-community/datetimepicker';
 
 import { T } from '../../Interfaces';
 
+import { AtomicButton } from '.';
+
 interface props extends AndroidNativeProps {
   setNewDate: T;
   label: string;
+  propsButton?: IButtonProps;
 }
 
 export const AtomicDatapicker: FC<props> = ({
   setNewDate,
   label,
+  propsButton,
   ...props
 }): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -29,7 +33,9 @@ export const AtomicDatapicker: FC<props> = ({
   return (
     <View>
       <View>
-        <Button onPress={showMode}>{label}</Button>
+        <AtomicButton onSubmit={showMode} {...propsButton}>
+          {label}
+        </AtomicButton>
       </View>
       <View></View>
       {show && (
