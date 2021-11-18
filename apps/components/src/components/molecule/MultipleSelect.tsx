@@ -1,4 +1,3 @@
-import { Options, T } from 'Interfaces';
 import {
   Actionsheet,
   Badge,
@@ -11,6 +10,7 @@ import {
 } from 'native-base';
 import { FC, useState } from 'react';
 
+import { Options, T } from '../../Interfaces';
 import { AtomicCheckbox } from '../atomic';
 
 interface props extends ICheckboxGroupProps {

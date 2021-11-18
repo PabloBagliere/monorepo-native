@@ -15,7 +15,6 @@ interface dynamicContextProps {
   handleSubmit: UseFormHandleSubmit<{ [key: string]: T }>;
   controlComponent: Control;
   errorComponent: { [x: number]: T; [x: string]: T };
-  updateDataDefault: T;
   updateValidation: T;
 }
 
@@ -25,12 +24,8 @@ export const DynamicFormHOC: FC<props> = ({
   dataInputs,
   children,
 }): JSX.Element => {
-  const {
-    defaultValues,
-    validationSchema,
-    updateStateDefault,
-    updateStateValidation,
-  } = useFormValidation(dataInputs);
+  const { defaultValues, validationSchema, updateStateValidation } =
+    useFormValidation(dataInputs);
 
   const {
     control,
@@ -44,7 +39,6 @@ export const DynamicFormHOC: FC<props> = ({
         handleSubmit,
         controlComponent: control,
         errorComponent: errors,
-        updateDataDefault: updateStateDefault,
         updateValidation: updateStateValidation,
       }}
     >

@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+/* @ts-ignore */
 import { useState } from 'react';
 import { OptionalArraySchema } from 'yup/lib/array';
 import { AnyObject } from 'yup/lib/types';
@@ -84,17 +86,21 @@ const useFormValidation = (dataInputs?: Array<dynamicForm>) => {
       return { ...prevState, ...temp };
     });
   };
-  const updateStateValidation = (value: Array<valueUpdateValidation>) => {
-    let a = {};
+  const updateStateValidation = (
+    value: Array<valueUpdateValidation>,
+    name: string,
+  ) => {
+    const a = {};
+    let temp;
     for (const iterator of value) {
-      const temp = Yup[iterator.typeBase]();
+      temp = Yup[iterator.typeBase]();
       if (iterator.value) {
-        temp[iterator.type](iterator.value, iterator.message);
+        temp = temp[iterator.type](iterator.value, iterator.message);
       } else {
-        temp[iterator.type](iterator.message);
+        temp = temp[iterator.type](iterator.message);
       }
-      a = { ...a, ...temp };
     }
+    a[name] = temp;
     const tempYup = Yup.object({ ...requiredField, ...a });
     setvalidationSchema(tempYup);
   };

@@ -115,12 +115,11 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'CheckboxPrueba',
     type: typeFormController.CHECKBOX,
-    value: '',
+    value: ['prueba'],
     propsForms: {
       inputProps: {
         colorScheme: 'green',
         mt: '2',
-        defaultValue: ['prueba'],
         alignItems: 'flex-start',
         accessibilityLabel: 'prueba de checkbox',
       },
@@ -161,12 +160,11 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'RadioPrueba',
     type: typeFormController.RADIO,
-    value: '',
+    value: 'prueba',
     propsForms: {
       inputProps: {
         colorScheme: 'green',
         name: 'RadioPrueba',
-        defaultValue: 'prueba',
         alignItems: 'flex-start',
         accessibilityLabel: 'prueba de radio',
       },
@@ -213,13 +211,12 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'SliderPrueba',
     type: typeFormController.SLIDER,
-    value: '',
+    value: 70,
     propsForms: {
       inputProps: {
         colorScheme: 'green',
         maxValue: 100,
         minValue: 0,
-        defaultValue: 70,
         accessibilityLabel: 'prueba de slider',
       },
       labelProps: {
@@ -278,12 +275,11 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'MultiSelectPrueba',
     type: typeFormController.MULTISELECT,
-    value: '',
+    value: ['prueba'],
     propsForms: {
       inputProps: {
         colorScheme: 'green',
         mt: '2',
-        defaultValue: ['prueba'],
         alignItems: 'flex-start',
         accessibilityLabel: 'prueba de multiselect',
       },

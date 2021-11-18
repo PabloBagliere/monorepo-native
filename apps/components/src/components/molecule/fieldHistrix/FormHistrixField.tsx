@@ -23,21 +23,20 @@ export interface propsHistrixForm extends IFormControlProps {
   defaultValue: T;
   validation?: Array<validationExtends>;
 }
-
+// let flat = false;
 export const FormHistrixFieldExtends: FC<propsHistrixForm> = ({
   name,
   children,
-  defaultValue,
-  validation,
+  // validation,
   ...props
 }): JSX.Element => {
-  const { updateDataDefault, updateValidation } = useContext(dynamicContext);
+  // TODO: ver tema de la validacion automatica.
+  // const { updateValidation } = useContext(dynamicContext);
 
-  // updateDataDefault({ name: name, value: defaultValue });
-
-  if (validation) {
-    updateValidation(validation);
-  }
+  // if (validation && !flat) {
+  //   updateValidation(validation, name);
+  //   flat = true;
+  // }
 
   return (
     <FormControl {...props}>

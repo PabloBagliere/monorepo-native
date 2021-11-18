@@ -31,12 +31,13 @@ import { MultipleSelect } from '../MultipleSelect';
 
 const FuntionSelectComponentDynamic = (
   { onChange, value }: ControllerRenderProps<FieldValues, string>,
-  inputProp,
+  inputProp: dynamicForm,
 ) => {
   switch (inputProp.type) {
     case typeFormController.INPUT:
       return (
         <AtomicInput
+          defaultValue={value}
           {...(inputProp.propsForms.inputProps as IInputProps)}
           onChangeText={(val) => onChange(val)}
         />
@@ -46,6 +47,7 @@ const FuntionSelectComponentDynamic = (
         <AtomicSelect
           {...(inputProp.propsForms.inputProps as ISelectProps)}
           selectedValue={value}
+          defaultValue={value}
           onValueChange={(val) => onChange(val)}
           options={inputProp.options}
         />
@@ -55,6 +57,7 @@ const FuntionSelectComponentDynamic = (
         <MultipleSelect
           label={inputProp.propsForms.labelString}
           onChange={(val) => onChange(val)}
+          defaultValue={inputProp.value as Array<string>}
           options={inputProp.options}
           {...(inputProp.propsForms.inputProps as ICheckboxGroupProps)}
         />
@@ -63,6 +66,7 @@ const FuntionSelectComponentDynamic = (
       return (
         <AtomicCheckbox
           onChange={(val) => onChange(val)}
+          defaultValue={value}
           options={inputProp.options}
           {...(inputProp.propsForms.inputProps as ICheckboxGroupProps)}
         />
@@ -71,6 +75,7 @@ const FuntionSelectComponentDynamic = (
       return (
         <AtomicRadio
           options={inputProp.options}
+          defaultValue={value}
           onChange={(val) => onChange(val)}
           {...(inputProp.propsForms.inputProps as IRadioGroupProps)}
         />
@@ -86,6 +91,7 @@ const FuntionSelectComponentDynamic = (
     case typeFormController.TEXTAREA:
       return (
         <AtomicTextarea
+          defaultValue={value}
           onChangeText={(val) => onChange(val)}
           {...(inputProp.propsForms.inputProps as ITextAreaProps)}
         />

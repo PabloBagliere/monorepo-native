@@ -39,6 +39,12 @@ const Dynamic: FC = (): JSX.Element => {
                   type: typeValidation.REQUIRED,
                   message: 'Es requerido',
                 },
+                {
+                  typeBase: 'string',
+                  type: typeValidation.MIN,
+                  message: 'Es requerido',
+                  value: 5,
+                },
               ]}
             >
               <ExtendsForm.Label>Prueba de componente</ExtendsForm.Label>

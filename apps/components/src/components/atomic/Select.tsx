@@ -1,4 +1,3 @@
-import { Options } from 'Interfaces';
 import {
   ISelectProps,
   Select,
@@ -6,6 +5,8 @@ import {
   ChevronUpIcon,
 } from 'native-base';
 import { FC } from 'react';
+
+import { Options } from '../../Interfaces';
 
 interface props extends ISelectProps {
   options: Array<Options>;
