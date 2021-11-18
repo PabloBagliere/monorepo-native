@@ -8,7 +8,7 @@ import {
   IconButton,
   useDisclose,
 } from 'native-base';
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 
 import { Options, T } from '../../Interfaces';
 import { AtomicCheckbox } from '../atomic';

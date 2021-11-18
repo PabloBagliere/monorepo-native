@@ -1,4 +1,4 @@
-import { FC, useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Platform } from 'react-native';
 import { View, Button } from 'native-base';
 import DateTimePicker, {
@@ -34,7 +34,7 @@ export const AtomicDatapicker: FC<props> = ({
       <View></View>
       {show && (
         <DateTimePicker
-          value={value}
+          value={new Date()}
           mode="date"
           is24Hour={true}
           display="default"

@@ -8,10 +8,12 @@ import {
   ToggleDarkMode,
 } from 'components-app-histrix';
 
+import Dynamic from './src/View/Dynamic';
+
 export default function App() {
   return (
     <NativeBaseProvider theme={theme}>
-      <Center
+      {/* <Center
         _dark={{ bg: 'blueGray.900' }}
         _light={{ bg: 'blueGray.50' }}
         px={4}
@@ -23,7 +25,8 @@ export default function App() {
           <LearnNativeBase />
           <ToggleDarkMode />
         </VStack>
-      </Center>
+      </Center> */}
+      <Dynamic />
     </NativeBaseProvider>
   );
 }

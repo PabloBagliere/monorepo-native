@@ -1,7 +1,7 @@
 # Requerimiento / TODO
 
 - Poder poner validacion manualmente sin necesidad de editar el json TODO:
-- Input formato fecha
+- Input formato fecha TODO: formato web
 - Cambiar estilo y formato del multiple select si esta en web
 - Generar dinamicamente los item de navegacion
 - Generar lista de items

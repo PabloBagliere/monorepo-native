@@ -1,5 +1,5 @@
 import { IInputProps, Input } from 'native-base';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 type props = IInputProps;
 

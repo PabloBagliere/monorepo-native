@@ -1,5 +1,5 @@
 import { IRadioGroupProps, IRadioProps, Radio } from 'native-base';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { Options } from '../../Interfaces';
 

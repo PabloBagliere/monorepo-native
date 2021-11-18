@@ -1,6 +1,6 @@
 import { TextArea } from 'native-base';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 type props = ITextAreaProps;
 

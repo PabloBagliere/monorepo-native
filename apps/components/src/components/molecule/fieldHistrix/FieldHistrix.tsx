@@ -9,7 +9,7 @@ import {
   ISwitchProps,
 } from 'native-base';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
-import { FC, useContext } from 'react';
+import React, { FC, useContext } from 'react';
 import {
   Controller,
   ControllerRenderProps,

@@ -1,5 +1,5 @@
 import { ISwitchProps, Switch } from 'native-base';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 type props = ISwitchProps;
 

@@ -1,5 +1,5 @@
 import { Checkbox, ICheckboxGroupProps, ICheckboxProps } from 'native-base';
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 import { Options, T } from '../../Interfaces';
 
