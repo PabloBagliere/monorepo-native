@@ -3,11 +3,13 @@ import { Control, useForm, UseFormHandleSubmit } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 
 import useFormValidation from '../../hooks/useFormValidation';
-import { dynamicForm, T } from '../../Interfaces';
+import { dynamicForm, T, reponseWatch } from '../../Interfaces';
 import { FieldHistrix } from '../molecule/fieldHistrix';
 
 export interface props {
   dataInputs: Array<dynamicForm>;
+  watchList?: Array<string>;
+  watchFuntion?: (response: reponseWatch) => void;
   children?: React.ReactElement | React.ReactElement[];
 }
 
@@ -22,6 +24,8 @@ export const dynamicContext = createContext({} as dynamicContextProps);
 
 export const DynamicFormHOC: FC<props> = ({
   dataInputs,
+  watchList,
+  watchFuntion,
   children,
 }): JSX.Element => {
   const { defaultValues, validationSchema, updateStateValidation } =
@@ -30,8 +34,37 @@ export const DynamicFormHOC: FC<props> = ({
   const {
     control,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm({ defaultValues, resolver: yupResolver(validationSchema) });
+
+  React.useEffect(() => {
+    const subscription = watch((value, { name, type }) => {
+      if (!watchFuntion) return;
+      if (!watchList) {
+        const response = {
+          nameUpdate: name,
+          valueUpdate: value[name],
+          typeUpdate: type,
+          valueComplet: value,
+        };
+        watchFuntion(response);
+        return;
+      }
+      watchList.map((data) => {
+        if (value[data]) {
+          const response = {
+            nameUpdate: name,
+            valueUpdate: value[name],
+            typeUpdate: type,
+            valueComplet: value,
+          };
+          watchFuntion(response);
+        }
+      });
+    });
+    return () => subscription.unsubscribe();
+  }, [watch, watchFuntion, watchList]);
 
   return (
     <dynamicContext.Provider

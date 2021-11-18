@@ -3,6 +3,7 @@ import {
   DynamicForm,
   ExtendsForm,
   typeValidation,
+  reponseWatch,
 } from 'components-app-histrix';
 import React, { FC } from 'react';
 
@@ -11,6 +12,10 @@ import { mock } from './data';
 const Dynamic: FC = (): JSX.Element => {
   const prueba = (value: any) => {
     console.log(value);
+  };
+
+  const watchPrueba = ({ nameUpdate, valueUpdate }: reponseWatch) => {
+    console.log(nameUpdate, valueUpdate);
   };
   return (
     <ScrollView
@@ -28,7 +33,11 @@ const Dynamic: FC = (): JSX.Element => {
           Sign in to continue!
         </Heading>
         <VStack space={4} mt="5">
-          <DynamicForm dataInputs={mock}>
+          <DynamicForm
+            dataInputs={mock}
+            watchFuntion={watchPrueba}
+            watchList={['passwordInput']}
+          >
             <ExtendsForm
               isRequired
               name="pruebaDynamic"
