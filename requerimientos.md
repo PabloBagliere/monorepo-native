@@ -17,7 +17,7 @@ Requerimientos para paquete de componente histrix
 
 ## Fix medianos
 
-- Se forma un ciclo entre DynamicForm.tsx -> fieldHistrix/index.ts -> fieldHistrix/FieldControlers.tsx -> DynamicForm.tsx
+- Se forma un ciclo entre DynamicForm.tsx -> fieldHistrix/index.ts -> fieldHistrix/FieldControlers.tsx -> DynamicForm.tsx ✅
 - Chequear el formato de envio de informacion de json
 - Actualizar version de react-native App/
 - Input formato fecha TODO: formato web

@@ -1,7 +1,6 @@
 import { Box, Heading, VStack, ScrollView } from 'native-base';
 import {
   DynamicForm,
-  ExtendsForm,
   typeValidation,
   reponseWatch,
 } from 'components-app-histrix';
@@ -38,7 +37,7 @@ const Dynamic: FC = (): JSX.Element => {
             watchFuntion={watchPrueba}
             watchList={['passwordInput']}
           >
-            <ExtendsForm
+            <DynamicForm.add
               isRequired
               name="pruebaDynamic"
               defaultValue=""
@@ -56,10 +55,11 @@ const Dynamic: FC = (): JSX.Element => {
                 },
               ]}
             >
-              <ExtendsForm.Label>Prueba de componente</ExtendsForm.Label>
-              <ExtendsForm.Input />
-              <ExtendsForm.MessageError />
-            </ExtendsForm>
+              <DynamicForm.add.Label>
+                Prueba de componente
+              </DynamicForm.add.Label>
+              <DynamicForm.add.Input />
+            </DynamicForm.add>
             <DynamicForm.button onSubmit={prueba}>prueba</DynamicForm.button>
           </DynamicForm>
         </VStack>

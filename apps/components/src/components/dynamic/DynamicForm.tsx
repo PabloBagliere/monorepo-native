@@ -1,10 +1,11 @@
-import React, { createContext, FC } from 'react';
-import { Control, useForm, UseFormHandleSubmit } from 'react-hook-form';
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 
 import useFormValidation from '../../hooks/useFormValidation';
-import { dynamicForm, T, reponseWatch } from '../../Interfaces';
+import { dynamicForm, reponseWatch } from '../../Interfaces';
 import { FieldHistrix } from '../molecule/fieldHistrix';
+import { dynamicContext } from '../../context';
 
 export interface props {
   dataInputs: Array<dynamicForm>;
@@ -12,15 +13,6 @@ export interface props {
   watchFuntion?: (response: reponseWatch) => void;
   children?: React.ReactElement | React.ReactElement[];
 }
-
-interface dynamicContextProps {
-  handleSubmit: UseFormHandleSubmit<{ [key: string]: T }>;
-  controlComponent: Control;
-  errorComponent: { [x: number]: T; [x: string]: T };
-  updateValidation: T;
-}
-
-export const dynamicContext = createContext({} as dynamicContextProps);
 
 export const DynamicFormHOC: FC<props> = ({
   dataInputs,

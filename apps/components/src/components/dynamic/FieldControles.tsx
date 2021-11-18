@@ -10,7 +10,7 @@ import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives
 import React, { FC, useContext } from 'react';
 import { Controller } from 'react-hook-form';
 
-import { Options } from '../../../Interfaces';
+import { Options } from '../../Interfaces';
 import {
   AtomicCheckbox,
   AtomicInput,
@@ -19,11 +19,11 @@ import {
   AtomicSwitch,
   AtomicSlider,
   AtomicTextarea,
-} from '../../atomic';
-import { dynamicContext } from '../../dynamic/DynamicForm';
-import { MultipleSelect } from '../MultipleSelect';
+} from '../atomic';
+import { MultipleSelect } from '../molecule/MultipleSelect';
+import { dynamicContext } from '../../context';
 
-import { histrixFormContext } from './FormHistrixField';
+import { histrixFormContext } from './AddExternal';
 
 export type propsInput = IInputProps;
 

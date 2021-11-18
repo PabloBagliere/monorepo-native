@@ -2,8 +2,7 @@ import { Button, IButtonProps } from 'native-base';
 import React, { FC, useContext } from 'react';
 
 import { T } from '../../Interfaces';
-
-import { dynamicContext } from './DynamicForm';
+import { dynamicContext } from '../../context';
 
 export interface props {
   onSubmit: (value: T) => void;

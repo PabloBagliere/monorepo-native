@@ -27,7 +27,7 @@ import {
   AtomicSwitch,
   AtomicDatapicker,
 } from '../../atomic';
-import { dynamicContext } from '../../dynamic/DynamicForm';
+import { dynamicContext } from '../../../context';
 import { MultipleSelect } from '../MultipleSelect';
 
 const FuntionSelectComponentDynamic = (

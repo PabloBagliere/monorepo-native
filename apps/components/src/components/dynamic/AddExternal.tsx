@@ -6,8 +6,8 @@ import {
 } from 'native-base';
 import React, { createContext, FC, useContext } from 'react';
 
-import { T, schemaValidation } from '../../../Interfaces';
-import { dynamicContext } from '../../dynamic/DynamicForm';
+import { T, schemaValidation } from '../../Interfaces';
+import { dynamicContext } from '../../context';
 interface histrixFormContextProps {
   name: string;
 }
@@ -22,12 +22,14 @@ export interface propsHistrixForm extends IFormControlProps {
   name: string;
   defaultValue: T;
   validation?: Array<validationExtends>;
+  propsError?: IFormControlErrorMessageProps;
 }
 // let flat = false;
-export const FormHistrixFieldExtends: FC<propsHistrixForm> = ({
+export const AddExternal: FC<propsHistrixForm> = ({
   name,
   children,
   // validation,
+  propsError,
   ...props
 }): JSX.Element => {
   // TODO: ver tema de la validacion automatica.
@@ -37,12 +39,16 @@ export const FormHistrixFieldExtends: FC<propsHistrixForm> = ({
   //   updateValidation(validation, name);
   //   flat = true;
   // }
+  const { errorComponent } = useContext(dynamicContext);
 
   return (
     <FormControl {...props}>
       <histrixFormContext.Provider value={{ name }}>
         {children}
       </histrixFormContext.Provider>
+      <FormControl.ErrorMessage {...propsError}>
+        {errorComponent[name]?.message}
+      </FormControl.ErrorMessage>
     </FormControl>
   );
 };
@@ -54,19 +60,4 @@ export const LabelHistrixField: FC<propsLabel> = ({
   ...props
 }): JSX.Element => {
   return <FormControl.Label {...props}>{children}</FormControl.Label>;
-};
-
-export type propsError = IFormControlErrorMessageProps;
-
-export const ErrorMesajeHistrixField: FC<propsError> = ({
-  children,
-  ...props
-}): JSX.Element => {
-  const { errorComponent } = useContext(dynamicContext);
-  const { name } = useContext(histrixFormContext);
-  return (
-    <FormControl.ErrorMessage {...props}>
-      {children ? children : errorComponent[name]?.message}
-    </FormControl.ErrorMessage>
-  );
 };
