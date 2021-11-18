@@ -24,6 +24,6 @@ Requerimientos para paquete de componente histrix
 
 ## Fix menores
 
-- Switch si no se pasa valor sea falso
-- Slider si no se pasa valor sea 0
+- Switch si no se pasa valor sea falso ✅
+- Slider si no se pasa valor sea 0 ✅
 - Sacar regla de linter para imporatacion de react

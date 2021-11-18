@@ -15,17 +15,33 @@ const defaultDataSeparator = (
 ): { [key: string]: T } => {
   const dataSeparator = {};
   for (const input of value) {
-    if (input.type === typeFormController.DATEPICKER) {
-      dataSeparator[input.name] = new Date(`${input.value}`);
-      continue;
+    switch (input.type) {
+      case typeFormController.DATEPICKER:
+        dataSeparator[input.name] = new Date(`${input.value}`);
+        break;
+      case typeFormController.TIMEPICKER:
+        dataSeparator[input.name] = new Date(`0000T${input.value}`);
+        break;
+      case typeFormController.SWITCH:
+        if (typeof input.value === 'boolean') {
+          dataSeparator[input.name] = input.value;
+        } else {
+          dataSeparator[input.name] = false;
+        }
+        break;
+      case typeFormController.SLIDER:
+        if (typeof input.value === 'number') {
+          dataSeparator[input.name] = input.value;
+        } else {
+          dataSeparator[input.name] = 0;
+        }
+        break;
+      default:
+        dataSeparator[input.name] = input.value;
+        break;
     }
-    if (input.type === typeFormController.TIMEPICKER) {
-      dataSeparator[input.name] = new Date(`0000T${input.value}`);
-      continue;
-    }
-    dataSeparator[input.name] = input.value;
+    return dataSeparator;
   }
-  return dataSeparator;
 };
 
 const dataRequiredValidation = (
