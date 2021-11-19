@@ -1,14 +1,8 @@
-import { useState } from 'react';
 import { OptionalArraySchema } from 'yup/lib/array';
 import { AnyObject } from 'yup/lib/types';
 import * as Yup from 'yup';
 
-import {
-  dynamicForm,
-  schemaValidation,
-  T,
-  typeFormController,
-} from '../Interfaces';
+import { dynamicForm, T, typeFormController } from '../Interfaces';
 
 const defaultDataSeparator = (
   value: Array<dynamicForm>,
@@ -40,8 +34,8 @@ const defaultDataSeparator = (
         dataSeparator[input.name] = input.value;
         break;
     }
-    return dataSeparator;
   }
+  return dataSeparator;
 };
 
 const dataRequiredValidation = (
@@ -51,14 +45,19 @@ const dataRequiredValidation = (
   for (const input of value) {
     if (!input.validations) continue;
     let schema:
+      | OptionalArraySchema<Yup.AnySchema, AnyObject, T[]>
+      | Yup.DateSchema<Date, AnyObject, Date>
       | Yup.NumberSchema<number, AnyObject, number>
       | Yup.BooleanSchema<boolean, AnyObject, boolean>
-      | Yup.StringSchema<string, AnyObject, string>
-      | OptionalArraySchema<Yup.AnySchema, AnyObject, T[]>;
+      | Yup.StringSchema<string, AnyObject, string>;
     switch (input.type) {
       case typeFormController.CHECKBOX:
       case typeFormController.MULTISELECT:
         schema = Yup.array();
+        break;
+      case typeFormController.DATEPICKER:
+      case typeFormController.TIMEPICKER:
+        schema = Yup.date();
         break;
       case typeFormController.SLIDER:
         schema = Yup.number();
@@ -82,57 +81,12 @@ const dataRequiredValidation = (
   return requiredValidation;
 };
 
-interface valueUpdateValidation extends schemaValidation {
-  typeBase: T;
-}
-
-let defaultValuesInit: { [key: string]: T };
-let requiredField: { [key: string]: T };
-
-const useFormValidation = (dataInputs?: Array<dynamicForm>) => {
-  if (dataInputs) {
-    defaultValuesInit = defaultDataSeparator(dataInputs);
-    requiredField = dataRequiredValidation(dataInputs);
-  }
-
-  const validationSchemaInit = Yup.object({ ...requiredField });
-
-  const [defaultValues, setDefaultValues] = useState(defaultValuesInit);
-  const [validationSchema, setvalidationSchema] =
-    useState(validationSchemaInit);
-
-  const updateStateDefault = (value: { name: string; value: T }) => {
-    setDefaultValues((prevState) => {
-      const temp = {};
-      temp[value.name] = value.value;
-      return { ...prevState, ...temp };
-    });
-  };
-  const updateStateValidation = (
-    value: Array<valueUpdateValidation>,
-    name: string,
-  ) => {
-    const a = {};
-    let temp;
-    for (const iterator of value) {
-      temp = Yup[iterator.typeBase]();
-      if (iterator.value) {
-        temp = temp[iterator.type](iterator.value, iterator.message);
-      } else {
-        temp = temp[iterator.type](iterator.message);
-      }
-    }
-    a[name] = temp;
-    const tempYup = Yup.object({ ...requiredField, ...a });
-    setvalidationSchema(tempYup);
-  };
+export const separatorFormat = (inputData: dynamicForm[]) => {
+  const data = defaultDataSeparator(inputData);
+  const validation = dataRequiredValidation(inputData);
 
   return {
-    defaultValues,
-    validationSchema,
-    updateStateDefault,
-    updateStateValidation,
+    data,
+    validation,
   };
 };
-
-export default useFormValidation;

@@ -2,10 +2,10 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
 
-import useFormValidation from '../../hooks/useFormValidation';
 import { dynamicForm, reponseWatch } from '../../Interfaces';
-import { FieldHistrix } from '../molecule/fieldHistrix';
+import { FieldHistrix } from '../molecule';
 import { dynamicContext } from '../../context';
+import { separatorFormat } from '../../utilis';
 
 export interface props {
   dataInputs: Array<dynamicForm>;
@@ -20,15 +20,13 @@ export const DynamicFormHOC: FC<props> = ({
   watchFuntion,
   children,
 }): JSX.Element => {
-  const { defaultValues, validationSchema, updateStateValidation } =
-    useFormValidation(dataInputs);
-
+  const { data, validation } = separatorFormat(dataInputs);
   const {
     control,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm({ defaultValues, resolver: yupResolver(validationSchema) });
+  } = useForm({ defaultValues: data, resolver: yupResolver(validation) });
 
   React.useEffect(() => {
     const subscription = watch((value, { name, type }) => {
@@ -64,7 +62,6 @@ export const DynamicFormHOC: FC<props> = ({
         handleSubmit,
         controlComponent: control,
         errorComponent: errors,
-        updateValidation: updateStateValidation,
       }}
     >
       {dataInputs.map((value, index) => {

@@ -1,2 +1,2 @@
 export * from './MultipleSelect';
-export * from './fieldHistrix';
+export * from './FieldHistrix';

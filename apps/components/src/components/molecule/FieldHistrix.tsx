@@ -16,7 +16,7 @@ import {
   FieldValues,
 } from 'react-hook-form';
 
-import { dynamicForm, typeFormController } from '../../../Interfaces';
+import { dynamicForm, typeFormController } from '../../Interfaces';
 import {
   AtomicInput,
   AtomicSelect,
@@ -26,9 +26,10 @@ import {
   AtomicTextarea,
   AtomicSwitch,
   AtomicDatapicker,
-} from '../../atomic';
-import { dynamicContext } from '../../../context';
-import { MultipleSelect } from '../MultipleSelect';
+} from '../atomic';
+import { dynamicContext } from '../../context';
+
+import { MultipleSelect } from './MultipleSelect';
 
 const FuntionSelectComponentDynamic = (
   { onChange, value }: ControllerRenderProps<FieldValues, string>,
