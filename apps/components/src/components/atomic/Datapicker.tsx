@@ -24,7 +24,6 @@ export const AtomicDatapicker: FC<props> = ({
   const [show, setShow] = useState(false);
 
   const change = (event: T, selectedDate: Date) => {
-    console.log(selectedDate);
     setShow(Platform.OS === 'ios');
     if (selectedDate) {
       setNewDate(selectedDate);
