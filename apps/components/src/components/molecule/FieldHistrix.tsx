@@ -117,10 +117,9 @@ const FuntionSelectComponentDynamic = (
         />
       );
     case typeFormController.TIMEPICKER:
-      console.log(value);
       return (
         <AtomicDatapicker
-          display="clock"
+          display="default"
           setNewDate={onChange}
           label={inputProp.propsForms.labelString}
           mode="time"

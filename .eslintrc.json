@@ -38,7 +38,8 @@
     "import/order": ["warn", { "newlines-between": "always" }],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/no-var-requires": "off",
-    "react/jsx-uses-react": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
     "react/react-in-jsx-scope": "off",
     "react/prop-types": 0
   }

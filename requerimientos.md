@@ -6,8 +6,10 @@ Requerimientos para paquete de componente histrix
 
 - Liberar metodo watch para ser usado ✅
 - Liberar cambios en los botones ✅
-- Mejorar validaciones para multiples
+- Mejorar validaciones para multiples ✅
 - Importar archivo del datapicker dependinedo si es web o celular
+- Timepicker resta horas y al seleccionar suma horas ✅
+- Si se a dado fecha maxima y minimas pasarcelo al componente para que lo muestre visualmente
 - Poder poner validacion manualmente sin necesidad de editar el json TODO: No recarga el hooks resolver
 - Cambiar estilo y formato del multiple select si esta en web
 - Generar dinamicamente los item de navegacion
@@ -21,14 +23,14 @@ Requerimientos para paquete de componente histrix
 
 - Se forma un ciclo entre DynamicForm.tsx -> fieldHistrix/index.ts -> fieldHistrix/FieldControlers.tsx -> DynamicForm.tsx ✅
 - Chequear el formato de envio de informacion de json
-- Actualizar version de react-native App/
+- Actualizar version de react-native App/ ✅
 - Input formato fecha TODO: formato web
 
 ## Fix menores
 
 - Switch si no se pasa valor sea falso ✅
 - Slider si no se pasa valor sea 0 ✅
-- Sacar regla de linter para imporatacion de react
+- Sacar regla de linter para imporatacion de react ✅
 
 ### Testing
 

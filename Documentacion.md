@@ -10,7 +10,7 @@ Los componente de formularios y el tipo de valor que devuelven son los sigueinte
 - Select - Devuelve un valor string
 - Checkbox - Devuelve un array de string
 - Datapicker - Devuelve un Date completo su hora es T00:00:00.000Z
-- Timepicker - Devuelve un Date completo su fecha es 0000-01-01
+- Timepicker - Devuelve un Date completo su fecha es 2000-12-11T
 - Radio - Devuelve un string
 - Slider - Devuelve un number
 - Switch - Devuelve un boolean
