@@ -121,6 +121,7 @@ const FuntionSelectComponentDynamic = (
           setNewDate={onChange}
           label={inputProp.propsForms.labelString}
           mode="time"
+          is24Hour
           value={value}
         />
       );

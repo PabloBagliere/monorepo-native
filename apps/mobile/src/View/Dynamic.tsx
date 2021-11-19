@@ -1,9 +1,5 @@
 import { Box, Heading, VStack, ScrollView } from 'native-base';
-import {
-  DynamicForm,
-  typeValidation,
-  reponseWatch,
-} from 'components-app-histrix';
+import { DynamicForm, reponseWatch } from 'components-app-histrix';
 import React, { FC } from 'react';
 
 import { mock } from './data';
@@ -37,29 +33,6 @@ const Dynamic: FC = (): JSX.Element => {
             watchFuntion={watchPrueba}
             watchList={['passwordInput']}
           >
-            <DynamicForm.add
-              isRequired
-              name="pruebaDynamic"
-              defaultValue=""
-              validation={[
-                {
-                  typeBase: 'string',
-                  type: typeValidation.REQUIRED,
-                  message: 'Es requerido',
-                },
-                {
-                  typeBase: 'string',
-                  type: typeValidation.MIN,
-                  message: 'Es requerido',
-                  value: 5,
-                },
-              ]}
-            >
-              <DynamicForm.add.Label>
-                Prueba de componente
-              </DynamicForm.add.Label>
-              <DynamicForm.add.Input />
-            </DynamicForm.add>
             <DynamicForm.button onSubmit={prueba}>prueba</DynamicForm.button>
           </DynamicForm>
         </VStack>

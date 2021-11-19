@@ -38,9 +38,7 @@ const defaultDataSeparator = (
   return dataSeparator;
 };
 
-const dataRequiredValidation = (
-  value: Array<dynamicForm>,
-): { [key: string]: T } => {
+const dataRequiredValidation = (value: Array<dynamicForm>) => {
   const requiredValidation: { [key: string]: T } = {};
   for (const input of value) {
     if (!input.validations) continue;
@@ -78,7 +76,7 @@ const dataRequiredValidation = (
     }
     requiredValidation[input.name] = schema;
   }
-  return requiredValidation;
+  return Yup.object({ ...requiredValidation });
 };
 
 export const separatorFormat = (inputData: dynamicForm[]) => {

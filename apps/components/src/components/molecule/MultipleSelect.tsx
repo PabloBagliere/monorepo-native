@@ -30,7 +30,7 @@ export const MultipleSelect: FC<props> = ({
   const [select, setSelect] = useState<Array<T>>(defaultValue);
   return (
     <>
-      <AtomicButton onSubmit={onOpen} {...propsButton}>
+      <AtomicButton onPress={onOpen} {...propsButton}>
         {label}
       </AtomicButton>
       <Actionsheet isOpen={isOpen} onClose={onClose}>

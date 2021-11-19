@@ -42,7 +42,7 @@ export const DynamicFormHOC: FC<props> = ({
         return;
       }
       watchList.map((data) => {
-        if (value[data]) {
+        if (name === data) {
           const response = {
             nameUpdate: name,
             valueUpdate: value[name],

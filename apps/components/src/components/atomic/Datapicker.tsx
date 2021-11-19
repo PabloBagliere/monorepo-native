@@ -25,7 +25,9 @@ export const AtomicDatapicker: FC<props> = ({
 
   const change = (event: T, selectedDate: Date) => {
     setShow(Platform.OS === 'ios');
-    setNewDate(selectedDate);
+    if (selectedDate) {
+      setNewDate(selectedDate);
+    }
   };
   const showMode = () => {
     setShow(true);
@@ -33,7 +35,7 @@ export const AtomicDatapicker: FC<props> = ({
   return (
     <View>
       <View>
-        <AtomicButton onSubmit={showMode} {...propsButton}>
+        <AtomicButton onPress={showMode} {...propsButton}>
           {label}
         </AtomicButton>
       </View>

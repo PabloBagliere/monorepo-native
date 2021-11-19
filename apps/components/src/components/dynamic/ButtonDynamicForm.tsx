@@ -17,7 +17,7 @@ export const ButtonDynamicForm: FC<props> = ({
   const { handleSubmit } = useContext(dynamicContext);
 
   return (
-    <AtomicButton {...props} onSubmit={handleSubmit(onSubmit)}>
+    <AtomicButton onPress={handleSubmit(onSubmit)} {...props}>
       {children}
     </AtomicButton>
   );
