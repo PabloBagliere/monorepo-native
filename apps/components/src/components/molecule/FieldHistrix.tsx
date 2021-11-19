@@ -110,18 +110,20 @@ const FuntionSelectComponentDynamic = (
       return (
         <AtomicDatapicker
           setNewDate={onChange}
+          display="default"
           label={inputProp.propsForms.labelString}
           mode="date"
           value={value}
         />
       );
     case typeFormController.TIMEPICKER:
+      console.log(value);
       return (
         <AtomicDatapicker
+          display="clock"
           setNewDate={onChange}
           label={inputProp.propsForms.labelString}
           mode="time"
-          is24Hour
           value={value}
         />
       );

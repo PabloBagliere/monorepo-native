@@ -156,6 +156,22 @@ export const mock: Array<dynamicForm> = [
         value: 'prueba5',
       },
     ],
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: 2,
+        message: 'El Minimo seleccionados 2 es necesaria',
+      },
+      {
+        type: typeValidation.MAX,
+        message: 'Maximo 4',
+        value: 4,
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
   {
     name: 'RadioPrueba',
@@ -222,9 +238,20 @@ export const mock: Array<dynamicForm> = [
       labelProps: {
         _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
       },
-      labelString: 'Prueba de Radio',
+      labelString: 'Prueba de Slider',
       formProps: { isRequired: true },
     },
+    validations: [
+      {
+        type: typeValidation.REQUIRED,
+        message: 'El textArea es necesaria',
+      },
+      {
+        type: typeValidation.MIN,
+        message: 'No puede ser menor al 50',
+        value: 50,
+      },
+    ],
   },
   {
     name: 'TextareaPrueba',
@@ -316,6 +343,22 @@ export const mock: Array<dynamicForm> = [
         value: 'prueba5',
       },
     ],
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: 2,
+        message: 'El Minimo seleccionados 2 es necesaria',
+      },
+      {
+        type: typeValidation.MAX,
+        message: 'Maximo 4',
+        value: 4,
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
   {
     name: 'PruebaDataPicker',
@@ -329,11 +372,27 @@ export const mock: Array<dynamicForm> = [
       labelString: 'Prueba de datapicker',
       formProps: { isRequired: true },
     },
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: '2021-11-20',
+        message: 'Fecha minima',
+      },
+      {
+        type: typeValidation.MAX,
+        message: 'Fecha maxima',
+        value: '2021-11-30',
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
   {
     name: 'PruebaTimePicker',
     type: typeFormController.TIMEPICKER,
-    value: '12:50:10',
+    value: '12:00:00',
     propsForms: {
       inputProps: {},
       labelProps: {
@@ -342,5 +401,21 @@ export const mock: Array<dynamicForm> = [
       labelString: 'Prueba de timepicker',
       formProps: { isRequired: true },
     },
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: '12:00:10',
+        message: 'Hora minima',
+      },
+      {
+        type: typeValidation.MAX,
+        message: 'Hora maxima',
+        value: '13:50:10',
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
 ];

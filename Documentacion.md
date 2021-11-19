@@ -9,8 +9,8 @@ Los componente de formularios y el tipo de valor que devuelven son los sigueinte
 - Input - Devuelve un string
 - Select - Devuelve un valor string
 - Checkbox - Devuelve un array de string
-- Datapicker - Devuelve un Date completo
-- Timepicker - Devuelve un Date completo
+- Datapicker - Devuelve un Date completo su hora es T00:00:00.000Z
+- Timepicker - Devuelve un Date completo su fecha es 0000-01-01
 - Radio - Devuelve un string
 - Slider - Devuelve un number
 - Switch - Devuelve un boolean
@@ -54,6 +54,9 @@ El formato del mismo se puede pasar un valor y un mensaje o solamente mensaje de
 - required - Si es requerido (No requiere valor)
 
 ### Validacion de date
+
+Para la validacion de maximo o minimo no es necesario el formato completo si usas datapicker automaticamente se va a setear en hora T00:00:00.000Z
+y si usas timepicker automaticamente se seteara la fecha en 0000-01-01. Para que no tengas que estar pensando en esto.
 
 - required - Si es requerido (No requiere valor)
 - min - define la fecha minima que puede tener (Requiere valor)

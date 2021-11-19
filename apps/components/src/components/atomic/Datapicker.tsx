@@ -24,6 +24,7 @@ export const AtomicDatapicker: FC<props> = ({
   const [show, setShow] = useState(false);
 
   const change = (event: T, selectedDate: Date) => {
+    console.log(selectedDate);
     setShow(Platform.OS === 'ios');
     if (selectedDate) {
       setNewDate(selectedDate);
@@ -40,14 +41,7 @@ export const AtomicDatapicker: FC<props> = ({
         </AtomicButton>
       </View>
       <View></View>
-      {show && (
-        <DateTimePicker
-          is24Hour={true}
-          display="default"
-          onChange={change}
-          {...props}
-        />
-      )}
+      {show && <DateTimePicker is24Hour onChange={change} {...props} />}
     </View>
   );
 };

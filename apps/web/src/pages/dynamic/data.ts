@@ -156,6 +156,22 @@ export const mock: Array<dynamicForm> = [
         value: 'prueba5',
       },
     ],
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: 2,
+        message: 'El Minimo seleccionados 2 es necesaria',
+      },
+      {
+        type: typeValidation.MAX,
+        message: 'Maximo 4',
+        value: 4,
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
   {
     name: 'RadioPrueba',
@@ -222,9 +238,20 @@ export const mock: Array<dynamicForm> = [
       labelProps: {
         _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
       },
-      labelString: 'Prueba de Radio',
+      labelString: 'Prueba de Slider',
       formProps: { isRequired: true },
     },
+    validations: [
+      {
+        type: typeValidation.REQUIRED,
+        message: 'El textArea es necesaria',
+      },
+      {
+        type: typeValidation.MIN,
+        message: 'No puede ser menor al 50',
+        value: 50,
+      },
+    ],
   },
   {
     name: 'TextareaPrueba',
@@ -256,7 +283,7 @@ export const mock: Array<dynamicForm> = [
   {
     name: 'SwitchPrueba',
     type: typeFormController.SWITCH,
-    value: '',
+    value: false,
     propsForms: {
       inputProps: {
         defaultIsChecked: true,
@@ -316,18 +343,21 @@ export const mock: Array<dynamicForm> = [
         value: 'prueba5',
       },
     ],
-  },
-  {
-    name: 'PruebaDataPicker',
-    type: typeFormController.DATEPICKER,
-    value: '18/10/2000',
-    propsForms: {
-      inputProps: {},
-      labelProps: {
-        _text: { color: 'coolGray.800', fontSize: 'xs', fontWeight: 500 },
+    validations: [
+      {
+        type: typeValidation.MIN,
+        value: 2,
+        message: 'El Minimo seleccionados 2 es necesaria',
       },
-      labelString: 'Prueba de datapicker',
-      formProps: { isRequired: true },
-    },
+      {
+        type: typeValidation.MAX,
+        message: 'Maximo 4',
+        value: 4,
+      },
+      {
+        type: typeValidation.REQUIRED,
+        message: 'Es requerido',
+      },
+    ],
   },
 ];

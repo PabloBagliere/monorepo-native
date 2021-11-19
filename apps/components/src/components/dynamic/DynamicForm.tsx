@@ -55,7 +55,6 @@ export const DynamicFormHOC: FC<props> = ({
     });
     return () => subscription.unsubscribe();
   }, [watch, watchFuntion, watchList]);
-
   return (
     <dynamicContext.Provider
       value={{

@@ -69,6 +69,17 @@ const dataRequiredValidation = (value: Array<dynamicForm>) => {
 
     for (const rule of input.validations) {
       if (rule.value) {
+        if (input.type === typeFormController.DATEPICKER) {
+          schema = schema[rule.type](new Date(rule.value), rule.message);
+          continue;
+        }
+        if (input.type === typeFormController.TIMEPICKER) {
+          schema = schema[rule.type](
+            new Date(`0000T${rule.value}`),
+            rule.message,
+          );
+          continue;
+        }
         schema = schema[rule.type](rule.value, rule.message);
       } else {
         schema = schema[rule.type](rule.message);

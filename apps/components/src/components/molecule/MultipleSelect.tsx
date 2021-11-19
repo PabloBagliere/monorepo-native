@@ -24,10 +24,19 @@ export const MultipleSelect: FC<props> = ({
   label,
   propsButton,
   defaultValue,
+  onChange,
   ...props
 }): JSX.Element => {
   const { isOpen, onClose, onOpen } = useDisclose();
   const [select, setSelect] = useState<Array<T>>(defaultValue);
+  const setNewSelect = (value) => {
+    setSelect((preStete) => {
+      const newState = preStete.filter((val) => val !== value);
+      onChange(newState);
+      return newState;
+    });
+  };
+
   return (
     <>
       <AtomicButton onPress={onOpen} {...propsButton}>
@@ -39,6 +48,7 @@ export const MultipleSelect: FC<props> = ({
             options={options}
             multiple={setSelect}
             defaultValue={select}
+            onChange={onChange}
             {...props}
           />
         </Actionsheet.Content>
@@ -49,7 +59,7 @@ export const MultipleSelect: FC<props> = ({
             <Badge key={index} colorScheme="info">
               {value}
               <IconButton
-                onPress={() => setSelect(select.filter((val) => val !== value))}
+                onPress={() => setNewSelect(value)}
                 variant="ghost"
                 icon={<CloseIcon size="4" />}
               />
