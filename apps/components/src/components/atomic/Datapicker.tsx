@@ -7,7 +7,7 @@ import DateTimePicker, {
 
 import { T } from '../../Interfaces';
 
-import { AtomicButton } from '.';
+import { AtomicButton } from './Button';
 
 interface props extends AndroidNativeProps {
   setNewDate: T;

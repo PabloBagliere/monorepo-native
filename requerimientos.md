@@ -14,6 +14,7 @@ Requerimientos para paquete de componente histrix
 - Generar plantilla de perfil expandible y editable
 - Componente de graficas react-chartjs-2
 - Componente de dashboard expandible
+- Hooks de notificaciones libreria react-native-toast-notifications
 
 ## Fix medianos
 
