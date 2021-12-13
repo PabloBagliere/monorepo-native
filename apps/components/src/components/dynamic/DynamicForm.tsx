@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup/dist/yup.umd';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { dynamicForm, reponseWatch } from '../../Interfaces';
 import { FieldHistrix } from '../molecule';
