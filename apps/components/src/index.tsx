@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import { NativeBaseProvider } from 'native-base';
 
 import { App } from './App';
-
 import './index.css';
 import { theme } from './theme';
 
