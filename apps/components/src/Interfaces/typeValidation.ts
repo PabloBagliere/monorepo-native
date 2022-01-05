@@ -1,17 +1,9 @@
-export enum typeValidation {
-  REQUIRED = 'required',
-  LENGTH = 'length',
-  MIN = 'min',
-  MAX = 'max',
-  MATCHES = 'matches',
-  EMAIL = 'email',
-  URL = 'url',
-  UUID = 'uuid',
-  LOWERCASE = 'lowercase',
-  UPPERCASE = 'uppercase',
-  TRIM = 'trim',
-  POSITIVE = 'positive',
-  NEGATIVE = 'negative',
-  INTEGER = 'integer',
-  TRUNCATE = 'truncate',
-}
+export const typeValidation = Object.freeze(
+  'required' ||
+    'min' ||
+    'max' ||
+    'minlength' ||
+    'maxlength' ||
+    'pattern' ||
+    'validate',
+);

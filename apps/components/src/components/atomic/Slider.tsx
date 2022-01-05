@@ -1,15 +1,44 @@
 import { ISliderProps, Slider } from 'native-base';
 import React, { FC } from 'react';
+import { Controller } from 'react-hook-form';
 
-type props = ISliderProps;
+import { formBasic, T } from '../../Interfaces';
+interface props extends ISliderProps, formBasic {
+  register?: T;
+}
 
-export const AtomicSlider: FC<props> = ({ ...props }): JSX.Element => {
-  return (
-    <Slider {...props}>
+export const AtomicSlider: FC<props> = ({
+  register,
+  name,
+  control,
+  rules,
+  ...props
+}): JSX.Element => {
+  return !control ? (
+    <Slider {...register(name)} {...props}>
       <Slider.Track>
         <Slider.FilledTrack />
       </Slider.Track>
       <Slider.Thumb />
     </Slider>
+  ) : (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field }) => (
+        <Slider
+          {...register(name)}
+          {...props}
+          onChange={(val) => field.onChange(val)}
+          defaultValue={field.value}
+        >
+          <Slider.Track>
+            <Slider.FilledTrack />
+          </Slider.Track>
+          <Slider.Thumb />
+        </Slider>
+      )}
+    />
   );
 };

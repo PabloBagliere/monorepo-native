@@ -11,6 +11,8 @@ import { AtomicButton } from './Button';
 
 interface props extends AndroidNativeProps {
   setNewDate: T;
+  register?: T;
+  name?: string;
   label: string;
   propsButton?: IButtonProps;
 }
@@ -19,6 +21,8 @@ export const AtomicDatapicker: FC<props> = ({
   setNewDate,
   label,
   propsButton,
+  register,
+  name,
   ...props
 }): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -40,7 +44,14 @@ export const AtomicDatapicker: FC<props> = ({
         </AtomicButton>
       </View>
       <View></View>
-      {show && <DateTimePicker is24Hour onChange={change} {...props} />}
+      {show && (
+        <DateTimePicker
+          is24Hour
+          {...register(name)}
+          onChange={change}
+          {...props}
+        />
+      )}
     </View>
   );
 };

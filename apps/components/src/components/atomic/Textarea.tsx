@@ -1,9 +1,33 @@
 import { TextArea } from 'native-base';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
 import React, { FC } from 'react';
+import { Controller } from 'react-hook-form';
 
-type props = ITextAreaProps;
+import { formBasic } from '../../Interfaces';
 
-export const AtomicTextarea: FC<props> = ({ ...props }): JSX.Element => {
-  return <TextArea {...props} />;
+interface props extends ITextAreaProps, formBasic {}
+
+export const AtomicTextarea: FC<props> = ({
+  register,
+  name,
+  control,
+  rules,
+  ...props
+}): JSX.Element => {
+  return !control ? (
+    <TextArea {...register(name)} {...props} />
+  ) : (
+    <Controller
+      name={name}
+      control={control}
+      rules={rules}
+      render={({ field }) => (
+        <TextArea
+          {...register(name)}
+          onChangeText={(val) => field.onChange(val)}
+          {...props}
+        />
+      )}
+    />
+  );
 };

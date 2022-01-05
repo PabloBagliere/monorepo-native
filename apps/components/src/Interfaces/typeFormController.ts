@@ -1,12 +1,12 @@
-export enum typeFormController {
-  INPUT = 'Input',
-  SELECT = 'Select',
-  MULTISELECT = 'MultiSelect',
-  CHECKBOX = 'Checkbox',
-  RADIO = 'Radio',
-  SLIDER = 'Slider',
-  SWITCH = 'Switch',
-  TEXTAREA = 'TextArea',
-  DATEPICKER = 'DataPicker',
-  TIMEPICKER = 'TimePicker',
-}
+export const typeFormController = Object.freeze(
+  'Input' ||
+    'Select' ||
+    'MultiSelect' ||
+    'Checkbox' ||
+    'Radio' ||
+    'Slider' ||
+    'Switch' ||
+    'TextArea' ||
+    'DataPicker' ||
+    'TimePicker',
+);
