@@ -1,6 +1,17 @@
+import { T } from 'components-app-histrix';
 import React, { FC } from 'react';
 import { AppState, AppStateStatus } from 'react-native';
 import { SWRConfig } from 'swr';
+
+import instance from '../services/Api';
+interface paramsFetcher {
+  url: string;
+  params?: T;
+  token?: string;
+}
+
+const fetcher = ({ url, params }: paramsFetcher) =>
+  instance.get(url, params).then((res) => res.data);
 
 export const SWRCache: FC = ({ children }) => {
   return (
@@ -32,6 +43,7 @@ export const SWRCache: FC = ({ children }) => {
             subscrption.remove();
           };
         },
+        fetcher,
       }}
     >
       {children}
