@@ -1,3 +1,4 @@
+import { IStackProps } from 'native-base';
 import { UseFormRegister, Control, RegisterOptions } from 'react-hook-form';
 
 import { T } from '.';
@@ -7,4 +8,5 @@ export interface formBasic {
   name?: string;
   control?: Control;
   rules?: RegisterOptions;
+  styleLayout?: IStackProps;
 }

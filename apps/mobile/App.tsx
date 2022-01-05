@@ -30,7 +30,6 @@ export default function App() {
                 minLength: { value: 2, message: 'No puede ser menos de 2' },
               }}
             />
-            <AtomicTextarea name="textarea" />
             <AtomicButton onPress={onSubmit}> Prueba </AtomicButton>
           </FormHistrix>
         </VStack>
