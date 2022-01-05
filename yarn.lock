@@ -5847,6 +5847,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native-dotenv@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@types/react-native-dotenv@npm:0.2.0"
+  checksum: 23d59b8ebd35e8fe693531f9c630f7518cb149c06694c8c35fc3b628ac8e8e26cc602cec9372447873fbbb13bf0c40bbd951ba5306c1b83b169cc3a927cb935f
+  languageName: node
+  linkType: hard
+
 "@types/react-native@npm:~0.66.2":
   version: 0.66.10
   resolution: "@types/react-native@npm:0.66.10"
@@ -10307,6 +10314,13 @@ __metadata:
   version: 8.2.0
   resolution: "dotenv@npm:8.2.0"
   checksum: ad4c8e0df3e24b4811c8e93377d048a10a9b213dcd9f062483b4a2d3168f08f10ec9c618c23f5639060d230ccdb174c08761479e9baa29610aa978e1ee66df76
+  languageName: node
+  linkType: hard
+
+"dotenv@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "dotenv@npm:10.0.0"
+  checksum: f412c5fe8c24fbe313d302d2500e247ba8a1946492db405a4de4d30dd0eb186a88a43f13c958c5a7de303938949c4231c56994f97d05c4bc1f22478d631b4005
   languageName: node
   linkType: hard
 
@@ -16521,12 +16535,14 @@ __metadata:
     "@babel/core": ^7.16.0
     "@types/react": ~17.0.34
     "@types/react-native": ~0.66.2
+    "@types/react-native-dotenv": ^0.2.0
     expo: ~43.0.2
     expo-status-bar: ~1.1.0
     native-base: 3.2.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-native: 0.64.3
+    react-native-dotenv: ^3.3.1
     react-native-safe-area-context: 3.3.2
     react-native-svg: ^12.1.1
     react-native-web: ~0.17.5
@@ -19641,6 +19657,15 @@ __metadata:
     jscodeshift: ^0.11.0
     nullthrows: ^1.1.1
   checksum: 545d1e416be5bd0bc27a9bc4d58719317577fbcb38f80082857142f4946ba336df3f5fa3e87137709691acd809ee46e1f52834648399cb50219a70f441d6e6a3
+  languageName: node
+  linkType: hard
+
+"react-native-dotenv@npm:^3.3.1":
+  version: 3.3.1
+  resolution: "react-native-dotenv@npm:3.3.1"
+  dependencies:
+    dotenv: ^10.0.0
+  checksum: 7e53bd7e3ab43479a1c304e7ff46b7ff24c9c743cc25cfae5bef0a7c7ee93a2748639e6edc337281576899216d8d9bdddfe563882fea6743d675444e8777514b
   languageName: node
   linkType: hard
 
