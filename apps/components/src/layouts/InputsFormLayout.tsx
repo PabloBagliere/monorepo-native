@@ -11,7 +11,6 @@ export const InputsFormLayout: FC<props> = ({
     mb: '2.5',
     mt: '1.5',
     direction: 'column',
-    space: 3,
   };
   const PropsUnited = Object.assign(propsDefault, props);
 

@@ -29,6 +29,7 @@ export default function App() {
                 maxLength: { value: 8, message: 'No puede ser mas de 8' },
                 minLength: { value: 2, message: 'No puede ser menos de 2' },
               }}
+              message="Este es un mensaje de prueba xd"
             />
             <AtomicButton onPress={onSubmit}> Prueba </AtomicButton>
           </FormHistrix>

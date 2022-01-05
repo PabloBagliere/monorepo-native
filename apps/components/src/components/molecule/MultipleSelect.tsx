@@ -15,6 +15,7 @@ import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 import { AtomicButton, AtomicCheckbox } from '../atomic';
 import { FormMessageError } from '../atomic/FormMessageError';
+import { FormMessageHelper } from '../atomic/FormMessageHelper';
 
 interface props extends ICheckboxGroupProps, formBasic {
   label: string;
@@ -33,6 +34,7 @@ export const MultipleSelect: FC<props> = ({
   control,
   rules,
   styleLayout,
+  message,
   ...props
 }): JSX.Element => {
   const { isOpen, onClose, onOpen } = useDisclose();
@@ -122,6 +124,7 @@ export const MultipleSelect: FC<props> = ({
           </>
         )}
       />
+      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
       <FormMessageError name={name} />
     </InputsFormLayout>
   );

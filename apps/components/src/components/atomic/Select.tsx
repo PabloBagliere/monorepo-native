@@ -11,6 +11,7 @@ import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
 import { FormMessageError } from './FormMessageError';
+import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends ISelectProps, formBasic {
   options: Array<Options>;
@@ -24,6 +25,7 @@ export const AtomicSelect: FC<props> = ({
   control,
   rules,
   styleLayout,
+  message,
   ...props
 }): JSX.Element => {
   return control ? (
@@ -66,6 +68,7 @@ export const AtomicSelect: FC<props> = ({
           </Select>
         )}
       />
+      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
       <FormMessageError name={name} />
     </InputsFormLayout>
   );

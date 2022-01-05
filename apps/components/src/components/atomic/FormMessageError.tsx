@@ -8,6 +8,7 @@ interface props {
 }
 
 export const FormMessageError: FC<props> = ({ name }): JSX.Element => {
+  console.log('hola');
   const { errorComponent } = useContext(ContextForm);
   return (
     <FormControl.ErrorMessage>

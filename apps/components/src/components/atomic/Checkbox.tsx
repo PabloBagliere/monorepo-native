@@ -6,6 +6,7 @@ import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
 import { FormMessageError } from './FormMessageError';
+import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends ICheckboxGroupProps, formBasic {
   options: Array<Options>;
@@ -21,6 +22,7 @@ export const AtomicCheckbox: FC<props> = ({
   rules,
   name,
   styleLayout,
+  message,
   ...props
 }): JSX.Element => {
   return !control ? (
@@ -73,6 +75,7 @@ export const AtomicCheckbox: FC<props> = ({
           </Checkbox.Group>
         )}
       />
+      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
       <FormMessageError name={name} />
     </InputsFormLayout>
   );

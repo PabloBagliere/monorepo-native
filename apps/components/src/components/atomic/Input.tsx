@@ -6,6 +6,7 @@ import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
 import { FormMessageError } from './FormMessageError';
+import { FormMessageHelper } from './FormMessageHelper';
 interface props extends IInputProps, formBasic {}
 
 export const AtomicInput: FC<props> = ({
@@ -14,6 +15,7 @@ export const AtomicInput: FC<props> = ({
   control,
   rules,
   styleLayout,
+  message,
   ...props
 }): JSX.Element => {
   return !control ? (
@@ -32,6 +34,7 @@ export const AtomicInput: FC<props> = ({
           />
         )}
       />
+      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
       <FormMessageError name={name} />
     </InputsFormLayout>
   );

@@ -6,6 +6,7 @@ import { formBasic, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
 import { FormMessageError } from './FormMessageError';
+import { FormMessageHelper } from './FormMessageHelper';
 interface props extends ISliderProps, formBasic {
   register?: T;
 }
@@ -16,6 +17,7 @@ export const AtomicSlider: FC<props> = ({
   control,
   rules,
   styleLayout,
+  message,
   ...props
 }): JSX.Element => {
   return !control ? (
@@ -45,6 +47,7 @@ export const AtomicSlider: FC<props> = ({
           </Slider>
         )}
       />
+      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
       <FormMessageError name={name} />
     </InputsFormLayout>
   );

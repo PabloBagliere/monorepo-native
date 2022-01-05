@@ -9,4 +9,5 @@ export interface formBasic {
   control?: Control;
   rules?: RegisterOptions;
   styleLayout?: IStackProps;
+  message?: string;
 }
