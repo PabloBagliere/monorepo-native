@@ -7210,6 +7210,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"axios@npm:^0.24.0":
+  version: 0.24.0
+  resolution: "axios@npm:0.24.0"
+  dependencies:
+    follow-redirects: ^1.14.4
+  checksum: 468cf496c08a6aadfb7e699bebdac02851e3043d4e7d282350804ea8900e30d368daa6e3cd4ab83b8ddb5a3b1e17a5a21ada13fc9cebd27b74828f47a4236316
+  languageName: node
+  linkType: hard
+
 "axobject-query@npm:^2.2.0":
   version: 2.2.0
   resolution: "axobject-query@npm:2.2.0"
@@ -11926,7 +11935,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.0.0":
+"follow-redirects@npm:^1.0.0, follow-redirects@npm:^1.14.4":
   version: 1.14.6
   resolution: "follow-redirects@npm:1.14.6"
   peerDependenciesMeta:
@@ -16536,6 +16545,7 @@ __metadata:
     "@types/react": ~17.0.34
     "@types/react-native": ~0.66.2
     "@types/react-native-dotenv": ^0.2.0
+    axios: ^0.24.0
     expo: ~43.0.2
     expo-status-bar: ~1.1.0
     native-base: 3.2.2
@@ -16548,6 +16558,7 @@ __metadata:
     react-native-web: ~0.17.5
     styled-components: ^5.3.3
     styled-system: ^5.1.5
+    swr: ^1.1.2
     typescript: ~4.4.4
   languageName: unknown
   linkType: soft
@@ -22083,6 +22094,15 @@ __metadata:
   bin:
     svgo: ./bin/svgo
   checksum: 28a5680a61245eb4a1603bc03459095bb01ad5ebd23e95882d886c3c81752313c0a9a9fe48dd0bcbb9a27c52e11c603640df952971573b2b550d9e15a9ee6116
+  languageName: node
+  linkType: hard
+
+"swr@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "swr@npm:1.1.2"
+  peerDependencies:
+    react: ^16.11.0 || ^17.0.0 || ^18.0.0
+  checksum: 84bf222c667bf4f94bf9bcaf51f11443d69eb6feb82649c06ef8e576c51f52269872dbda4b926f267fd79cfeaf7bd84c6a62d519db25fe2af1fb811e75163e94
   languageName: node
   linkType: hard
 
