@@ -6,7 +6,6 @@ import {
   AtomicInput,
   AtomicButton,
   T,
-  AtomicTextarea,
 } from 'components-app-histrix';
 
 export default function App() {
@@ -24,6 +23,7 @@ export default function App() {
             <AtomicInput
               name="prueba"
               placeholder="prueba"
+              label="Prueba del label"
               rules={{
                 required: 'Este campo es requerido',
                 maxLength: { value: 8, message: 'No puede ser mas de 8' },

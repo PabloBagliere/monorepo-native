@@ -10,6 +10,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
@@ -25,6 +26,10 @@ export const AtomicSelect: FC<props> = ({
   control,
   rules,
   styleLayout,
+  styleError,
+  styleLabel,
+  styleMessage,
+  label,
   message,
   ...props
 }): JSX.Element => {
@@ -43,6 +48,7 @@ export const AtomicSelect: FC<props> = ({
     </Select>
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -68,8 +74,10 @@ export const AtomicSelect: FC<props> = ({
           </Select>
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

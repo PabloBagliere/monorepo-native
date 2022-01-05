@@ -5,6 +5,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
@@ -19,12 +20,17 @@ export const AtomicSwitch: FC<props> = ({
   rules,
   styleLayout,
   message,
+  styleError,
+  styleLabel,
+  styleMessage,
+  label,
   ...props
 }): JSX.Element => {
   return !control ? (
     <Switch {...register(name)} {...props} />
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -38,8 +44,10 @@ export const AtomicSwitch: FC<props> = ({
           />
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

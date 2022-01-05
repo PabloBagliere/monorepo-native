@@ -20,13 +20,13 @@ import { FormMessageHelper } from '../atomic/FormMessageHelper';
 interface props extends ICheckboxGroupProps, formBasic {
   label: string;
   options: Array<Options>;
-  propsButton?: IButtonProps;
+  styleButton?: IButtonProps;
 }
 
 export const MultipleSelect: FC<props> = ({
   options,
   label,
-  propsButton,
+  styleButton,
   defaultValue,
   onChange,
   register,
@@ -34,6 +34,8 @@ export const MultipleSelect: FC<props> = ({
   control,
   rules,
   styleLayout,
+  styleError,
+  styleMessage,
   message,
   ...props
 }): JSX.Element => {
@@ -49,7 +51,7 @@ export const MultipleSelect: FC<props> = ({
 
   return !control ? (
     <>
-      <AtomicButton onPress={onOpen} {...propsButton}>
+      <AtomicButton onPress={onOpen} {...styleButton}>
         {label}
       </AtomicButton>
       <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -88,7 +90,7 @@ export const MultipleSelect: FC<props> = ({
         rules={rules}
         render={({ field }) => (
           <>
-            <AtomicButton onPress={onOpen} {...propsButton}>
+            <AtomicButton onPress={onOpen} {...styleButton}>
               {label}
             </AtomicButton>
             <Actionsheet isOpen={isOpen} onClose={onClose}>
@@ -124,8 +126,10 @@ export const MultipleSelect: FC<props> = ({
           </>
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

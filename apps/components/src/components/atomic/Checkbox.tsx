@@ -5,6 +5,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
@@ -22,6 +23,10 @@ export const AtomicCheckbox: FC<props> = ({
   rules,
   name,
   styleLayout,
+  styleError,
+  styleMessage,
+  styleLabel,
+  label,
   message,
   ...props
 }): JSX.Element => {
@@ -48,6 +53,7 @@ export const AtomicCheckbox: FC<props> = ({
     </Checkbox.Group>
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -75,8 +81,10 @@ export const AtomicCheckbox: FC<props> = ({
           </Checkbox.Group>
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

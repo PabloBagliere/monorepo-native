@@ -5,6 +5,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 interface props extends ISliderProps, formBasic {
@@ -17,6 +18,10 @@ export const AtomicSlider: FC<props> = ({
   control,
   rules,
   styleLayout,
+  styleError,
+  styleMessage,
+  styleLabel,
+  label,
   message,
   ...props
 }): JSX.Element => {
@@ -29,6 +34,7 @@ export const AtomicSlider: FC<props> = ({
     </Slider>
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -47,8 +53,10 @@ export const AtomicSlider: FC<props> = ({
           </Slider>
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

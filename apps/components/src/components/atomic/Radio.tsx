@@ -5,6 +5,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
@@ -22,6 +23,10 @@ export const AtomicRadio: FC<props> = ({
   rules,
   styleLayout,
   message,
+  styleError,
+  styleLabel,
+  styleMessage,
+  label,
   ...props
 }): JSX.Element => {
   return !control ? (
@@ -40,6 +45,7 @@ export const AtomicRadio: FC<props> = ({
     </Radio.Group>
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -64,8 +70,10 @@ export const AtomicRadio: FC<props> = ({
           </Radio.Group>
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };

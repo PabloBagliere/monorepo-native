@@ -6,6 +6,7 @@ import { Controller } from 'react-hook-form';
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
+import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
@@ -17,6 +18,10 @@ export const AtomicTextarea: FC<props> = ({
   control,
   rules,
   styleLayout,
+  styleError,
+  styleLabel,
+  styleMessage,
+  label,
   message,
   ...props
 }): JSX.Element => {
@@ -24,6 +29,7 @@ export const AtomicTextarea: FC<props> = ({
     <TextArea {...register(name)} {...props} />
   ) : (
     <InputsFormLayout {...styleLayout}>
+      {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
       <Controller
         name={name}
         control={control}
@@ -36,8 +42,10 @@ export const AtomicTextarea: FC<props> = ({
           />
         )}
       />
-      {message ? <FormMessageHelper>{message}</FormMessageHelper> : null}
-      <FormMessageError name={name} />
+      {message ? (
+        <FormMessageHelper {...styleMessage}>{message}</FormMessageHelper>
+      ) : null}
+      <FormMessageError {...styleError} name={name} />
     </InputsFormLayout>
   );
 };
