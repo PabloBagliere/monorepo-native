@@ -4,19 +4,7 @@ export default {
   version: '1.0.0',
   orientation: 'portrait',
   icon: './assets/icon.png',
-  hooks: {
-    postPublish: [
-      {
-        file: 'sentry-expo/upload-sourcemaps',
-        config: {
-          organization: 'prueba-nc',
-          project: 'react-native',
-          authToken:
-            '4b685ee4bf1048159dccd120ba66907901163c5e060f4fd78399ee0536cc2e10',
-        },
-      },
-    ],
-  },
+  hooks: {},
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
