@@ -1,4 +1,6 @@
-import axios from 'axios';
+// TODO: Implementar sentry
+
+import axios, { AxiosError } from 'axios';
 import {
   API_URL,
   CLIENT_ID,
@@ -7,7 +9,7 @@ import {
   NOTIFICATION_TOKEN,
 } from '@env';
 
-import { User } from '../interfaces/user';
+import { User, ResponseErrorApi } from '../interfaces';
 
 const instance = axios.create({
   baseURL: API_URL,
@@ -36,14 +38,32 @@ export const LoginApi = async ({ username, password }: User) => {
       },
     });
     return response.data;
-  } catch (error: any) {
-    for (const key in error) {
-      if (Object.prototype.hasOwnProperty.call(error, key)) {
-        console.log(error[key]);
-      }
-    }
-    console.log({ error });
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response)
+      return Promise.reject(allCatch(error));
   }
+};
+
+const allCatch = (error: AxiosError): ResponseErrorApi => {
+  if (error.response) {
+    return {
+      data: error.response.data,
+      status: error.response.status,
+      headers: error.response.headers,
+    };
+  }
+  if (error.request) {
+    return {
+      data: 'Api no respode',
+      status: 600,
+      headers: null,
+    };
+  }
+  return {
+    data: error.message,
+    status: 600,
+    headers: null,
+  };
 };
 
 export default instance;

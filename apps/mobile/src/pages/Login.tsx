@@ -1,21 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, Text, Heading, VStack, Link, HStack } from 'native-base';
-import { AtomicButton, AtomicInput, FormHistrix } from 'components-app-histrix';
+import {
+  AlertFeedback,
+  AtomicButton,
+  AtomicInput,
+  FormHistrix,
+} from 'components-app-histrix';
 
 import { LoginApi } from '../services/Api';
 export const Login = () => {
+  const [error, setError] = useState('');
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore
   const onSubmit = (data) => {
-    LoginApi({ password: data.password, username: data.username }).then(
-      (info) => {
+    LoginApi({ password: data.password, username: data.username })
+      .then((info) => {
         console.log(info);
-      },
-    );
+      })
+      .catch((error) => {
+        if (error.status === 401) {
+          setError('Usuario o contraseña incorecto');
+          return;
+        }
+        setError('Error inesperado el equivo ya lo esta viendo.');
+      });
   };
 
   return (
     <Box safeArea p="2" py="8" w="90%" maxW="290">
+      {error ? (
+        <AlertFeedback status={'error'} message={error} setError={setError} />
+      ) : null}
       <Heading
         size="lg"
         fontWeight="600"
