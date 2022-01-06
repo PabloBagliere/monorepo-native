@@ -11755,6 +11755,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-secure-store@npm:~11.0.3":
+  version: 11.0.3
+  resolution: "expo-secure-store@npm:11.0.3"
+  dependencies:
+    expo-modules-core: ~0.4.4
+  checksum: ebc273111886b50858775ba118f859ef321c9b7cdda1025c59b7553829d39b94e187aeb2685d131ff8561f58b247d45658124485e648b43e342c6a8c493dee69
+  languageName: node
+  linkType: hard
+
 "expo-status-bar@npm:~1.1.0":
   version: 1.1.0
   resolution: "expo-status-bar@npm:1.1.0"
@@ -16962,6 +16971,7 @@ __metadata:
     expo-application: ~4.0.0
     expo-constants: ~12.1.3
     expo-device: ~4.0.3
+    expo-secure-store: ~11.0.3
     expo-status-bar: ~1.1.0
     expo-updates: ~0.10.15
     native-base: 3.2.2

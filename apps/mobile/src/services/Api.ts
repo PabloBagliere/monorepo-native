@@ -11,17 +11,21 @@ import {
 
 import { User, ResponseErrorApi } from '../interfaces';
 
+let setTokenBolean = false;
+
 const instance = axios.create({
   baseURL: API_URL,
   headers: { 'Content-Type': 'application/json' },
 });
 
 export const setToken = (token: string) => {
-  instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  instance.defaults.headers.common['Authorization'] = token;
+  setTokenBolean = true;
 };
 
 export const deleteToken = () => {
   delete instance.defaults.headers.common['Authorization'];
+  setTokenBolean = false;
 };
 export const LoginApi = async ({ username, password }: User) => {
   try {
@@ -36,6 +40,21 @@ export const LoginApi = async ({ username, password }: User) => {
         password,
         notification_token: NOTIFICATION_TOKEN,
       },
+    });
+    return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error) && error.response)
+      return Promise.reject(allCatch(error));
+  }
+};
+
+export const infoMe = async () => {
+  if (!setTokenBolean)
+    return Promise.reject('No se a establecido el token de acceso.');
+  try {
+    const response = await instance({
+      url: '/me',
+      method: 'GET',
     });
     return response.data;
   } catch (error) {
