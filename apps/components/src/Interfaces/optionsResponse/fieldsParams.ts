@@ -24,7 +24,7 @@ export interface fieldsParmas {
   name: string;
   isExpression: boolean;
   enabler: string;
-  options: null | { [key: number]: string };
+  options: null | { [key: number]: T };
   path: string;
   isSelect: string | boolean;
   call_class: string;

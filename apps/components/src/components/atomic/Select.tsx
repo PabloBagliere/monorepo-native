@@ -4,7 +4,7 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
 } from 'native-base';
-import React, { FC } from 'react';
+import React, { FC, useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { formBasic, Options, T } from '../../Interfaces';
@@ -15,9 +15,23 @@ import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends ISelectProps, formBasic {
-  options: Array<Options>;
+  options: Options;
   register?: T;
 }
+
+const setOptions = (
+  options: Options,
+): Array<{ value: string; label: string }> => {
+  const p = [];
+  const a = Object.entries(options);
+  a.forEach((e) => {
+    p.push({
+      value: e[0],
+      label: typeof e[1] === 'object' ? e[1][Object.keys(e[1])[0]] : e[1],
+    });
+  });
+  return p;
+};
 
 export const AtomicSelect: FC<props> = ({
   options,
@@ -33,6 +47,7 @@ export const AtomicSelect: FC<props> = ({
   message,
   ...props
 }): JSX.Element => {
+  const optionsMemo = useMemo(() => setOptions(options), [options]);
   return control ? (
     <Select
       {...register(name)}
@@ -40,9 +55,13 @@ export const AtomicSelect: FC<props> = ({
       dropdownCloseIcon={<ChevronDownIcon size="4" />}
       {...props}
     >
-      {options.map((value) => {
+      {optionsMemo.map((value) => {
         return (
-          <Select.Item key={value.id} label={value.label} value={value.value} />
+          <Select.Item
+            key={value.value}
+            label={value.label}
+            value={value.value}
+          />
         );
       })}
     </Select>
@@ -60,12 +79,12 @@ export const AtomicSelect: FC<props> = ({
             dropdownCloseIcon={<ChevronDownIcon size="4" />}
             {...props}
             selectedValue={field.value}
-            onValueChange={(val) => field.onChange(val)}
+            onValueChange={(val) => field.onChange(parseInt(val))}
           >
-            {options.map((value) => {
+            {optionsMemo.map((value) => {
               return (
                 <Select.Item
-                  key={value.id}
+                  key={value.value}
                   label={value.label}
                   value={value.value}
                 />

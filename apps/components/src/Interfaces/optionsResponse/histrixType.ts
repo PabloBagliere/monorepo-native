@@ -4,7 +4,6 @@ export const histrixType = Object.freeze(
     'Date' ||
     'Tinyint' ||
     'Time' ||
-    'Integer' ||
     'Varchar' ||
     'HtmlField' ||
     'Check' ||
