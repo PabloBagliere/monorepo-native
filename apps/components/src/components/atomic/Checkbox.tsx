@@ -1,5 +1,5 @@
-import { Checkbox, ICheckboxGroupProps, ICheckboxProps } from 'native-base';
-import React, { FC } from 'react';
+import { Checkbox, ICheckboxGroupProps } from 'native-base';
+import React, { FC, useMemo } from 'react';
 import { Controller } from 'react-hook-form';
 
 import { formBasic, Options, T } from '../../Interfaces';
@@ -10,9 +10,23 @@ import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends ICheckboxGroupProps, formBasic {
-  options: Array<Options>;
+  options: Options;
   multiple?: (value: T) => void;
 }
+
+const setOptions = (
+  options: Options,
+): Array<{ value: string; label: string }> => {
+  const OptionsSet = [];
+  const ArrayObject = Object.entries(options);
+  ArrayObject.forEach((e) => {
+    OptionsSet.push({
+      value: e[0],
+      label: typeof e[1] === 'object' ? e[1][Object.keys(e[1])[0]] : e[1],
+    });
+  });
+  return OptionsSet;
+};
 
 export const AtomicCheckbox: FC<props> = ({
   options,
@@ -30,6 +44,7 @@ export const AtomicCheckbox: FC<props> = ({
   message,
   ...props
 }): JSX.Element => {
+  const optionsMemo = useMemo(() => setOptions(options), [options]);
   return !control ? (
     <Checkbox.Group
       {...register(name)}
@@ -39,13 +54,9 @@ export const AtomicCheckbox: FC<props> = ({
       }}
       {...props}
     >
-      {options.map((value) => {
+      {optionsMemo.map((value, index) => {
         return (
-          <Checkbox
-            value={value.value}
-            key={value.id}
-            {...(value.props as ICheckboxProps)}
-          >
+          <Checkbox value={value.value} key={index}>
             {value.label}
           </Checkbox>
         );
@@ -67,13 +78,9 @@ export const AtomicCheckbox: FC<props> = ({
             }}
             {...props}
           >
-            {options.map((value) => {
+            {optionsMemo.map((value, index) => {
               return (
-                <Checkbox
-                  value={value.value}
-                  key={value.id}
-                  {...(value.props as ICheckboxProps)}
-                >
+                <Checkbox value={value.value} key={index}>
                   {value.label}
                 </Checkbox>
               );

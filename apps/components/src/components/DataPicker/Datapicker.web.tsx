@@ -10,7 +10,7 @@ import { FormMessageHelper } from '../atomic/FormMessageHelper';
 
 type props = formBasic;
 
-const AtomicDatapicker: FC<props> = ({
+export const AtomicDatapicker: FC<props> = ({
   control,
   label,
   message,
@@ -48,5 +48,3 @@ const AtomicDatapicker: FC<props> = ({
     </InputsFormLayout>
   );
 };
-
-export default AtomicDatapicker;

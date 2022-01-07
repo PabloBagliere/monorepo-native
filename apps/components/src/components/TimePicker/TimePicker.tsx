@@ -11,11 +11,11 @@ import { FormMessageError } from '../atomic/FormMessageError';
 import { FormMessageHelper } from '../atomic/FormMessageHelper';
 
 interface props extends Omit<formBasic, 'styleLabel'> {
-  styleLabel: IButtonProps;
-  onChange: T;
+  styleLabel?: IButtonProps;
+  onChange?: T;
 }
 
-const AtomicTimepicker: FC<props> = ({
+export const AtomicTimepicker: FC<props> = ({
   label,
   register,
   name,
@@ -97,5 +97,3 @@ const AtomicTimepicker: FC<props> = ({
     </InputsFormLayout>
   );
 };
-
-export default AtomicTimepicker;

@@ -10,7 +10,7 @@ import { FormMessageHelper } from '../atomic/FormMessageHelper';
 
 type props = formBasic;
 
-const AtomicTimepicker: FC<props> = ({
+export const AtomicTimepicker: FC<props> = ({
   control,
   label,
   message,
@@ -48,5 +48,3 @@ const AtomicTimepicker: FC<props> = ({
     </InputsFormLayout>
   );
 };
-
-export default AtomicTimepicker;

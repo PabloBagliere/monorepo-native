@@ -22,15 +22,15 @@ interface props extends ISelectProps, formBasic {
 const setOptions = (
   options: Options,
 ): Array<{ value: string; label: string }> => {
-  const p = [];
-  const a = Object.entries(options);
-  a.forEach((e) => {
-    p.push({
+  const OptionsSet = [];
+  const ArrayObject = Object.entries(options);
+  ArrayObject.forEach((e) => {
+    OptionsSet.push({
       value: e[0],
       label: typeof e[1] === 'object' ? e[1][Object.keys(e[1])[0]] : e[1],
     });
   });
-  return p;
+  return OptionsSet;
 };
 
 export const AtomicSelect: FC<props> = ({
@@ -79,7 +79,11 @@ export const AtomicSelect: FC<props> = ({
             dropdownCloseIcon={<ChevronDownIcon size="4" />}
             {...props}
             selectedValue={field.value}
-            onValueChange={(val) => field.onChange(parseInt(val))}
+            ref={field.ref}
+            onValueChange={(val) => {
+              console.log(val);
+              field.onChange(parseInt(val));
+            }}
           >
             {optionsMemo.map((value) => {
               return (

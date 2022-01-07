@@ -18,7 +18,9 @@
     "start:storybook": "yarn workspace components-app-histrix storybook",
     "com:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/components/src",
     "mo:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/mobile",
-    "web:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/web/src"
+    "web:lint": "eslint --fix --ext .jsx,.js,.tsx,.ts ./apps/web/src",
+    "build:web": "yarn workspace web-app build",
+    "production:web": "yarn workspace web-app start"
   },
   "private": true,
   "author": "Pablo Bagliere <pablo.bagliere2@gmail.com>",
