@@ -5,6 +5,5 @@ export * from './Radio';
 export * from './Slider';
 export * from './Textarea';
 export * from './Switch';
-export * from './Datapicker';
 export * from './Button';
 export * from './AlertFeedback';
