@@ -13,7 +13,7 @@ export interface fieldsParmas {
   autocomplete: string;
   title: string;
   placeholder: string;
-  disable?: string;
+  disabled?: string;
   readonly?: string;
   histrix_type: typeof histrixType;
   hidden: boolean;

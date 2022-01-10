@@ -57,7 +57,8 @@
     "@storybook/addon-react-native-web": "^0.0.14",
     "@storybook/node-logger": "^6.3.12",
     "@storybook/preset-create-react-app": "^3.2.0",
-    "@storybook/react": "^6.3.12"
+    "@storybook/react": "^6.3.12",
+    "@types/styled-components": "^5.1.19"
   },
   "eslintConfig": {
     "overrides": [

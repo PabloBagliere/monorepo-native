@@ -27,6 +27,7 @@ export const AtomicDatapicker: FC<props> = ({
   control,
   rules,
   onChange,
+  isDisabled,
 }): JSX.Element => {
   const [show, setShow] = useState(false);
   const [value, setValue] = useState<Date>(new Date());
@@ -44,7 +45,11 @@ export const AtomicDatapicker: FC<props> = ({
   return !control ? (
     <View>
       <View>
-        <AtomicButton onPress={showMode} {...styleLabel}>
+        <AtomicButton
+          onPress={showMode}
+          {...styleLabel}
+          isDisabled={isDisabled}
+        >
           {label}
         </AtomicButton>
       </View>
@@ -68,7 +73,11 @@ export const AtomicDatapicker: FC<props> = ({
         render={({ field }) => (
           <View>
             <View>
-              <AtomicButton onPress={showMode} {...styleLabel}>
+              <AtomicButton
+                onPress={showMode}
+                {...styleLabel}
+                isDisabled={isDisabled}
+              >
                 {label}
               </AtomicButton>
             </View>

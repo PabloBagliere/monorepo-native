@@ -48,11 +48,14 @@ export const AtomicSelect: FC<props> = ({
   ...props
 }): JSX.Element => {
   const optionsMemo = useMemo(() => setOptions(options), [options]);
-  return control ? (
+  return !control ? (
     <Select
       {...register(name)}
       dropdownOpenIcon={<ChevronUpIcon size="4" />}
       dropdownCloseIcon={<ChevronDownIcon size="4" />}
+      _web={{
+        cursor: props.isDisabled ? 'not-allowed' : 'pointer',
+      }}
       {...props}
     >
       {optionsMemo.map((value) => {
@@ -78,10 +81,12 @@ export const AtomicSelect: FC<props> = ({
             dropdownOpenIcon={<ChevronUpIcon size="4" />}
             dropdownCloseIcon={<ChevronDownIcon size="4" />}
             {...props}
-            selectedValue={field.value}
+            selectedValue={String(field.value)}
             ref={field.ref}
+            _web={{
+              cursor: 'pointer',
+            }}
             onValueChange={(val) => {
-              console.log(val);
               field.onChange(parseInt(val));
             }}
           >

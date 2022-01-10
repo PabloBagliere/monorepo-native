@@ -1,14 +1,20 @@
 // Datepicker.web.tsx
 import React, { FC } from 'react';
 import { Controller } from 'react-hook-form';
+import styled from 'styled-components';
 
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 import { FormLabel } from '../atomic/FormLabel';
 import { FormMessageError } from '../atomic/FormMessageError';
 import { FormMessageHelper } from '../atomic/FormMessageHelper';
-
 type props = formBasic;
+
+const Input = styled.input`
+  &:hover {
+    cursor: ${(props) => (props.disabled ? 'not-allowed' : 'pointer')};
+  }
+`;
 
 export const AtomicDatapicker: FC<props> = ({
   control,
@@ -21,9 +27,10 @@ export const AtomicDatapicker: FC<props> = ({
   styleLabel,
   styleLayout,
   styleMessage,
+  isDisabled,
 }): JSX.Element => {
   return !control ? (
-    <input {...register(name)} type="date" />
+    <Input {...register(name)} disabled={isDisabled} type="date" />
   ) : (
     <InputsFormLayout {...styleLayout}>
       {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
@@ -32,9 +39,10 @@ export const AtomicDatapicker: FC<props> = ({
         control={control}
         rules={rules}
         render={({ field }) => (
-          <input
+          <Input
             {...register(name)}
             type="date"
+            disabled={isDisabled}
             value={field.value}
             onChange={(val) => field.onChange(val)}
             ref={field.ref}

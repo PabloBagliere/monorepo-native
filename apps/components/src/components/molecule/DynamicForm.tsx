@@ -54,6 +54,7 @@ const DynamicFormComponet: FC<props> = ({
               label={e[1].title}
               name={e[1].name}
               key={e[1].name}
+              isDisabled={e[1].disabled ? true : false}
             />
           );
         }
@@ -68,6 +69,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 name={e[1].name}
                 key={e[1].name}
+                isDisabled={e[1].disabled ? true : false}
                 rules={{
                   maxLength: {
                     value: Number.isInteger(e[1].size)
@@ -88,6 +90,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 name={e[1].name}
                 key={e[1].name}
+                isDisabled={e[1].disabled ? true : false}
                 rules={{
                   maxLength: {
                     value: Number.isInteger(e[1].size)
@@ -103,6 +106,7 @@ const DynamicFormComponet: FC<props> = ({
               <AtomicDatapicker
                 register={register}
                 control={control}
+                isDisabled={e[1].disabled ? true : false}
                 name={e[1].name}
                 label={e[1].title}
                 key={e[1].name}
@@ -118,6 +122,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 name={e[1].name}
                 key={e[1].name}
+                isDisabled={e[1].disabled ? true : false}
                 rules={{
                   maxLength: {
                     value: Number.isInteger(e[1].size)
@@ -148,6 +153,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 name={e[1].name}
                 key={e[1].name}
+                isDisabled={e[1].disabled ? true : false}
                 rules={{
                   maxLength: {
                     value: Number.isInteger(e[1].size)
@@ -166,6 +172,7 @@ const DynamicFormComponet: FC<props> = ({
                 name={e[1].name}
                 label={e[1].title}
                 placeholder={e[1].placeholder}
+                isDisabled={e[1].disabled ? true : false}
                 key={e[1].name}
                 rules={{
                   maxLength: {
@@ -186,6 +193,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 key={e[1].name}
                 message={e[1].placeholder}
+                isDisabled={e[1].disabled ? true : false}
               />
             );
           case 'Text':
@@ -198,6 +206,7 @@ const DynamicFormComponet: FC<props> = ({
                 label={e[1].title}
                 name={e[1].name}
                 key={e[1].name}
+                isDisabled={e[1].disabled ? true : false}
                 rules={{
                   maxLength: {
                     value: Number.isInteger(e[1].size)

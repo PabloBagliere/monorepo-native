@@ -26,6 +26,7 @@ export const AtomicTimepicker: FC<props> = ({
   message,
   control,
   rules,
+  isDisabled,
   onChange,
 }): JSX.Element => {
   const [show, setShow] = useState(false);
@@ -44,7 +45,11 @@ export const AtomicTimepicker: FC<props> = ({
   return !control ? (
     <View>
       <View>
-        <AtomicButton onPress={showMode} {...styleLabel}>
+        <AtomicButton
+          onPress={showMode}
+          isDisabled={isDisabled}
+          {...styleLabel}
+        >
           {label}
         </AtomicButton>
       </View>
@@ -68,7 +73,11 @@ export const AtomicTimepicker: FC<props> = ({
         render={({ field }) => (
           <View>
             <View>
-              <AtomicButton onPress={showMode} {...styleLabel}>
+              <AtomicButton
+                onPress={showMode}
+                isDisabled={isDisabled}
+                {...styleLabel}
+              >
                 {label}
               </AtomicButton>
             </View>

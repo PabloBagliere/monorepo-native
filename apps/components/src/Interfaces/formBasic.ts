@@ -14,6 +14,7 @@ export interface formBasic {
   control?: Control;
   rules?: RegisterOptions;
   label?: string;
+  isDisabled?: boolean;
   styleLayout?: IStackProps;
   styleLabel?: IFormControlLabelProps;
   styleMessage?: IFormControlHelperTextProps;
