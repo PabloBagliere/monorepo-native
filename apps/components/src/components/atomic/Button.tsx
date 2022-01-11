@@ -1,7 +1,6 @@
 import { Button, IButtonProps } from 'native-base';
-import React, { FC, useContext } from 'react';
-
-import { ContextForm } from '../../context';
+import React, { FC } from 'react';
+import { useFormContext } from 'react-hook-form';
 
 type props = IButtonProps;
 
@@ -10,7 +9,7 @@ export const AtomicButton: FC<props> = ({
   onPress,
   ...props
 }): JSX.Element => {
-  const { handleSubmit } = useContext(ContextForm);
+  const { handleSubmit } = useFormContext();
   if (handleSubmit !== null) {
     onPress = handleSubmit(onPress);
   }

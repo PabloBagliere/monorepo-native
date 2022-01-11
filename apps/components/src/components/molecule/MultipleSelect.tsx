@@ -9,7 +9,7 @@ import {
   useDisclose,
 } from 'native-base';
 import React, { FC, useState } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -29,9 +29,7 @@ export const MultipleSelect: FC<props> = ({
   styleButton,
   defaultValue,
   onChange,
-  register,
   name,
-  control,
   rules,
   styleLayout,
   styleError,
@@ -48,6 +46,7 @@ export const MultipleSelect: FC<props> = ({
       return newState;
     });
   };
+  const { control } = useFormContext();
 
   return !control ? (
     <>
@@ -57,7 +56,6 @@ export const MultipleSelect: FC<props> = ({
       <Actionsheet isOpen={isOpen} onClose={onClose}>
         <Actionsheet.Content>
           <AtomicCheckbox
-            register={register}
             name={name}
             options={options}
             multiple={setSelect}
@@ -96,7 +94,6 @@ export const MultipleSelect: FC<props> = ({
             <Actionsheet isOpen={isOpen} onClose={onClose}>
               <Actionsheet.Content>
                 <AtomicCheckbox
-                  register={register}
                   name={name}
                   options={options}
                   multiple={setSelect}

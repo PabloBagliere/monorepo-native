@@ -1,6 +1,6 @@
 // Datepicker.web.tsx
 import React, { FC } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 import styled from 'styled-components';
 
 import { formBasic } from '../../Interfaces';
@@ -17,11 +17,9 @@ const Input = styled.input`
 `;
 
 export const AtomicDatapicker: FC<props> = ({
-  control,
   label,
   message,
   name,
-  register,
   rules,
   styleError,
   styleLabel,
@@ -29,6 +27,7 @@ export const AtomicDatapicker: FC<props> = ({
   styleMessage,
   isDisabled,
 }): JSX.Element => {
+  const { control, register } = useFormContext();
   return !control ? (
     <Input {...register(name)} disabled={isDisabled} type="date" />
   ) : (

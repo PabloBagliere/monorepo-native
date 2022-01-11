@@ -3,9 +3,10 @@ import {
   Select,
   ChevronDownIcon,
   ChevronUpIcon,
+  Pressable,
 } from 'native-base';
 import React, { FC, useMemo } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -16,7 +17,6 @@ import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends ISelectProps, formBasic {
   options: Options;
-  register?: T;
 }
 
 const setOptions = (
@@ -35,9 +35,7 @@ const setOptions = (
 
 export const AtomicSelect: FC<props> = ({
   options,
-  register,
   name,
-  control,
   rules,
   styleLayout,
   styleError,
@@ -48,9 +46,10 @@ export const AtomicSelect: FC<props> = ({
   ...props
 }): JSX.Element => {
   const optionsMemo = useMemo(() => setOptions(options), [options]);
+  const { control, register } = useFormContext();
   return !control ? (
     <Select
-      {...register(name)}
+      {...(register(name) as T)}
       dropdownOpenIcon={<ChevronUpIcon size="4" />}
       dropdownCloseIcon={<ChevronDownIcon size="4" />}
       _web={{
@@ -76,30 +75,32 @@ export const AtomicSelect: FC<props> = ({
         control={control}
         rules={rules}
         render={({ field }) => (
-          <Select
-            {...register(name)}
-            dropdownOpenIcon={<ChevronUpIcon size="4" />}
-            dropdownCloseIcon={<ChevronDownIcon size="4" />}
-            {...props}
-            selectedValue={String(field.value)}
-            ref={field.ref}
-            _web={{
-              cursor: 'pointer',
-            }}
-            onValueChange={(val) => {
-              field.onChange(parseInt(val));
-            }}
-          >
-            {optionsMemo.map((value) => {
-              return (
-                <Select.Item
-                  key={value.value}
-                  label={value.label}
-                  value={value.value}
-                />
-              );
-            })}
-          </Select>
+          <Pressable>
+            <Select
+              {...(register(field.name) as T)}
+              dropdownOpenIcon={<ChevronUpIcon size="4" />}
+              dropdownCloseIcon={<ChevronDownIcon size="4" />}
+              {...props}
+              selectedValue={String(field.value)}
+              ref={field.ref}
+              _web={{
+                cursor: 'pointer',
+              }}
+              onValueChange={(val) => {
+                field.onChange(parseInt(val));
+              }}
+            >
+              {optionsMemo.map((value) => {
+                return (
+                  <Select.Item
+                    key={value.value}
+                    label={value.label}
+                    value={value.value}
+                  />
+                );
+              })}
+            </Select>
+          </Pressable>
         )}
       />
       {message ? (

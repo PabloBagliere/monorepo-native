@@ -1,6 +1,6 @@
 import { ISwitchProps, Switch } from 'native-base';
 import React, { FC } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -9,14 +9,10 @@ import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
 
-interface props extends ISwitchProps, formBasic {
-  register?: T;
-}
+interface props extends ISwitchProps, formBasic {}
 
 export const AtomicSwitch: FC<props> = ({
-  register,
   name,
-  control,
   rules,
   styleLayout,
   message,
@@ -26,8 +22,9 @@ export const AtomicSwitch: FC<props> = ({
   label,
   ...props
 }): JSX.Element => {
+  const { control, register } = useFormContext();
   return !control ? (
-    <Switch {...register(name)} {...props} />
+    <Switch {...(register(name) as T)} {...props} />
   ) : (
     <InputsFormLayout {...styleLayout}>
       {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
@@ -37,7 +34,7 @@ export const AtomicSwitch: FC<props> = ({
         rules={rules}
         render={({ field }) => (
           <Switch
-            {...register(name)}
+            {...(register(name) as T)}
             onToggle={() => field.onChange(!field.value)}
             isChecked={field.value}
             {...props}

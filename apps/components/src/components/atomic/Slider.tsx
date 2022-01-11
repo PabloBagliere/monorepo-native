@@ -1,6 +1,6 @@
 import { ISliderProps, Slider } from 'native-base';
 import React, { FC } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -8,14 +8,10 @@ import { InputsFormLayout } from '../../layouts';
 import { FormLabel } from './FormLabel';
 import { FormMessageError } from './FormMessageError';
 import { FormMessageHelper } from './FormMessageHelper';
-interface props extends ISliderProps, formBasic {
-  register?: T;
-}
+interface props extends ISliderProps, formBasic {}
 
 export const AtomicSlider: FC<props> = ({
-  register,
   name,
-  control,
   rules,
   styleLayout,
   styleError,
@@ -25,8 +21,9 @@ export const AtomicSlider: FC<props> = ({
   message,
   ...props
 }): JSX.Element => {
+  const { control, register } = useFormContext();
   return !control ? (
-    <Slider {...register(name)} {...props}>
+    <Slider {...(register(name) as T)} {...props}>
       <Slider.Track>
         <Slider.FilledTrack />
       </Slider.Track>
@@ -41,7 +38,7 @@ export const AtomicSlider: FC<props> = ({
         rules={rules}
         render={({ field }) => (
           <Slider
-            {...register(name)}
+            {...(register(name) as T)}
             {...props}
             onChange={(val) => field.onChange(val)}
             defaultValue={field.value}

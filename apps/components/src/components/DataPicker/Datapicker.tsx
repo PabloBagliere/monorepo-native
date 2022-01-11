@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { Platform } from 'react-native';
 import { IButtonProps, View } from 'native-base';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, T } from '../../Interfaces';
 import { AtomicButton } from '../atomic/Button';
@@ -17,20 +17,19 @@ interface props extends Omit<formBasic, 'styleLabel'> {
 
 export const AtomicDatapicker: FC<props> = ({
   label,
-  register,
   name,
   styleLabel,
   styleError,
   styleLayout,
   styleMessage,
   message,
-  control,
   rules,
   onChange,
   isDisabled,
 }): JSX.Element => {
   const [show, setShow] = useState(false);
   const [value, setValue] = useState<Date>(new Date());
+  const { control, register } = useFormContext();
 
   const change = (event: T, selectedDate: Date) => {
     setShow(Platform.OS === 'ios');

@@ -1,6 +1,6 @@
-import { IRadioGroupProps, IRadioProps, Radio } from 'native-base';
+import { IRadioGroupProps, Radio } from 'native-base';
 import React, { FC, useMemo } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -11,7 +11,6 @@ import { FormMessageHelper } from './FormMessageHelper';
 
 interface props extends IRadioGroupProps, formBasic {
   options: Options;
-  register?: T;
   name: string;
 }
 
@@ -31,9 +30,7 @@ const setOptions = (
 
 export const AtomicRadio: FC<props> = ({
   options,
-  register,
   name,
-  control,
   rules,
   styleLayout,
   message,
@@ -44,8 +41,9 @@ export const AtomicRadio: FC<props> = ({
   ...props
 }): JSX.Element => {
   const optionsMemo = useMemo(() => setOptions(options), [options]);
+  const { control, register } = useFormContext();
   return !control ? (
-    <Radio.Group {...register(name)} {...props}>
+    <Radio.Group {...(register(name) as T)} {...props}>
       {optionsMemo.map((value, index) => {
         return (
           <Radio value={value.value} key={index}>
@@ -63,7 +61,7 @@ export const AtomicRadio: FC<props> = ({
         rules={rules}
         render={({ field }) => (
           <Radio.Group
-            {...register(name)}
+            {...(register(name) as T)}
             {...props}
             onChange={(val) => field.onChange(val)}
           >

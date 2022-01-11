@@ -13,12 +13,10 @@ function Remates({
   };
   return (
     <ScrollView>
-      <Box safeArea p="2" py="8" w="90%" maxW="290">
-        <VStack space={3} mt="5">
-          <FormHistrix defaultValues={{}} dynamic={fileContent}>
-            <AtomicButton onPress={onSubmit}> Ingresar </AtomicButton>
-          </FormHistrix>
-        </VStack>
+      <Box safeArea p="2" py="8">
+        <FormHistrix defaultValues={{}} dynamic={fileContent}>
+          <AtomicButton onPress={onSubmit}> Ingresar </AtomicButton>
+        </FormHistrix>
       </Box>
     </ScrollView>
   );

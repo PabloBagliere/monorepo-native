@@ -1,6 +1,6 @@
 import { IInputProps, Input } from 'native-base';
 import React, { FC } from 'react';
-import { Controller } from 'react-hook-form';
+import { Controller, useFormContext } from 'react-hook-form';
 
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
@@ -11,9 +11,7 @@ import { FormMessageHelper } from './FormMessageHelper';
 interface props extends IInputProps, formBasic {}
 
 export const AtomicInput: FC<props> = ({
-  register,
   name,
-  control,
   rules,
   styleLayout,
   message,
@@ -23,6 +21,7 @@ export const AtomicInput: FC<props> = ({
   label,
   ...props
 }): JSX.Element => {
+  const { control, register } = useFormContext();
   return !control ? (
     <Input {...register(name)} {...props} />
   ) : (
