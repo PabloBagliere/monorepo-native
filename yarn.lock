@@ -9239,16 +9239,20 @@ __metadata:
     "@types/react": ^17.0.34
     "@types/react-dom": ^17.0.11
     "@types/styled-components": ^5.1.19
+    axios: ^0.24.0
+    expo-secure-store: ^11.1.0
     native-base: 3.2.2
     react: ^17.0.2
     react-dom: ^17.0.2
     react-hook-form: ^7.22.5
     react-native-safe-area-context: 3.3.2
     react-native-svg: ^12.1.1
+    react-native-toast-notifications: ^3.2.3
     react-native-web: ^0.17.5
     react-scripts: 4.0.3
     styled-components: ^5.3.3
     styled-system: ^5.1.5
+    swr: ^1.1.2
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -11755,6 +11759,15 @@ __metadata:
     compare-versions: ^3.4.0
     invariant: ^2.2.4
   checksum: 92bd05c15a6f1c65dbb89e993f6672e40e3d8f34702faf238a71eea15ca816d4aeb6216ff2eafb5151e7d14e1e373a823b90e085f421304751566f5e776855d8
+  languageName: node
+  linkType: hard
+
+"expo-secure-store@npm:^11.1.0":
+  version: 11.1.0
+  resolution: "expo-secure-store@npm:11.1.0"
+  peerDependencies:
+    expo: "*"
+  checksum: 6425855e6721872a292555ed0e2ba64fb56f7ae72220b560d6d9d2abf6989db166a383800393a7a18b9128588786283f1d04dde4ee1c722f07d7809124e6e3de
   languageName: node
   linkType: hard
 
@@ -20138,6 +20151,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-toast-notifications@npm:^3.2.3":
+  version: 3.2.3
+  resolution: "react-native-toast-notifications@npm:3.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: d2e8431399beaca4b04b474361416d7b6270d9f9a2332c4e63b3e8a5150c14504e005ae9a8b06fc4bd9b0a75fa054566f3d5679f86d6d9058e9f9c06e136c5b8
+  languageName: node
+  linkType: hard
+
 "react-native-web@npm:^0.17.5, react-native-web@npm:~0.17.5":
   version: 0.17.5
   resolution: "react-native-web@npm:0.17.5"
@@ -23952,6 +23975,7 @@ __metadata:
     react-native-web: ^0.17.5
     styled-components: ^5.3.3
     styled-system: ^5.1.5
+    swr: ^1.1.2
     typescript: 4.4.4
   languageName: unknown
   linkType: soft
