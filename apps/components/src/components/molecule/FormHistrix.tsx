@@ -8,6 +8,10 @@ import { DynamicForm } from './DynamicForm';
 
 interface props extends IFormControlProps {
   defaultValues: T;
+  template?: {
+    type: string;
+    action: T;
+  };
   dynamic?: string;
 }
 
@@ -15,24 +19,44 @@ export const FormHistrix: FC<props> = ({
   defaultValues,
   dynamic,
   children,
+  template,
   ...props
 }) => {
   const methods = useForm({ defaultValues });
   const {
     formState: { errors },
   } = methods;
-  return (
-    <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
-      <FormProvider {...methods}>
-        {!dynamic ? (
-          { children }
-        ) : (
+  if (template) {
+    return (
+      <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
+        <FormProvider {...methods}>
+          {!dynamic ? (
+            { children }
+          ) : (
+            <>
+              <DynamicForm dynamic={dynamic} />
+              {children}
+            </>
+          )}
+        </FormProvider>
+      </FormControl>
+    );
+  }
+  if (dynamic) {
+    return (
+      <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
+        <FormProvider {...methods}>
           <>
             <DynamicForm dynamic={dynamic} />
             {children}
           </>
-        )}
-      </FormProvider>
+        </FormProvider>
+      </FormControl>
+    );
+  }
+  return (
+    <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
+      <FormProvider {...methods}>{children}</FormProvider>
     </FormControl>
   );
 };
