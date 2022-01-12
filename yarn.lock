@@ -9240,7 +9240,6 @@ __metadata:
     "@types/react-dom": ^17.0.11
     "@types/styled-components": ^5.1.19
     axios: ^0.24.0
-    expo-secure-store: ^11.1.0
     native-base: 3.2.2
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -11759,15 +11758,6 @@ __metadata:
     compare-versions: ^3.4.0
     invariant: ^2.2.4
   checksum: 92bd05c15a6f1c65dbb89e993f6672e40e3d8f34702faf238a71eea15ca816d4aeb6216ff2eafb5151e7d14e1e373a823b90e085f421304751566f5e776855d8
-  languageName: node
-  linkType: hard
-
-"expo-secure-store@npm:^11.1.0":
-  version: 11.1.0
-  resolution: "expo-secure-store@npm:11.1.0"
-  peerDependencies:
-    expo: "*"
-  checksum: 6425855e6721872a292555ed0e2ba64fb56f7ae72220b560d6d9d2abf6989db166a383800393a7a18b9128588786283f1d04dde4ee1c722f07d7809124e6e3de
   languageName: node
   linkType: hard
 

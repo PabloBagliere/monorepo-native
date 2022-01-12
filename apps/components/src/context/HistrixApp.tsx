@@ -1,4 +1,4 @@
-import React, { createContext, FC } from 'react';
+import React, { FC } from 'react';
 import { ToastProvider } from 'react-native-toast-notifications';
 
 import config, {
@@ -19,7 +19,6 @@ interface contextHistrixAppProps {
   NOTIFICATION_TOKEN?: string | null;
 }
 
-const Context = createContext<contextHistrixAppProps>({});
 config();
 export const HistrixApp: FC<contextHistrixAppProps> = ({
   children,
@@ -41,5 +40,3 @@ export const HistrixApp: FC<contextHistrixAppProps> = ({
     </ToastProvider>
   );
 };
-
-export default Context;
