@@ -1,24 +1,21 @@
+import { propsSecureDB } from 'components-app-histrix';
 import * as SecureStore from 'expo-secure-store';
-import { SecureStoreOptions } from 'expo-secure-store';
 
-export const saveSecure: (
-  key: string,
-  value: string,
-  options?: SecureStoreOptions | undefined,
-) => Promise<void> = async (key, value, options) => {
-  await SecureStore.setItemAsync(key, value, options);
-};
+export const providerSecure: propsSecureDB = {
+  saveSecure: async (key, value) => {
+    const json = JSON.stringify(value);
+    await SecureStore.setItemAsync(key, json);
+  },
 
-export const getSecure: (
-  key: string,
-  options?: SecureStoreOptions | undefined,
-) => Promise<string | null> = async (key, options) => {
-  return await SecureStore.getItemAsync(key, options);
-};
+  getSecure: async (key) => {
+    const response = await SecureStore.getItemAsync(key);
+    if (response) {
+      return JSON.parse(response);
+    }
+    return null;
+  },
 
-export const deleteSecure: (
-  key: string,
-  options?: SecureStoreOptions | undefined,
-) => Promise<void> = async (key, options) => {
-  await SecureStore.deleteItemAsync(key, options);
+  deleteSecure: async (key) => {
+    await SecureStore.deleteItemAsync(key);
+  },
 };

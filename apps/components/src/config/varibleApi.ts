@@ -1,3 +1,5 @@
+import { propsSecureDB } from '../Interfaces/secureDB';
+
 export let API_URL: string;
 export let CLIENT_ID: string;
 export let CLIENT_SECRET: string;
@@ -5,8 +7,11 @@ export let GRANT_TYPE: string;
 export let NOTIFICATION_TOKEN: string | null;
 export let CLIENT_NAME: string;
 
+export let secureDB: propsSecureDB;
+
 export const setAPI_URL = (url: string) => (API_URL = url);
 export const setCLIENT_ID = (id: string) => (CLIENT_ID = id);
+export const setSecureDB = (provider: propsSecureDB) => (secureDB = provider);
 export const setCLIENTE_SECRET = (secret: string) => (CLIENT_SECRET = secret);
 export const setGRANT_TYPE = (type: string) => (GRANT_TYPE = type);
 export const setNOTIFICATION = (notification: string | null) =>

@@ -7,3 +7,4 @@ export * from './api';
 export * from './optionsResponse/paramsObtions';
 export * from './optionsResponse/fieldsParams';
 export * from './optionsResponse/histrixType';
+export * from './secureDB';

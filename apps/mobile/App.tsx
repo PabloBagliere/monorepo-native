@@ -1,14 +1,19 @@
 // TODO: Implementar sentry
 
 import React from 'react';
-import { Center, NativeBaseProvider, VStack } from 'native-base';
-import { theme } from 'components-app-histrix';
-// import * as Sentry from 'sentry-expo';
-// import { SENTRY_DSN } from '@env';
+import { Center, NativeBaseProvider, Text, VStack } from 'native-base';
+import { theme, HistrixApp } from 'components-app-histrix';
+import {
+  API_URL,
+  CLIENT_ID,
+  CLIENT_NAME,
+  CLIENT_SECRET,
+  GRANT_TYPE,
+  NOTIFICATION_TOKEN,
+} from '@env';
 
-import { SWRCache } from './src/context/SWRCahce';
-import { Login } from './src/pages/Login';
-import { ContextAuth } from './src/context/Login';
+import { providerSecure } from './src/utils';
+// import * as Sentry from 'sentry-expo';
 
 // if (SENTRY_DSN) {
 //   Sentry.init({
@@ -20,21 +25,27 @@ import { ContextAuth } from './src/context/Login';
 
 export default function App() {
   return (
-    <NativeBaseProvider theme={theme}>
-      <ContextAuth>
-        <SWRCache>
-          <Center
-            _dark={{ bg: 'blueGray.900' }}
-            _light={{ bg: 'blueGray.50' }}
-            px={4}
-            flex={1}
-          >
-            <VStack space={5} alignItems="center">
-              <Login />
-            </VStack>
-          </Center>
-        </SWRCache>
-      </ContextAuth>
-    </NativeBaseProvider>
+    <HistrixApp
+      provider={providerSecure}
+      API_URL={API_URL}
+      CLIENT_ID={CLIENT_ID}
+      CLIENT_SECRET={CLIENT_SECRET}
+      GRANT_TYPE={GRANT_TYPE}
+      CLIENT_NAME={CLIENT_NAME}
+      NOTIFICATION_TOKEN={NOTIFICATION_TOKEN}
+    >
+      <NativeBaseProvider theme={theme}>
+        <Center
+          _dark={{ bg: 'blueGray.900' }}
+          _light={{ bg: 'blueGray.50' }}
+          px={4}
+          flex={1}
+        >
+          <VStack space={5} alignItems="center">
+            <Text>Hola</Text>
+          </VStack>
+        </Center>
+      </NativeBaseProvider>
+    </HistrixApp>
   );
 }

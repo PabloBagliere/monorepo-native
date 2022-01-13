@@ -1,10 +1,9 @@
 import { Token } from '../Interfaces/api/Token';
 import { setToken } from '../services/Api';
-
-import { secureDB } from './secureDB';
+import { secureDB } from '../config/varibleApi';
 
 export const saveToken = async (token: Token): Promise<boolean> => {
-  const { saveSecure } = secureDB();
+  const { saveSecure } = secureDB;
   const naw = new Date();
   naw.setSeconds(naw.getSeconds() + token.expires_in);
   try {

@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import { AppProps } from 'next/app';
 import { NativeBaseProvider } from 'native-base';
-import { theme } from 'components-app-histrix';
+import { theme, HistrixApp } from 'components-app-histrix';
 import React from 'react';
+
+import { secureDB } from '../utils/provider';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -15,9 +17,19 @@ function MyApp({ Component, pageProps }: AppProps) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <NativeBaseProvider theme={theme}>
-        <Component {...pageProps} />
-      </NativeBaseProvider>
+      <HistrixApp
+        provider={secureDB}
+        API_URL={process.env.NEXT_PUBLIC_API_URL}
+        CLIENT_ID={process.env.NEXT_PUBLIC_CLIENT_ID}
+        CLIENT_SECRET={process.env.NEXT_PUBLIC_CLIENT_SECRET}
+        GRANT_TYPE={process.env.NEXT_PUBLIC_GRANT_TYPE}
+        CLIENT_NAME={process.env.NEXT_PUBLIC_CLIENT_NAME}
+        NOTIFICATION_TOKEN={process.env.NEXT_PUBLIC_NOTIFICATION_TOKEN}
+      >
+        <NativeBaseProvider theme={theme}>
+          <Component {...pageProps} />
+        </NativeBaseProvider>
+      </HistrixApp>
     </React.StrictMode>
   );
 }
