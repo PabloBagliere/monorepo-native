@@ -1,7 +1,7 @@
 // TODO: Implementar sentry
 
 import React from 'react';
-import { Center, NativeBaseProvider, Text, VStack } from 'native-base';
+import { Center, NativeBaseProvider } from 'native-base';
 import { theme, HistrixApp } from 'components-app-histrix';
 import {
   API_URL,
@@ -13,6 +13,7 @@ import {
 } from '@env';
 
 import { providerSecure } from './src/utils';
+import { Login } from './src/pages/Login';
 // import * as Sentry from 'sentry-expo';
 
 // if (SENTRY_DSN) {
@@ -41,9 +42,7 @@ export default function App() {
           px={4}
           flex={1}
         >
-          <VStack space={5} alignItems="center">
-            <Text>Hola</Text>
-          </VStack>
+          <Login />
         </Center>
       </NativeBaseProvider>
     </HistrixApp>

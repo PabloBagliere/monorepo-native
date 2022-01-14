@@ -16,14 +16,29 @@ interface props {
 }
 
 export const FormLogin: FC<props> = ({ action }): JSX.Element => {
-  const { toastWarning } = useMessage();
+  const { MessageError, MessageSuccess } = useMessage();
   const onSubmit = (data) => {
     LoginApi({ password: data.password, username: data.username })
       .then((info: Token) => {
+        MessageSuccess({
+          message: 'Felicidades ingresaste',
+          options: {
+            icon: '👍',
+          },
+        });
         saveToken(info).then((response) => action(response));
       })
       .catch((error: ResponseErrorApi) => {
-        toastWarning({ message: JSON.stringify(error.info, null, 2) });
+        if (error.info.status === 401) {
+          MessageError({
+            message: 'Usuario o contraseña incorrecto vuelva a intentar',
+            options: {
+              icon: '❌',
+            },
+          });
+          return;
+        }
+        MessageError({ message: JSON.stringify(error.info, null, 2) });
       });
   };
   return (

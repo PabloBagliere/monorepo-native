@@ -9244,6 +9244,7 @@ __metadata:
     react: ^17.0.2
     react-dom: ^17.0.2
     react-hook-form: ^7.22.5
+    react-hot-toast: ^2.2.0
     react-native-safe-area-context: 3.3.2
     react-native-svg: ^12.1.1
     react-native-toast-notifications: ^3.2.3
@@ -12962,6 +12963,15 @@ __metadata:
     pify: ^4.0.1
     slash: ^2.0.0
   checksum: 9b4cb70aa0b43bf89b18cf0e543695185e16d8dd99c17bdc6a1df0a9f88ff9dc8d2467aebace54c3842fc451a564882948c87a3b4fbdb1cacf3e05fd54b6ac5d
+  languageName: node
+  linkType: hard
+
+"goober@npm:^2.1.1":
+  version: 2.1.7
+  resolution: "goober@npm:2.1.7"
+  peerDependencies:
+    csstype: ^2.6.2
+  checksum: f26e056e3ea58c6e7810fb620773f19dfee6f791f316a53c082834aa44c8ab7248b591c4a6f348bbdeb2da54c11e046b87bf359648711f99c0ccd1b423be1f29
   languageName: node
   linkType: hard
 
@@ -20068,6 +20078,18 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17
   checksum: 73c76e132f96f01cf9bd447817dda393c57e04ab65005946cefd96436f5b49bc5fa2b3e24d2d1fa737c7334f971e28aef4f617cf25dbf89d0d019d0cb0b0e41f
+  languageName: node
+  linkType: hard
+
+"react-hot-toast@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "react-hot-toast@npm:2.2.0"
+  dependencies:
+    goober: ^2.1.1
+  peerDependencies:
+    react: ">=16"
+    react-dom: ">=16"
+  checksum: bb34ddc8ada14cbd75a37f14d2563412174e23276eb05e9fb23a031b6d8374ca190cefa1940692f4371529ddafeb2d4b8d3e5023187c2851ec8cb247461553ee
   languageName: node
   linkType: hard
 

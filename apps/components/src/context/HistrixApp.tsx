@@ -1,5 +1,4 @@
 import React, { FC, useEffect } from 'react';
-import { ToastProvider } from 'react-native-toast-notifications';
 
 import config, {
   setAPI_URL,
@@ -11,9 +10,9 @@ import config, {
   setCLIENT_NAME,
 } from '../config/varibleApi';
 import { propsSecureDB } from '../Interfaces/secureDB';
+import { Message } from '../components/atomic/MessageFeedback';
 
 import { SWRCache } from './Caching';
-
 interface contextHistrixAppProps {
   API_URL?: string;
   CLIENT_ID?: string;
@@ -55,10 +54,8 @@ export const HistrixApp: FC<contextHistrixAppProps> = ({
   ]);
   return (
     <SWRCache>
-      <ToastProvider>
-        <>{children}</>
-      </ToastProvider>
+      {children}
+      <Message />
     </SWRCache>
-    // <>{children}</>
   );
 };

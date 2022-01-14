@@ -1,98 +1,66 @@
-import { useToast } from 'react-native-toast-notifications';
-import { ToastOptions } from 'react-native-toast-notifications/lib/typescript/toast';
+import { toast } from 'react-hot-toast/dist/core/toast';
+import {
+  Renderable,
+  ToastOptions,
+  DefaultToastOptions,
+} from 'react-hot-toast/dist/core/types';
 
-interface props {
-  idToast?: string;
-  message: string | JSX.Element;
+import { T } from '../Interfaces/anyT';
+
+interface optionsMenssage {
+  message: Renderable;
   options?: ToastOptions;
 }
 
+interface optionsMessagePromise {
+  promise: Promise<T>;
+  messages: {
+    loading: Renderable;
+    success: Renderable;
+    error: Renderable;
+  };
+  options: DefaultToastOptions;
+}
+
 export const useMessage = () => {
-  const toast = useToast();
-
-  const configGlobal: ToastOptions = {
-    duration: 4000,
-    onPress: (id) => {
-      toast.hide(id);
-    },
-  };
-  const toastWarning: (props: props) => string | void = ({
-    idToast,
+  const MessageSuccess: (props: optionsMenssage) => string = ({
     message,
     options,
   }) => {
-    return !idToast
-      ? toast.show(message, {
-          type: 'warning',
-          ...configGlobal,
-          ...options,
-        })
-      : toast.update(idToast, message, {
-          type: 'warning',
-          ...configGlobal,
-          ...options,
-        });
+    return toast.success(message, options);
   };
 
-  const toastNormal: (props: props) => string | void = ({
-    idToast,
+  const MessageError: (props: optionsMenssage) => string = ({
     message,
     options,
   }) => {
-    return !idToast
-      ? toast.show(message, {
-          type: 'normal',
-          ...configGlobal,
-          ...options,
-        })
-      : toast.update(idToast, message, {
-          type: 'normal',
-          ...configGlobal,
-          ...options,
-        });
+    return toast.error(message, options);
   };
 
-  const toastSuccess: (props: props) => string | void = ({
-    idToast,
+  const MessageCustom: (props: optionsMenssage) => string = ({
     message,
     options,
   }) => {
-    return !idToast
-      ? toast.show(message, {
-          type: 'success',
-          ...configGlobal,
-          ...options,
-        })
-      : toast.update(idToast, message, {
-          type: 'success',
-          ...configGlobal,
-          ...options,
-        });
+    return toast.custom(message, options);
   };
 
-  const toastDenger: (props: props) => string | void = ({
-    idToast,
-    message,
+  const MessagePromise: (props: optionsMessagePromise) => Promise<T> = ({
+    promise,
+    messages,
     options,
   }) => {
-    return !idToast
-      ? toast.show(message, {
-          type: 'denger',
-          ...configGlobal,
-          ...options,
-        })
-      : toast.update(idToast, message, {
-          type: 'denger',
-          ...configGlobal,
-          ...options,
-        });
+    return toast.promise(promise, messages, options);
+  };
+
+  const MessageDismiss = (id?: string) => {
+    toast.dismiss(id);
   };
 
   return {
-    toast,
-    toastWarning,
-    toastNormal,
-    toastSuccess,
-    toastDenger,
+    MessageCustom,
+    MessageDismiss,
+    MessageSuccess,
+    MessagePromise,
+    MessageError,
   };
 };

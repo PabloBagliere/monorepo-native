@@ -1,5 +1,7 @@
 import { propsSecureDB } from '../Interfaces/secureDB';
 
+import { setInstance } from './InstanceApi';
+
 export let API_URL: string;
 export let CLIENT_ID: string;
 export let CLIENT_SECRET: string;
@@ -9,7 +11,10 @@ export let CLIENT_NAME: string;
 
 export let secureDB: propsSecureDB;
 
-export const setAPI_URL = (url: string) => (API_URL = url);
+export const setAPI_URL = (url: string) => {
+  API_URL = url;
+  setInstance(API_URL);
+};
 export const setCLIENT_ID = (id: string) => (CLIENT_ID = id);
 export const setSecureDB = (provider: propsSecureDB) => (secureDB = provider);
 export const setCLIENTE_SECRET = (secret: string) => (CLIENT_SECRET = secret);

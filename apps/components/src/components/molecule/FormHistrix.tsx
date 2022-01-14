@@ -3,6 +3,7 @@ import React, { FC } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 
 import { T } from '../../Interfaces';
+import { FormLogin } from '../organism/FormLogin';
 
 import { DynamicForm } from './DynamicForm';
 
@@ -30,14 +31,7 @@ export const FormHistrix: FC<props> = ({
     return (
       <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
         <FormProvider {...methods}>
-          {!dynamic ? (
-            { children }
-          ) : (
-            <>
-              <DynamicForm dynamic={dynamic} />
-              {children}
-            </>
-          )}
+          <FormLogin action={template.action} />
         </FormProvider>
       </FormControl>
     );
