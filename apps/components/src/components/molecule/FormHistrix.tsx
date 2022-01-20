@@ -27,30 +27,14 @@ export const FormHistrix: FC<props> = ({
   const {
     formState: { errors },
   } = methods;
-  if (template) {
-    return (
-      <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
-        <FormProvider {...methods}>
-          <FormLogin action={template.action} />
-        </FormProvider>
-      </FormControl>
-    );
-  }
-  if (dynamic) {
-    return (
-      <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
-        <FormProvider {...methods}>
-          <>
-            <DynamicForm dynamic={dynamic} />
-            {children}
-          </>
-        </FormProvider>
-      </FormControl>
-    );
-  }
   return (
-    <FormControl isInvalid={Object.keys(errors).length !== 0} {...props}>
-      <FormProvider {...methods}>{children}</FormProvider>
+    <FormControl isInvalid={Object.keys(errors).length !== 0} w="100%" h="100%" {...props}>
+      <FormProvider {...methods}>
+        {template ? <FormLogin action={template.action} /> : dynamic ? <>
+          <DynamicForm dynamic={dynamic} />
+          {children}
+        </> : children }
+      </FormProvider>
     </FormControl>
-  );
+  )
 };

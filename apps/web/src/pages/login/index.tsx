@@ -5,6 +5,8 @@ function Login() {
   const [status, setStatus] = useState(null);
   return (
     <FormHistrix
+      w="100%"
+      h="100%"
       defaultValues={{}}
       template={{ action: setStatus, type: 'login' }}
     />

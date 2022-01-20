@@ -1,4 +1,4 @@
-import { Box, Heading, VStack } from 'native-base';
+import { Box, Heading, VStack, Center } from 'native-base';
 import React, { FC } from 'react';
 
 import { AtomicInput } from '../atomic/Input';
@@ -42,10 +42,11 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
       });
   };
   return (
-    <Box safeArea p="2" py="8" w="90%" maxW="290">
+    <Box safeArea p="4" py="8" w="100%" h="100%" >
+      <Center>
       <Heading
-        size="lg"
-        fontWeight="600"
+        size="xl"
+        fontWeight="700"
         color="coolGray.800"
         _dark={{
           color: 'warmGray.50',
@@ -64,9 +65,13 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
       >
         Iniciar sesion
       </Heading>
-
-      <VStack space={3} mt="5">
+      </Center>
+      <VStack space={3} mt="5" alignItems="center">
         <AtomicInput
+        styleLayout={{
+          w: '100%',
+        }}
+        w="1/2"
           name="username"
           label="Usuario"
           rules={{
@@ -80,6 +85,10 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
           message="Este usuario tambien puede ser tu email."
         />
         <AtomicInput
+          styleLayout={{
+            w: '100%',
+          }}
+          w="1/2"
           name="password"
           label="Contraseña"
           type="password"
@@ -91,7 +100,7 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
             },
           }}
         />
-        <AtomicButton onPress={onSubmit} />
+        <AtomicButton onPress={onSubmit} w="1/3">Iniciar sesion</AtomicButton>
       </VStack>
     </Box>
   );
