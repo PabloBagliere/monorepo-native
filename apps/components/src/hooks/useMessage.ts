@@ -1,9 +1,4 @@
-import { toast } from 'react-hot-toast/dist/core/toast';
-import {
-  Renderable,
-  ToastOptions,
-  DefaultToastOptions,
-} from 'react-hot-toast/dist/core/types';
+import { toast, Renderable, ToastOptions, DefaultToastOptions } from 'react-hot-toast-native-web';
 
 import { T } from '../Interfaces/anyT';
 

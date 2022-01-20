@@ -1,6 +1,5 @@
 import React, { FC, useRef } from 'react';
-import { Toast as ToastProps } from 'react-hot-toast/dist/core/types';
-import { useToaster } from 'react-hot-toast/dist/core/use-toaster';
+import { Toast as ToastProps, useToaster } from 'react-hot-toast-native-web';
 import { Animated, Text, View } from 'react-native';
 
 interface props {
