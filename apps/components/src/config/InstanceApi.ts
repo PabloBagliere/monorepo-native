@@ -2,6 +2,8 @@ import axios, { AxiosInstance } from 'axios';
 
 export let instance: AxiosInstance;
 
+export let isSetToken = false;
+
 export const setInstance = (url: string) => {
   instance = axios.create({
     baseURL: url,
@@ -28,8 +30,10 @@ export const setInstance = (url: string) => {
 
 export const setToken = (token: string) => {
   instance.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  isSetToken = true;
 };
 
 export const deleteToken = () => {
   delete instance.defaults.headers.common['Authorization'];
+  isSetToken = false;
 };

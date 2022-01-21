@@ -1,5 +1,5 @@
 import { Token } from '../Interfaces/api/Token';
-import { setToken } from '../services/Api';
+import { setToken } from '../config/InstanceApi';
 import { secureDB } from '../config/varibleApi';
 
 export const saveToken = async (token: Token): Promise<boolean> => {

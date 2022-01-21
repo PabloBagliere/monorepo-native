@@ -1,6 +1,6 @@
 import { propsSecureDB } from '../Interfaces/secureDB';
 
-import { setInstance } from './InstanceApi';
+import { setInstance, setToken } from './InstanceApi';
 
 export let API_URL: string;
 export let CLIENT_ID: string;
@@ -16,7 +16,16 @@ export const setAPI_URL = (url: string) => {
   setInstance(API_URL);
 };
 export const setCLIENT_ID = (id: string) => (CLIENT_ID = id);
-export const setSecureDB = (provider: propsSecureDB) => (secureDB = provider);
+export const setSecureDB = async (provider: propsSecureDB) => {
+  secureDB = provider
+  try {
+   const response = await secureDB.getSecure('Token-access')
+   if (!response) return
+   setToken(response);
+  } catch (error) {
+    // TODO: setError
+  }
+};
 export const setCLIENTE_SECRET = (secret: string) => (CLIENT_SECRET = secret);
 export const setGRANT_TYPE = (type: string) => (GRANT_TYPE = type);
 export const setNOTIFICATION = (notification: string | null) =>
