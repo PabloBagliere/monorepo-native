@@ -8,12 +8,11 @@ import {
   GRANT_TYPE,
   NOTIFICATION_TOKEN,
 } from '../config/varibleApi';
-import { instance } from '../config/InstanceApi';
 import { User, ResponseErrorApi } from '../Interfaces';
 
 export const LoginApi = async ({ username, password }: User) => {
   try {
-    const response = await instance({
+    const response = await axios({
       url: '/token',
       method: 'POST',
       data: {
@@ -38,7 +37,7 @@ export const LoginApi = async ({ username, password }: User) => {
 
 export const infoMe = async () => {
   try {
-    const response = await instance({
+    const response = await axios({
       url: '/me',
       method: 'GET',
     });
@@ -83,5 +82,3 @@ const allCatch = (error: AxiosError): ResponseErrorApi => {
     },
   };
 };
-
-export default instance;

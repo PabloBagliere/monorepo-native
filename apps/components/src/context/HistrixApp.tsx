@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { createContext, FC, useEffect } from 'react';
 
 import config, {
   setAPI_URL,
@@ -11,9 +11,10 @@ import config, {
 } from '../config/varibleApi';
 import { propsSecureDB } from '../Interfaces/secureDB';
 import { Message } from '../components/atomic/MessageFeedback';
+import { useAxios } from '../hooks/useAxios';
 
 import { SWRCache } from './Caching';
-interface contextHistrixAppProps {
+interface propsDefaultSecret {
   API_URL?: string;
   CLIENT_ID?: string;
   CLIENT_SECRET?: string;
@@ -24,7 +25,14 @@ interface contextHistrixAppProps {
 }
 
 config();
-export const HistrixApp: FC<contextHistrixAppProps> = ({
+
+interface contextProps {
+  isToken: boolean;
+}
+
+const Context = createContext({} as contextProps);
+
+export const HistrixApp: FC<propsDefaultSecret> = ({
   children,
   API_URL,
   CLIENT_ID,
@@ -34,15 +42,20 @@ export const HistrixApp: FC<contextHistrixAppProps> = ({
   provider,
   CLIENT_NAME,
 }): JSX.Element => {
+  const { setToken, setInstance, isReady, isToken } = useAxios();
   useEffect(() => {
-    setSecureDB(provider);
-    if (API_URL) setAPI_URL(API_URL);
+    if (API_URL) {
+      setAPI_URL(API_URL);
+      setInstance(API_URL);
+    }
     if (CLIENT_ID) setCLIENT_ID(CLIENT_ID);
     if (CLIENT_SECRET) setCLIENTE_SECRET(CLIENT_SECRET);
     if (GRANT_TYPE) setGRANT_TYPE(GRANT_TYPE);
     if (CLIENT_NAME) setCLIENT_NAME(CLIENT_NAME);
     if (typeof NOTIFICATION_TOKEN !== 'undefined')
       setNOTIFICATION(NOTIFICATION_TOKEN);
+    setSecureDB(provider, setToken);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     API_URL,
     CLIENT_ID,
@@ -52,10 +65,17 @@ export const HistrixApp: FC<contextHistrixAppProps> = ({
     NOTIFICATION_TOKEN,
     provider,
   ]);
+  if (!isReady) {
+    return <div>loading</div>;
+  }
   return (
-    <SWRCache>
-      {children}
-      <Message />
-    </SWRCache>
+    <Context.Provider value={{ isToken: isToken }}>
+      <SWRCache>
+        {children}
+        <Message />
+      </SWRCache>
+    </Context.Provider>
   );
 };
+
+export default Context;

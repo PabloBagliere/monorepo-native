@@ -26,7 +26,7 @@ export const SWRCache: FC = ({ children }) => {
   return (
     <SWRConfig
       value={{
-        provider: localStorageProvider,
+        // provider: localStorageProvider,
         fetcher,
       }}
     >

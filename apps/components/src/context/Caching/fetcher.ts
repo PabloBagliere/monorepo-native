@@ -1,6 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
-
-import instance from '../../services/Api';
+import axios, { AxiosRequestConfig } from 'axios';
 
 interface props {
   url: string;
@@ -8,6 +6,6 @@ interface props {
 }
 
 const fetcher = ({ url, config }: props) =>
-  instance({ url, ...config }).then((res) => res.data);
+  axios({ url, ...config }).then((res) => res.data);
 
 export default fetcher;

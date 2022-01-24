@@ -6,10 +6,10 @@ import { Token } from '../../Interfaces/api/Token';
 import { CLIENT_NAME } from '../../config/varibleApi';
 import { AtomicButton } from '../atomic/Button';
 import { LoginApi } from '../../services/Api';
-import { saveToken } from '../../utils/saveToken';
 import { T } from '../../Interfaces/anyT';
 import { useMessage } from '../../hooks/useMessage';
 import { ResponseErrorApi } from '../../Interfaces/api/ResponseErrorApi';
+import { useAxios } from '../../hooks/useAxios';
 
 interface props {
   action: T;
@@ -17,6 +17,7 @@ interface props {
 
 export const FormLogin: FC<props> = ({ action }): JSX.Element => {
   const { MessageError, MessageSuccess } = useMessage();
+  const { saveToken } = useAxios();
   const onSubmit = (data) => {
     LoginApi({ password: data.password, username: data.username })
       .then((info: Token) => {
@@ -42,36 +43,36 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
       });
   };
   return (
-    <Box safeArea p="4" py="8" w="100%" h="100%" >
+    <Box safeArea p="4" py="8" w="100%" h="100%">
       <Center>
-      <Heading
-        size="xl"
-        fontWeight="700"
-        color="coolGray.800"
-        _dark={{
-          color: 'warmGray.50',
-        }}
-      >
-        {CLIENT_NAME}
-      </Heading>
-      <Heading
-        mt="1"
-        _dark={{
-          color: 'warmGray.200',
-        }}
-        color="coolGray.600"
-        fontWeight="medium"
-        size="xs"
-      >
-        Iniciar sesion
-      </Heading>
+        <Heading
+          size="xl"
+          fontWeight="700"
+          color="coolGray.800"
+          _dark={{
+            color: 'warmGray.50',
+          }}
+        >
+          {CLIENT_NAME}
+        </Heading>
+        <Heading
+          mt="1"
+          _dark={{
+            color: 'warmGray.200',
+          }}
+          color="coolGray.600"
+          fontWeight="medium"
+          size="xs"
+        >
+          Iniciar sesion
+        </Heading>
       </Center>
       <VStack space={3} mt="5" alignItems="center">
         <AtomicInput
-        styleLayout={{
-          w: '100%',
-        }}
-        w="1/2"
+          styleLayout={{
+            w: '100%',
+          }}
+          w="1/2"
           name="username"
           label="Usuario"
           rules={{
@@ -100,7 +101,9 @@ export const FormLogin: FC<props> = ({ action }): JSX.Element => {
             },
           }}
         />
-        <AtomicButton onPress={onSubmit} w="1/3">Iniciar sesion</AtomicButton>
+        <AtomicButton onPress={onSubmit} w="1/3">
+          Iniciar sesion
+        </AtomicButton>
       </VStack>
     </Box>
   );
