@@ -1,9 +1,10 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import { Platform } from 'react-native';
 import { IButtonProps, View } from 'native-base';
 import DateTimePicker from '@react-native-community/datetimepicker';
-import { Controller, useFormContext } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
+import Context from '../../context/ContextForm';
 import { formBasic, T } from '../../Interfaces';
 import { AtomicButton } from '../atomic/Button';
 import { InputsFormLayout } from '../../layouts';
@@ -40,7 +41,7 @@ export const AtomicTimepicker: FC<props> = ({
   const showMode = () => {
     setShow(true);
   };
-  const { control, register } = useFormContext();
+  const { control, register } = useContext(Context);
   return !control ? (
     <View>
       <View>

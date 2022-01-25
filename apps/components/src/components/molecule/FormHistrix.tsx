@@ -1,9 +1,10 @@
 import { FormControl, IFormControlProps } from 'native-base';
 import React, { FC } from 'react';
-import { useForm, FormProvider } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 import { T } from '../../Interfaces';
 import { FormLogin } from '../organism/FormLogin';
+import { ContextForm } from '../../context/ContextForm';
 
 import { DynamicForm } from './DynamicForm';
 
@@ -28,13 +29,29 @@ export const FormHistrix: FC<props> = ({
     formState: { errors },
   } = methods;
   return (
-    <FormControl isInvalid={Object.keys(errors).length !== 0} w="100%" h="100%" {...props}>
-      <FormProvider {...methods}>
-        {template ? <FormLogin action={template.action} /> : dynamic ? <>
-          <DynamicForm dynamic={dynamic} />
-          {children}
-        </> : children }
-      </FormProvider>
+    <FormControl
+      isInvalid={Object.keys(errors).length !== 0}
+      w="100%"
+      h="100%"
+      {...props}
+    >
+      <ContextForm
+        control={methods.control}
+        register={methods.register}
+        handleSubmit={methods.handleSubmit}
+        formState={methods.formState}
+      >
+        {template ? (
+          <FormLogin action={template.action} />
+        ) : dynamic ? (
+          <>
+            <DynamicForm dynamic={dynamic} />
+            {children}
+          </>
+        ) : (
+          children
+        )}
+      </ContextForm>
     </FormControl>
-  )
+  );
 };

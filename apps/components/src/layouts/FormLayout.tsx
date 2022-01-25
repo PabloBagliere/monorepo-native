@@ -6,7 +6,6 @@ export const FormLayout: FC = ({ children }): JSX.Element => {
     sm: 'column',
     lg: 'row',
   });
-  console.log(flexDir);
   return (
     <View style={{ flexDirection: flexDir }} nativeID="holaPrueba">
       {children}

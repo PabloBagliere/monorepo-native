@@ -8,9 +8,10 @@ import {
   IconButton,
   useDisclose,
 } from 'native-base';
-import React, { FC, useState } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { FC, useContext, useState } from 'react';
+import { Controller } from 'react-hook-form';
 
+import Context from '../../context/ContextForm';
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 import { AtomicButton, AtomicCheckbox } from '../atomic';
@@ -46,7 +47,7 @@ export const MultipleSelect: FC<props> = ({
       return newState;
     });
   };
-  const { control } = useFormContext();
+  const { control } = useContext(Context);
 
   return !control ? (
     <>

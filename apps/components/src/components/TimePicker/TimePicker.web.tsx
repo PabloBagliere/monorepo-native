@@ -1,8 +1,9 @@
 // TimePicker.web.ts
-import React, { FC } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { FC, useContext } from 'react';
+import { Controller } from 'react-hook-form';
 import styled from 'styled-components';
 
+import Context from '../../context/ContextForm';
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 import { FormLabel } from '../atomic/FormLabel';
@@ -28,7 +29,7 @@ export const AtomicTimepicker: FC<props> = ({
   isDisabled,
   styleMessage,
 }): JSX.Element => {
-  const { control, register } = useFormContext();
+  const { control, register } = useContext(Context);
   return !control ? (
     <Input {...register(name)} disabled={isDisabled} type="time" />
   ) : (

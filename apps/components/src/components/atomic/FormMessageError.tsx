@@ -1,6 +1,7 @@
 import { FormControl, IFormControlErrorMessageProps } from 'native-base';
-import React, { FC } from 'react';
-import { useFormContext } from 'react-hook-form';
+import React, { FC, useContext } from 'react';
+
+import Context from '../../context/ContextForm';
 
 interface props extends IFormControlErrorMessageProps {
   name: string;
@@ -12,7 +13,7 @@ export const FormMessageError: FC<props> = ({
 }): JSX.Element => {
   const {
     formState: { errors },
-  } = useFormContext();
+  } = useContext(Context);
   return (
     <FormControl.ErrorMessage {...props}>
       {errors?.[name]?.message}

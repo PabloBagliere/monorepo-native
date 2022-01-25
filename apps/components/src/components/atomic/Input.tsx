@@ -1,7 +1,8 @@
 import { IInputProps, Input } from 'native-base';
-import React, { FC } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { FC, useContext } from 'react';
+import { Controller } from 'react-hook-form';
 
+import Context from '../../context/ContextForm';
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
@@ -21,7 +22,7 @@ export const AtomicInput: FC<props> = ({
   label,
   ...props
 }): JSX.Element => {
-  const { control, register } = useFormContext();
+  const { control, register } = useContext(Context);
   return !control ? (
     <Input {...register(name)} {...props} />
   ) : (

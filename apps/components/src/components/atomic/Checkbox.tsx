@@ -1,7 +1,8 @@
 import { Checkbox, ICheckboxGroupProps } from 'native-base';
-import React, { FC, useMemo } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { FC, useContext, useMemo } from 'react';
+import { Controller } from 'react-hook-form';
 
+import Context from '../../context/ContextForm';
 import { formBasic, Options, T } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
@@ -43,7 +44,7 @@ export const AtomicCheckbox: FC<props> = ({
   ...props
 }): JSX.Element => {
   const optionsMemo = useMemo(() => setOptions(options), [options]);
-  const { control, register } = useFormContext();
+  const { control, register } = useContext(Context);
   return !control ? (
     <Checkbox.Group
       {...register(name)}

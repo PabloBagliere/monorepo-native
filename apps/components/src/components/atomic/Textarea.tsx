@@ -1,8 +1,9 @@
 import { TextArea } from 'native-base';
 import { ITextAreaProps } from 'native-base/lib/typescript/components/primitives/TextArea';
-import React, { FC } from 'react';
-import { Controller, useFormContext } from 'react-hook-form';
+import React, { FC, useContext } from 'react';
+import { Controller } from 'react-hook-form';
 
+import Context from '../../context/ContextForm';
 import { formBasic } from '../../Interfaces';
 import { InputsFormLayout } from '../../layouts';
 
@@ -23,7 +24,7 @@ export const AtomicTextarea: FC<props> = ({
   message,
   ...props
 }): JSX.Element => {
-  const { control, register } = useFormContext();
+  const { control, register } = useContext(Context);
   return !control ? (
     <TextArea {...register(name)} {...props} />
   ) : (
