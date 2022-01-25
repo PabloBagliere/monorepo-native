@@ -14,7 +14,6 @@ import config, {
 import { propsSecureDB } from '../Interfaces/secureDB';
 import { Message } from '../components/atomic/MessageFeedback';
 import { useAxios } from '../hooks/useAxios';
-import { Pages } from '../layouts/Pages';
 
 import { SWRCache } from './Caching';
 interface propsDefaultSecret {
@@ -77,7 +76,8 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
     <NativeBaseProvider theme={theme}>
       <Context.Provider value={{ isToken: isToken }}>
         <SWRCache>
-          <Pages>{children}</Pages>
+          {/* <Pages>{children}</Pages> */}
+          {children}
           <Message />
         </SWRCache>
       </Context.Provider>

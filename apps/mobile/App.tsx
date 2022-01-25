@@ -1,7 +1,6 @@
 // TODO: Implementar sentry
 
 import React from 'react';
-import { Center } from 'native-base';
 import { theme, HistrixApp } from 'components-app-histrix';
 import {
   API_URL,
@@ -13,7 +12,7 @@ import {
 } from '@env';
 
 import { providerSecure } from './src/utils';
-import { Login } from './src/pages/Login';
+import { Navigations } from './src/Navigations';
 // import * as Sentry from 'sentry-expo';
 
 // if (SENTRY_DSN) {
@@ -36,14 +35,7 @@ export default function App() {
       NOTIFICATION_TOKEN={NOTIFICATION_TOKEN}
       theme={theme}
     >
-      <Center
-        _dark={{ bg: 'blueGray.900' }}
-        _light={{ bg: 'blueGray.50' }}
-        px={4}
-        flex={1}
-      >
-        <Login />
-      </Center>
+      <Navigations />
     </HistrixApp>
   );
 }

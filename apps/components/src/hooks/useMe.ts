@@ -6,7 +6,7 @@ import { UserData } from '../Interfaces/api';
 import HistrixContext from '../context/HistrixApp';
 
 interface response {
-  Me: UserData | number | undefined;
+  Me: UserData | undefined;
   isLoading: boolean;
   isError: T;
 }
