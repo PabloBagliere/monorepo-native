@@ -37,7 +37,9 @@ export default class MyDocument extends NextDocument {
   render() {
     return (
       <Html lang="es" style={{ height: '100%' }}>
-        <Head />
+        <Head>
+          <link href="/Styles/global.css" rel="stylesheet" />
+        </Head>
         <body style={{ height: '100%', overflow: 'hidden' }}>
           <Main />
           <NextScript />

@@ -6131,6 +6131,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react-native-vector-icons@npm:^6.4.10":
+  version: 6.4.10
+  resolution: "@types/react-native-vector-icons@npm:6.4.10"
+  dependencies:
+    "@types/react": "*"
+    "@types/react-native": "*"
+  checksum: 765319410bcaa9fb89545750ef257d11c2e92f84ab3117db5fc45845cfebcb979f0aca9c5c101cf6f1e5fbf14a207c5c732fd4e00801e9bec4aabaf1a1a15b11
+  languageName: node
+  linkType: hard
+
+"@types/react-native@npm:*":
+  version: 0.66.15
+  resolution: "@types/react-native@npm:0.66.15"
+  dependencies:
+    "@types/react": "*"
+  checksum: 1ce56a3c44e279dcbb5f5f08d332dad59d1b11257afee3291e82ab0ad51a8c4ad1fc74e3cb9f3516f8c26371de67ec0a36ce627a408b4fc2cb10626c43267d7b
+  languageName: node
+  linkType: hard
+
 "@types/react-native@npm:~0.66.2":
   version: 0.66.10
   resolution: "@types/react-native@npm:0.66.10"
@@ -9238,6 +9257,7 @@ __metadata:
     "@types/node": ^16.11.6
     "@types/react": ^17.0.34
     "@types/react-dom": ^17.0.11
+    "@types/react-native-vector-icons": ^6.4.10
     "@types/styled-components": ^5.1.19
     axios: ^0.24.0
     native-base: 3.2.2
@@ -9248,6 +9268,7 @@ __metadata:
     react-native-safe-area-context: 3.3.2
     react-native-svg: ^12.1.1
     react-native-toast-notifications: ^3.2.3
+    react-native-vector-icons: ^9.0.0
     react-native-web: ^0.17.5
     react-scripts: 4.0.3
     styled-components: ^5.3.3
@@ -20173,6 +20194,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-vector-icons@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "react-native-vector-icons@npm:9.0.0"
+  dependencies:
+    lodash.frompairs: ^4.0.1
+    lodash.isequal: ^4.5.0
+    lodash.isstring: ^4.0.1
+    lodash.omit: ^4.5.0
+    lodash.pick: ^4.4.0
+    lodash.template: ^4.5.0
+    prop-types: ^15.7.2
+    yargs: ^16.1.1
+  bin:
+    fa5-upgrade: bin/fa5-upgrade.sh
+    generate-icon: bin/generate-icon.js
+  checksum: d269154dbd374618aa2e5a0052cd8697036829f70fd72d1f4b934c3d9b609a60f0afdd6e687a0d7d6d3123ebc88ff7cdba93c8a736e511a89bcd44574e84742f
+  languageName: node
+  linkType: hard
+
 "react-native-web@npm:^0.17.5, react-native-web@npm:~0.17.5":
   version: 0.17.5
   resolution: "react-native-web@npm:0.17.5"
@@ -24905,7 +24945,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yargs@npm:^16.2.0":
+"yargs@npm:^16.1.1, yargs@npm:^16.2.0":
   version: 16.2.0
   resolution: "yargs@npm:16.2.0"
   dependencies:

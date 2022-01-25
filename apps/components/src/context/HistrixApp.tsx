@@ -1,4 +1,6 @@
 import React, { createContext, FC, useEffect } from 'react';
+import { ActivityIndicator } from 'react-native';
+import { ITheme, NativeBaseProvider } from 'native-base';
 
 import config, {
   setAPI_URL,
@@ -12,6 +14,7 @@ import config, {
 import { propsSecureDB } from '../Interfaces/secureDB';
 import { Message } from '../components/atomic/MessageFeedback';
 import { useAxios } from '../hooks/useAxios';
+import { Pages } from '../layouts/Pages';
 
 import { SWRCache } from './Caching';
 interface propsDefaultSecret {
@@ -22,6 +25,7 @@ interface propsDefaultSecret {
   NOTIFICATION_TOKEN?: string | null;
   CLIENT_NAME?: string;
   provider: propsSecureDB;
+  theme: ITheme;
 }
 
 config();
@@ -41,6 +45,7 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
   NOTIFICATION_TOKEN,
   provider,
   CLIENT_NAME,
+  theme,
 }): JSX.Element => {
   const { setToken, setInstance, isReady, isToken } = useAxios();
   useEffect(() => {
@@ -66,15 +71,17 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
     provider,
   ]);
   if (!isReady) {
-    return <div>loading</div>;
+    return <ActivityIndicator size="large" />;
   }
   return (
-    <Context.Provider value={{ isToken: isToken }}>
-      <SWRCache>
-        {children}
-        <Message />
-      </SWRCache>
-    </Context.Provider>
+    <NativeBaseProvider theme={theme}>
+      <Context.Provider value={{ isToken: isToken }}>
+        <SWRCache>
+          <Pages>{children}</Pages>
+          <Message />
+        </SWRCache>
+      </Context.Provider>
+    </NativeBaseProvider>
   );
 };
 

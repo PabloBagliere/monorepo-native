@@ -1,6 +1,7 @@
 const withPlugins = require('next-compose-plugins');
 const withTM = require('next-transpile-modules')([
   'native-base',
+  'react-native-vector-icons',
   'react-native-svg',
   'styled-components',
   'react-native-safe-area-context',
@@ -22,6 +23,9 @@ const withTM = require('next-transpile-modules')([
 ]);
 
 module.exports = withPlugins([withTM], {
+  images: {
+    disableStaticImages: true,
+  },
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
@@ -34,6 +38,10 @@ module.exports = withPlugins([withTM], {
       '.web.tsx',
       ...config.resolve.extensions,
     ];
+    config.module.rules.push({
+      test: /\.(jpe?g|png|gif|svg)$/i,
+      use: ['url-loader?limit=10000', 'img-loader'],
+    });
 
     return config;
   },

@@ -1,6 +1,7 @@
+import '../Styles/global.css';
+
 import Head from 'next/head';
 import { AppProps } from 'next/app';
-import { NativeBaseProvider } from 'native-base';
 import { theme, HistrixApp } from 'components-app-histrix';
 import React from 'react';
 
@@ -25,10 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         GRANT_TYPE={process.env.NEXT_PUBLIC_GRANT_TYPE}
         CLIENT_NAME={process.env.NEXT_PUBLIC_CLIENT_NAME}
         NOTIFICATION_TOKEN={process.env.NEXT_PUBLIC_NOTIFICATION_TOKEN}
+        theme={theme}
       >
-        <NativeBaseProvider theme={theme}>
-          <Component {...pageProps} />
-        </NativeBaseProvider>
+        <Component {...pageProps} />
       </HistrixApp>
     </React.StrictMode>
   );

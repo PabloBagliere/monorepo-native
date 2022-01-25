@@ -1,7 +1,7 @@
 // TODO: Implementar sentry
 
 import React from 'react';
-import { Center, NativeBaseProvider } from 'native-base';
+import { Center } from 'native-base';
 import { theme, HistrixApp } from 'components-app-histrix';
 import {
   API_URL,
@@ -34,17 +34,16 @@ export default function App() {
       GRANT_TYPE={GRANT_TYPE}
       CLIENT_NAME={CLIENT_NAME}
       NOTIFICATION_TOKEN={NOTIFICATION_TOKEN}
+      theme={theme}
     >
-      <NativeBaseProvider theme={theme}>
-        <Center
-          _dark={{ bg: 'blueGray.900' }}
-          _light={{ bg: 'blueGray.50' }}
-          px={4}
-          flex={1}
-        >
-          <Login />
-        </Center>
-      </NativeBaseProvider>
+      <Center
+        _dark={{ bg: 'blueGray.900' }}
+        _light={{ bg: 'blueGray.50' }}
+        px={4}
+        flex={1}
+      >
+        <Login />
+      </Center>
     </HistrixApp>
   );
 }
