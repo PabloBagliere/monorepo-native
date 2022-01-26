@@ -8,9 +8,9 @@ import {
   GRANT_TYPE,
   NOTIFICATION_TOKEN,
 } from '../config/varibleApi';
-import { User, ResponseErrorApi } from '../Interfaces';
+import { UserApi, ResponseErrorApi } from '../Interfaces';
 
-export const LoginApi = async ({ username, password }: User) => {
+export const LoginApi = async ({ username, password }: UserApi) => {
   try {
     const response = await axios({
       url: '/token',
