@@ -3,7 +3,7 @@ import { useContext } from 'react';
 
 import { T } from '../Interfaces';
 import { UserData } from '../Interfaces/api';
-import HistrixContext from '../context/HistrixApp';
+import ContextUser from '../context/ContextUser';
 
 interface response {
   Me: UserData | undefined;
@@ -12,9 +12,9 @@ interface response {
 }
 
 export const useMe: () => response = () => {
-  const { isToken } = useContext(HistrixContext);
+  const { isSetToken } = useContext(ContextUser);
   const { data, error } = useSWR(
-    isToken
+    isSetToken
       ? {
           url: '/me',
           config: {
@@ -26,7 +26,7 @@ export const useMe: () => response = () => {
 
   return {
     Me: data,
-    isLoading: !error && !data && isToken,
+    isLoading: !error && !data && isSetToken,
     isError: error,
   };
 };

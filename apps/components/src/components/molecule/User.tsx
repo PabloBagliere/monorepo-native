@@ -1,11 +1,13 @@
 import { Avatar, Center, HStack, Skeleton, Text, VStack } from 'native-base';
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { AtomicButton } from '../atomic/Button';
-import { useMe } from '../../hooks';
+import { useMe } from '../../hooks/useMe';
+import Context from '../../context/ContextUser';
 
 export const User: FC = (): JSX.Element => {
   const { Me, isLoading, isError } = useMe();
+  const { setToken } = useContext(Context);
   if (isLoading) {
     return (
       <Center w="100%">
@@ -67,7 +69,14 @@ export const User: FC = (): JSX.Element => {
           <VStack>
             <Text>{Me.fullname}</Text>
             <Text>{Me.email}</Text>
-            <AtomicButton w="40" size="xs" rounded="20" mt={1} ml={-3}>
+            <AtomicButton
+              w="40"
+              size="xs"
+              onPress={() => setToken(null)}
+              rounded="20"
+              mt={1}
+              ml={-3}
+            >
               Salir
             </AtomicButton>
           </VStack>

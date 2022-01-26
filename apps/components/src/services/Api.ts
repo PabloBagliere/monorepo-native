@@ -35,23 +35,6 @@ export const LoginApi = async ({ username, password }: User) => {
   }
 };
 
-export const infoMe = async () => {
-  try {
-    const response = await axios({
-      url: '/me',
-      method: 'GET',
-    });
-    return response.data;
-  } catch (error) {
-    if (axios.isAxiosError(error) && error.response)
-      return Promise.reject(allCatch(error));
-    return Promise.reject({
-      error: true,
-      info: { data: error },
-    } as ResponseErrorApi);
-  }
-};
-
 const allCatch = (error: AxiosError): ResponseErrorApi => {
   if (error.response) {
     return {

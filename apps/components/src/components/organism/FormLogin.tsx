@@ -9,7 +9,7 @@ import { LoginApi } from '../../services/Api';
 import { T } from '../../Interfaces/anyT';
 import { useMessage } from '../../hooks/useMessage';
 import { ResponseErrorApi } from '../../Interfaces/api/ResponseErrorApi';
-import { useAxios } from '../../hooks/useAxios';
+import { useToken } from '../../hooks/useToken';
 
 interface props {
   action: T;
@@ -17,7 +17,7 @@ interface props {
 
 export const FormLogin: FC<props> = ({ action }): JSX.Element => {
   const { MessageError, MessageSuccess } = useMessage();
-  const { saveToken } = useAxios();
+  const { saveToken } = useToken();
   const onSubmit = (data) => {
     LoginApi({ password: data.password, username: data.username })
       .then((info: Token) => {

@@ -14,13 +14,10 @@ export const HomeScreen: FC<propsHome> = ({ navigation }): JSX.Element => {
       try {
         const response = await providerSecure.getSecure('Token-access');
         if (response) {
-          console.log(response);
           setToken(response);
-        } else {
-          console.log('Token no encontrado');
         }
       } catch (error) {
-        console.log(error);
+        // TODO: cuando ahi error
       }
     };
     getToken();

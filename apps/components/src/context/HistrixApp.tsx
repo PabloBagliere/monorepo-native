@@ -1,5 +1,4 @@
-import React, { createContext, FC, useEffect } from 'react';
-import { ActivityIndicator } from 'react-native';
+import React, { FC, useEffect } from 'react';
 import { ITheme, NativeBaseProvider } from 'native-base';
 
 import config, {
@@ -16,6 +15,7 @@ import { Message } from '../components/atomic/MessageFeedback';
 import { useAxios } from '../hooks/useAxios';
 
 import { SWRCache } from './Caching';
+import { ContextUser } from './ContextUser';
 interface propsDefaultSecret {
   API_URL?: string;
   CLIENT_ID?: string;
@@ -29,12 +29,6 @@ interface propsDefaultSecret {
 
 config();
 
-interface contextProps {
-  isToken: boolean;
-}
-
-const Context = createContext({} as contextProps);
-
 export const HistrixApp: FC<propsDefaultSecret> = ({
   children,
   API_URL,
@@ -46,7 +40,7 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
   CLIENT_NAME,
   theme,
 }): JSX.Element => {
-  const { setToken, setInstance, isReady, isToken } = useAxios();
+  const { setInstance } = useAxios();
   useEffect(() => {
     if (API_URL) {
       setAPI_URL(API_URL);
@@ -58,8 +52,7 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
     if (CLIENT_NAME) setCLIENT_NAME(CLIENT_NAME);
     if (typeof NOTIFICATION_TOKEN !== 'undefined')
       setNOTIFICATION(NOTIFICATION_TOKEN);
-    setSecureDB(provider, setToken);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setSecureDB(provider);
   }, [
     API_URL,
     CLIENT_ID,
@@ -68,21 +61,16 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
     GRANT_TYPE,
     NOTIFICATION_TOKEN,
     provider,
+    setInstance,
   ]);
-  if (!isReady) {
-    return <ActivityIndicator size="large" />;
-  }
   return (
     <NativeBaseProvider theme={theme}>
-      <Context.Provider value={{ isToken: isToken }}>
-        <SWRCache>
-          {/* <Pages>{children}</Pages> */}
+      <SWRCache>
+        <ContextUser>
           {children}
           <Message />
-        </SWRCache>
-      </Context.Provider>
+        </ContextUser>
+      </SWRCache>
     </NativeBaseProvider>
   );
 };
-
-export default Context;
