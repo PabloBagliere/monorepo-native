@@ -1,5 +1,5 @@
 import { Box, Heading, VStack, Center } from 'native-base';
-import React, { FC } from 'react';
+import React, { FC, useContext } from 'react';
 
 import { AtomicInput } from '../atomic/Input';
 import { Token } from '../../Interfaces/api/Token';
@@ -9,7 +9,7 @@ import { LoginApi } from '../../services/Api';
 import { T } from '../../Interfaces/anyT';
 import { useMessage } from '../../hooks/useMessage';
 import { ResponseErrorApi } from '../../Interfaces/api/ResponseErrorApi';
-import { useToken } from '../../hooks/useToken';
+import Context from '../../context/ContextUser';
 
 interface props {
   action: T;
@@ -17,7 +17,7 @@ interface props {
 
 export const FormLogin: FC<props> = ({ action }): JSX.Element => {
   const { MessageError, MessageSuccess } = useMessage();
-  const { saveToken } = useToken();
+  const { saveToken } = useContext(Context);
   const onSubmit = (data) => {
     LoginApi({ password: data.password, username: data.username })
       .then((info: Token) => {

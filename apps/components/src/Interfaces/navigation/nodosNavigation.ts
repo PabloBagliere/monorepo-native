@@ -1,6 +1,6 @@
 export interface nodosNavigation {
   'data-ajax': boolean | string;
-  menuId: number | string;
+  menuId: string;
   nodeKey: number;
   title: string;
   label: string;

@@ -1,13 +1,22 @@
 import { Center, Heading, HStack, Spinner } from 'native-base';
-import React, { createContext, FC, useEffect, useState } from 'react';
+import React, {
+  createContext,
+  FC,
+  useCallback,
+  useEffect,
+  useState,
+} from 'react';
 
 import { secureDB } from '../config/varibleApi';
+import { useToken } from '../hooks/useToken';
 import { useAxios } from '../hooks/useAxios';
+import { Token } from '../Interfaces/api/Token';
 
 interface propsContext {
   token: string;
   setToken: React.Dispatch<React.SetStateAction<string>>;
   isSetToken: boolean;
+  saveToken: (token: Token) => Promise<boolean>;
 }
 
 const Context = createContext({} as propsContext);
@@ -16,6 +25,7 @@ export const ContextUser: FC = ({ children }): JSX.Element => {
   const [token, setToken] = useState<string | null>(null);
   const [isSetToken, setIsSetToken] = useState<boolean | null>(null);
   const { setTokenAxios, deleteTokenAxios, isReady } = useAxios();
+  const { deleteToken, saveTokenSecure } = useToken();
   useEffect(() => {
     const getToken = async () => {
       try {
@@ -33,6 +43,17 @@ export const ContextUser: FC = ({ children }): JSX.Element => {
     getToken();
   }, []);
 
+  const saveToken = useCallback(
+    async (token: Token) => {
+      const response = await saveTokenSecure(token);
+      if (response) {
+        setToken(token.access_token);
+      }
+      return Promise.resolve(response);
+    },
+    [saveTokenSecure],
+  );
+
   useEffect(() => {
     if (token) {
       setTokenAxios(token);
@@ -40,8 +61,9 @@ export const ContextUser: FC = ({ children }): JSX.Element => {
       return;
     }
     deleteTokenAxios();
+    deleteToken();
     setIsSetToken(false);
-  }, [deleteTokenAxios, setTokenAxios, token]);
+  }, [deleteToken, deleteTokenAxios, setTokenAxios, token]);
 
   if (isReady || isSetToken === null) {
     return (
@@ -57,7 +79,7 @@ export const ContextUser: FC = ({ children }): JSX.Element => {
   }
 
   return (
-    <Context.Provider value={{ token, setToken, isSetToken }}>
+    <Context.Provider value={{ token, setToken, isSetToken, saveToken }}>
       {children}
     </Context.Provider>
   );

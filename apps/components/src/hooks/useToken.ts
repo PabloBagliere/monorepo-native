@@ -1,39 +1,43 @@
-import { useContext } from 'react';
+// TODO: manejo de error
+import { useCallback } from 'react';
 
 import { secureDB } from '../config/varibleApi';
-import Context from '../context/ContextUser';
 import { Token } from '../Interfaces/api/Token';
 
 export const useToken = () => {
-  const { setToken } = useContext(Context);
-  const saveToken = async (token: Token): Promise<boolean> => {
-    const { saveSecure } = secureDB;
-    const naw = new Date();
-    naw.setSeconds(naw.getSeconds() + token.expires_in);
+  const deleteToken = useCallback(async () => {
+    const { deleteSecure, getSecure } = secureDB;
     try {
-      await saveSecure('Token-access', token.access_token);
-      await saveSecure('Token-refresh', token.refresh_token);
-      await saveSecure('Token-expirate', String(naw.valueOf()));
-      setToken(token.access_token);
+      const responseToken = await getSecure('Token-access');
+      if (responseToken) await deleteSecure('Token-access');
+      const responseRefresh = await getSecure('Token-refresh');
+      if (responseRefresh) await deleteSecure('Token-refresh');
+      const responseExpirate = await getSecure('Token-expirate');
+      if (responseExpirate) await deleteSecure('Token-expirate');
       return true;
     } catch (error) {
       return false;
     }
-  };
-  const deleteToken = async () => {
-    const { deleteSecure } = secureDB;
-    try {
-      await deleteSecure('Token-access');
-      await deleteSecure('Token-refresh');
-      await deleteSecure('Token-expirate');
-      setToken(null);
-      return true;
-    } catch (error) {
-      return false;
-    }
-  };
+  }, []);
+
+  const saveTokenSecure = useCallback(
+    async (token: Token): Promise<boolean> => {
+      const { saveSecure } = secureDB;
+      const naw = new Date();
+      naw.setSeconds(naw.getSeconds() + token.expires_in);
+      try {
+        await saveSecure('Token-access', token.access_token);
+        await saveSecure('Token-refresh', token.refresh_token);
+        await saveSecure('Token-expirate', String(naw.valueOf()));
+        return true;
+      } catch (error) {
+        return false;
+      }
+    },
+    [],
+  );
   return {
-    saveToken,
+    saveTokenSecure,
     deleteToken,
   };
 };

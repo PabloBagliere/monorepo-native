@@ -1,5 +1,6 @@
 import React, { FC, useEffect } from 'react';
 import { ITheme, NativeBaseProvider } from 'native-base';
+import { ActivityIndicator } from 'react-native';
 
 import config, {
   setAPI_URL,
@@ -40,7 +41,7 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
   CLIENT_NAME,
   theme,
 }): JSX.Element => {
-  const { setInstance } = useAxios();
+  const { setInstance, isReady } = useAxios();
   useEffect(() => {
     if (API_URL) {
       setAPI_URL(API_URL);
@@ -63,6 +64,10 @@ export const HistrixApp: FC<propsDefaultSecret> = ({
     provider,
     setInstance,
   ]);
+
+  if (!isReady) {
+    return <ActivityIndicator size="large" />;
+  }
   return (
     <NativeBaseProvider theme={theme}>
       <SWRCache>
