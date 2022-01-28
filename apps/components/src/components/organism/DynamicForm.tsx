@@ -8,32 +8,19 @@ import {
   AtomicInput,
   AtomicTextarea,
   AtomicSwitch,
+  AtomicDatapicker,
+  AtomicTimepicker,
 } from '../atomic';
-import { AtomicDatapicker } from '../DataPicker';
-import { AtomicTimepicker } from '../TimePicker';
-import { paramsObtions, fieldsParmas } from '../../Interfaces';
+import { fieldsParmas } from '../../Interfaces';
+import { formatDataUse } from '../../utils';
 
 interface props {
   dynamic: string;
 }
 
-const format = (content: string): [string, fieldsParmas][] => {
-  const fileJson: paramsObtions = JSON.parse(content);
-  const fields = fileJson.schema.fields;
-  const hidden = {};
-  for (const key in fields) {
-    if (Object.prototype.hasOwnProperty.call(fields, key)) {
-      if (fields[key].hidden !== true) {
-        hidden[key] = fields[key];
-      }
-    }
-  }
-  return Object.entries(hidden);
-};
-
 const DynamicFormComponet: FC<props> = ({ dynamic }): JSX.Element => {
   const memo: [string, fieldsParmas][] = useMemo(
-    () => format(dynamic),
+    () => formatDataUse(dynamic),
     [dynamic],
   );
   return (

@@ -6,7 +6,7 @@ import { valuesParmas } from './valuesParams';
 
 export interface paramsSchema {
   title: string;
-  type: typeof typeConsulta;
+  type: typeConsulta;
   observation: string;
   can_insert: boolean;
   print: boolean;

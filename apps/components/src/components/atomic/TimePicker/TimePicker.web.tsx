@@ -1,14 +1,15 @@
-// Datepicker.web.tsx
+// TimePicker.web.ts
 import React, { FC, useContext } from 'react';
 import { Controller } from 'react-hook-form';
 import styled from 'styled-components';
 
-import Context from '../../context/ContextForm';
-import { formBasic } from '../../Interfaces';
-import { InputsFormLayout } from '../../layouts';
-import { FormLabel } from '../atomic/FormLabel';
-import { FormMessageError } from '../atomic/FormMessageError';
-import { FormMessageHelper } from '../atomic/FormMessageHelper';
+import Context from '../../../context/ContextForm';
+import { formBasic } from '../../../Interfaces';
+import { InputsFormLayout } from '../../../layouts';
+import { FormLabel } from '../FormLabel';
+import { FormMessageError } from '../FormMessageError';
+import { FormMessageHelper } from '../FormMessageHelper';
+
 type props = formBasic;
 
 const Input = styled.input`
@@ -17,7 +18,7 @@ const Input = styled.input`
   }
 `;
 
-export const AtomicDatapicker: FC<props> = ({
+export const AtomicTimepicker: FC<props> = ({
   label,
   message,
   name,
@@ -25,12 +26,12 @@ export const AtomicDatapicker: FC<props> = ({
   styleError,
   styleLabel,
   styleLayout,
-  styleMessage,
   isDisabled,
+  styleMessage,
 }): JSX.Element => {
   const { control, register } = useContext(Context);
   return !control ? (
-    <Input {...register(name)} disabled={isDisabled} type="date" />
+    <Input {...register(name)} disabled={isDisabled} type="time" />
   ) : (
     <InputsFormLayout {...styleLayout}>
       {label ? <FormLabel {...styleLabel}>{label}</FormLabel> : null}
@@ -41,7 +42,7 @@ export const AtomicDatapicker: FC<props> = ({
         render={({ field }) => (
           <Input
             {...register(name)}
-            type="date"
+            type="time"
             disabled={isDisabled}
             value={field.value}
             onChange={(val) => field.onChange(val)}

@@ -1,15 +1,15 @@
 import { Box, Heading, VStack, Center } from 'native-base';
 import React, { FC, useContext } from 'react';
 
-import { AtomicInput } from '../atomic/Input';
-import { Token } from '../../Interfaces/api/Token';
-import { CLIENT_NAME } from '../../config/varibleApi';
-import { AtomicButton } from '../atomic/Button';
-import { LoginApi } from '../../services/Api';
-import { T } from '../../Interfaces/anyT';
-import { useMessage } from '../../hooks/useMessage';
-import { ResponseErrorApi } from '../../Interfaces/api/ResponseErrorApi';
-import Context from '../../context/ContextUser';
+import { AtomicInput } from '../components/atomic/Input';
+import { Token } from '../Interfaces/api/Token';
+import { CLIENT_NAME } from '../config/varibleApi';
+import { AtomicButton } from '../components/atomic/Button';
+import { LoginApi } from '../services/Api';
+import { T } from '../Interfaces/anyT';
+import { useMessage } from '../hooks/useMessage';
+import { ResponseErrorApi } from '../Interfaces/api/ResponseErrorApi';
+import Context from '../context/ContextUser';
 
 interface props {
   action: T;

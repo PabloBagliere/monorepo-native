@@ -1,4 +1,3 @@
-import { Center, Heading, HStack, Spinner } from 'native-base';
 import React, {
   createContext,
   FC,
@@ -11,6 +10,7 @@ import { secureDB } from '../config/varibleApi';
 import { useToken } from '../hooks/useToken';
 import { useAxios } from '../hooks/useAxios';
 import { Token } from '../Interfaces/api/Token';
+import { LoadingHistrix } from '../components/atomic/Loading';
 
 interface propsContext {
   token: string;
@@ -66,16 +66,7 @@ export const ContextUser: FC = ({ children }): JSX.Element => {
   }, [deleteToken, deleteTokenAxios, setTokenAxios, token]);
 
   if (isReady || isSetToken === null) {
-    return (
-      <Center h="100%" w="100%">
-        <HStack space={2} alignItems="center">
-          <Spinner accessibilityLabel="Loading app" size="lg" />
-          <Heading color="primary.500" fontSize="md">
-            Cargando...
-          </Heading>
-        </HStack>
-      </Center>
-    );
+    return <LoadingHistrix />;
   }
 
   return (

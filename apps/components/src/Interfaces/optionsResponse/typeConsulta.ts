@@ -1,21 +1,21 @@
-export const typeConsulta = Object.freeze(
-  'consulta' ||
-    'adm' ||
-    'crud' ||
-    'adb-mini' ||
-    'arbol' ||
-    'ing' ||
-    'cabecera' ||
-    'ficha' ||
-    'Fichaing' ||
-    'grid' ||
-    'insert' ||
-    'update' ||
-    'delete' ||
-    'dashboard' ||
-    'chart' ||
-    'liveGrid' ||
-    'exec' ||
-    'calendar' ||
-    'gentt',
-);
+export enum typeConsulta {
+  consulta = 'consulta',
+  adb = 'adm',
+  crud = 'crud',
+  'adb-mini' = 'adb-mini',
+  arbol = 'arbol',
+  ing = 'ing',
+  cabecera = 'cabecera',
+  ficha = 'ficha',
+  fichaing = 'fichaing',
+  grid = 'grid',
+  insert = 'insert',
+  update = 'update',
+  delete = 'delete',
+  dashboard = 'dashboard',
+  chart = 'chart',
+  liveGrid = 'liveGrid',
+  exec = 'exec',
+  calendar = 'calendar',
+  gentt = 'gentt',
+}

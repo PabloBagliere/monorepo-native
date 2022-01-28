@@ -3,10 +3,9 @@ import React, { FC } from 'react';
 import { useForm } from 'react-hook-form';
 
 import { T } from '../../Interfaces';
-import { FormLogin } from '../organism/FormLogin';
+import { FormLogin } from '../../Pages/FormLogin';
+import { DynamicForm } from '../organism/DynamicForm';
 import { ContextForm } from '../../context/ContextForm';
-
-import { DynamicForm } from './DynamicForm';
 
 interface props extends IFormControlProps {
   defaultValues: T;

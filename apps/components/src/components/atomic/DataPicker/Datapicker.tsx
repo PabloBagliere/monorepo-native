@@ -4,12 +4,12 @@ import { IButtonProps, View } from 'native-base';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import { Controller } from 'react-hook-form';
 
-import Context from '../../context/ContextForm';
-import { formBasic, T } from '../../Interfaces';
-import { AtomicButton } from '../atomic/Button';
-import { InputsFormLayout } from '../../layouts';
-import { FormMessageError } from '../atomic/FormMessageError';
-import { FormMessageHelper } from '../atomic/FormMessageHelper';
+import Context from '../../../context/ContextForm';
+import { formBasic, T } from '../../../Interfaces';
+import { AtomicButton } from '../Button';
+import { InputsFormLayout } from '../../../layouts';
+import { FormMessageError } from '../FormMessageError';
+import { FormMessageHelper } from '../FormMessageHelper';
 
 interface props extends Omit<formBasic, 'styleLabel'> {
   styleLabel?: IButtonProps;

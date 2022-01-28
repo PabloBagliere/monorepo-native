@@ -10,3 +10,4 @@ node_modules
 !.yarn/versions
 npm-debug.log
 apps/mobile/.env
+*.http

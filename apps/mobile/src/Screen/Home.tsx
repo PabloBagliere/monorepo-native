@@ -1,4 +1,4 @@
-import { AtomicButton, useMe } from 'components-app-histrix';
+import { AtomicButton, useMe, ItemHistrix } from 'components-app-histrix';
 import { Text } from 'native-base';
 import React, { FC, useEffect, useState } from 'react';
 
@@ -28,6 +28,13 @@ export const HomeScreen: FC<propsHome> = ({ navigation }): JSX.Element => {
   return (
     <>
       <Text>Home</Text>
+      {[...Array(10).keys()].map((_, index) => (
+        <ItemHistrix
+          title={`Titulo-${index + 1}: `}
+          value={`valor-${index + 1}`}
+          key={index}
+        />
+      ))}
       {Me ? (
         <AtomicButton>Deslogear</AtomicButton>
       ) : (
