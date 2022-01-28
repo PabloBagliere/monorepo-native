@@ -8,3 +8,4 @@ export * from './optionsResponse/paramsObtions';
 export * from './optionsResponse/fieldsParams';
 export * from './optionsResponse/histrixType';
 export * from './secureDB';
+export type { ParamsUse } from './navigation/ParamsUse';

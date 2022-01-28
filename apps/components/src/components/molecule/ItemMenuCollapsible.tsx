@@ -4,14 +4,17 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { Animated } from 'react-native';
 
 import { infoParse } from '../../Interfaces/navigation/infoParse';
+import { ParamsUse } from '../../Interfaces/navigation/ParamsUse';
 
 interface props {
   array: infoParse;
   level: number;
+  Wrap: FC<ParamsUse>;
 }
 
 export const ItemMenuCollapsible: FC<props> = ({
   array,
+  Wrap,
   level,
 }): JSX.Element => {
   const [isCollapsed, setIsCollapsed] = useState(true);
@@ -20,13 +23,26 @@ export const ItemMenuCollapsible: FC<props> = ({
       {array.chils ? (
         <>
           <Pressable onPress={() => setIsCollapsed(!isCollapsed)}>
-            <HStack>
-              <Box>{array.title}</Box>
+            <HStack
+              justifyContent="space-between"
+              alignItems="center"
+              pl="8"
+              px="4"
+              py="2.5"
+            >
+              <Box
+                flexShrink="1"
+                _text={{
+                  fontWeight: '300',
+                  fontSize: 'sm',
+                }}
+              >
+                {array.title}
+              </Box>
               <RotatingView isCollapsed={isCollapsed}>
                 <Icon
                   as={MaterialIcons}
                   name="expand-more"
-                  size="2"
                   color="coolGray.400"
                 />
               </RotatingView>
@@ -34,12 +50,23 @@ export const ItemMenuCollapsible: FC<props> = ({
           </Pressable>
           <Collapse isOpen={!isCollapsed}>
             {array.chils.map((data, index) => (
-              <ItemMenuCollapsible array={data} level={level + 1} key={index} />
+              <ItemMenuCollapsible
+                array={data}
+                level={level + 1}
+                key={index}
+                Wrap={Wrap}
+              />
             ))}
           </Collapse>
         </>
       ) : (
-        <Text>{array.title}</Text>
+        <Wrap title={array.title} query={array.uri}>
+          <Box pl="8" px="4" py="2">
+            <Text fontWeight="300" fontSize="sm">
+              {array.title}
+            </Text>
+          </Box>
+        </Wrap>
       )}
     </Box>
   );

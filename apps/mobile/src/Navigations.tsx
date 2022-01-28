@@ -5,6 +5,7 @@ import { Box } from 'native-base';
 
 import { HomeScreen } from './Screen/Home';
 import { LoginScreen } from './Screen/Login';
+import { AuthScreen } from './Screen/Auth';
 import { CustomDrawerContent } from './component/Drawer';
 
 const Drawer = createDrawerNavigator();
@@ -16,6 +17,7 @@ const MyDrawer: React.FC = (): JSX.Element => {
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Login" component={LoginScreen} />
+        <Drawer.Screen name="Auth" component={AuthScreen} />
       </Drawer.Navigator>
     </Box>
   );
