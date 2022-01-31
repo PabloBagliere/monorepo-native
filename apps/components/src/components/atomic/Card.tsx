@@ -9,6 +9,8 @@ export const CardHistrix: FC = ({ children }): JSX.Element => {
       overflow="hidden"
       borderColor="coolGray.200"
       borderWidth="1"
+      my="2"
+      p="2"
       _dark={{
         borderColor: 'coolGray.600',
         backgroundColor: 'gray.700',

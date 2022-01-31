@@ -47,7 +47,7 @@ export const HistrixPages: FC<props> = ({
       return (
         <HistrixCrud
           fiels={data.schema.fields}
-          values={data.schema.values}
+          query={{ url: query, title }}
           numberTotal={data.schema.number_of_fields}
         />
       );

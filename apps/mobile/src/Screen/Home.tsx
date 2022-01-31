@@ -31,7 +31,7 @@ export const HomeScreen: FC<propsHome> = ({ navigation }): JSX.Element => {
       {[...Array(10).keys()].map((_, index) => (
         <ItemHistrix
           title={`Titulo-${index + 1}: `}
-          value={`valor-${index + 1}`}
+          Value={`valor-${index + 1}`}
           key={index}
         />
       ))}

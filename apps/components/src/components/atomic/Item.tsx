@@ -3,15 +3,18 @@ import React, { FC, ReactElement } from 'react';
 
 interface props {
   title?: string | ReactElement | ReactElement[];
-  value?: string | ReactElement | ReactElement[];
+  Value?: string | ReactElement | ReactElement[];
 }
 
-export const ItemHistrix: FC<props> = ({ title, value }): JSX.Element => {
+export const ItemHistrix: FC<props> = ({ title, Value }): JSX.Element => {
+  if (Value && typeof Value !== 'string') {
+    return <Box>{Value}</Box>;
+  }
   return (
     <Box>
       <HStack justifyContent="space-between">
         {title ? <Text>{title}</Text> : null}
-        {value ? <Text>{value}</Text> : <Skeleton.Text lines={1} w="1/2" />}
+        {Value ? <Text>{Value}</Text> : <Skeleton.Text lines={1} w="1/2" />}
       </HStack>
     </Box>
   );
