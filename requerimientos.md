@@ -36,3 +36,4 @@ Requerimientos para paquete de componente histrix
 
 - Agregar test unitario - Jest - Testing library react
 - Agregar stories - StoryBook
+- PlopJS

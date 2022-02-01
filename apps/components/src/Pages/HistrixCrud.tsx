@@ -9,20 +9,20 @@ import { deleteHidden } from '../utils/formatDataUse';
 interface props {
   numberTotal: number;
   fiels: { [key: string]: fieldsParmas };
-  query: {
-    url: string;
-    title: string;
+  url: string;
+  params: {
+    [key: string]: string;
   };
 }
 
-export const HistrixCrud: FC<props> = ({ fiels, query }): JSX.Element => {
+export const HistrixCrud: FC<props> = ({ fiels, url, params }): JSX.Element => {
   const { Date, isError, isLoading } = useGetRequestXml({
-    query: query.url,
+    query: url,
     params: {
       params: {
-        _title: query.title,
         _dt: 'table[object Object]',
         _sortBy: 'desc|asc',
+        params,
       },
     },
   });
@@ -31,8 +31,13 @@ export const HistrixCrud: FC<props> = ({ fiels, query }): JSX.Element => {
     [fiels],
   );
   if (isError) return <Text>Error</Text>;
-  if (isLoading) return <TableHistrix labelFormat={memo} />;
+  if (isLoading)
+    return <TableHistrix labelFormat={memo} paramsParent={params} />;
   return (
-    <TableHistrix labelFormat={memo} valuesFormat={Date.data.slice(0, 6)} />
+    <TableHistrix
+      labelFormat={memo}
+      valuesFormat={Date.data.slice(0, 6)}
+      paramsParent={params}
+    />
   );
 };

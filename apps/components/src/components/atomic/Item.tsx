@@ -8,10 +8,10 @@ interface props {
 
 export const ItemHistrix: FC<props> = ({ title, Value }): JSX.Element => {
   if (Value && typeof Value !== 'string') {
-    return <Box>{Value}</Box>;
+    return <Box my="1">{Value}</Box>;
   }
   return (
-    <Box>
+    <Box my="1">
       <HStack justifyContent="space-between">
         {title ? <Text>{title}</Text> : null}
         {Value ? <Text>{Value}</Text> : <Skeleton.Text lines={1} w="1/2" />}

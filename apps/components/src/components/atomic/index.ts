@@ -11,3 +11,4 @@ export * from './Card';
 export * from './DataPicker';
 export * from './TimePicker';
 export * from './Loading';
+export * from './Modal';

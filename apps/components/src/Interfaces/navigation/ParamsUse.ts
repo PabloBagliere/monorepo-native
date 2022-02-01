@@ -1,4 +1,6 @@
 export interface ParamsUse {
   query: string;
-  title: string;
+  params: {
+    [key: string]: string;
+  };
 }

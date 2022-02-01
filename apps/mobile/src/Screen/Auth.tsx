@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { propsAuth } from '../Interfaces/routers';
 
 export const AuthScreen: FC<propsAuth> = ({ route }): JSX.Element => {
-  const { query, title } = route.params;
+  const { query, params } = route.params;
 
-  return <HistrixPages title={title} query={query} />;
+  return <HistrixPages query={query} params={params} />;
 };

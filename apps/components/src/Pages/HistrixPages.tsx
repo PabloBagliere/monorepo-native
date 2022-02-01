@@ -1,3 +1,6 @@
+// TODO: pasar params para todos los necesarios
+// TODO: Arrelgar require cycle.
+
 import { Text } from 'native-base';
 import React, { FC, useContext } from 'react';
 import useSWR from 'swr';
@@ -10,15 +13,17 @@ import { typeConsulta } from '../Interfaces/optionsResponse/typeConsulta';
 import { HistrixCrud } from './HistrixCrud';
 
 interface props {
-  title: string;
   query: string;
+  params: {
+    [key: string]: string;
+  };
   option?: string;
   rel?: string;
 }
 
 export const HistrixPages: FC<props> = ({
-  title,
   query,
+  params,
   option,
   rel,
 }): JSX.Element => {
@@ -30,7 +35,7 @@ export const HistrixPages: FC<props> = ({
           config: {
             method: 'OPTIONS',
             params: {
-              _title: title,
+              params,
             },
           },
         }
@@ -47,7 +52,8 @@ export const HistrixPages: FC<props> = ({
       return (
         <HistrixCrud
           fiels={data.schema.fields}
-          query={{ url: query, title }}
+          url={query}
+          params={params}
           numberTotal={data.schema.number_of_fields}
         />
       );

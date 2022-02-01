@@ -60,7 +60,7 @@ export const ItemMenuCollapsible: FC<props> = ({
           </Collapse>
         </>
       ) : (
-        <Wrap title={array.title} query={array.uri}>
+        <Wrap query={array.uri} params={{ _title: array.title }}>
           <Box pl="8" px="4" py="2">
             <Text fontWeight="300" fontSize="sm">
               {array.title}

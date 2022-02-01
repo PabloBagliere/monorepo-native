@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
@@ -17,7 +18,20 @@ const MyDrawer: React.FC = (): JSX.Element => {
       >
         <Drawer.Screen name="Home" component={HomeScreen} />
         <Drawer.Screen name="Login" component={LoginScreen} />
-        <Drawer.Screen name="Auth" component={AuthScreen} />
+        <Drawer.Screen
+          name="Auth"
+          options={({ route }) => {
+            if (!route.params)
+              return {
+                title: 'Histrix',
+              };
+            return {
+              // @ts-ignore
+              title: route.params.params['_title'],
+            };
+          }}
+          component={AuthScreen}
+        />
       </Drawer.Navigator>
     </Box>
   );

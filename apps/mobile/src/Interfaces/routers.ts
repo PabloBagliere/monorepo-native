@@ -5,7 +5,9 @@ export type Router = {
   Login: undefined;
   Auth: {
     query: string;
-    title: string;
+    params: {
+      [key: string]: string;
+    };
   };
 };
 

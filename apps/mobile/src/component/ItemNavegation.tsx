@@ -6,7 +6,7 @@ import * as React from 'react';
 
 export const ItemNavegation: React.FC<ParamsUse> = ({
   query,
-  title,
+  params,
   children,
 }): JSX.Element => {
   const navigation = useNavigation();
@@ -17,7 +17,7 @@ export const ItemNavegation: React.FC<ParamsUse> = ({
       rounded="md"
       onPress={() => {
         // @ts-ignore
-        navigation.navigate('Auth', { query, title });
+        navigation.navigate('Auth', { query, params });
       }}
     >
       {children}
