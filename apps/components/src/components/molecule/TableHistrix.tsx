@@ -1,5 +1,6 @@
-import { Center, ScrollView } from 'native-base';
 import React, { FC, ReactElement, useState } from 'react';
+import { Center, IconButton, ScrollView } from 'native-base';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
 import { ModalHistrix } from '..';
 import { paramsResponseGet } from '../../Interfaces/api/getRespose/paramsResponseGet';
@@ -9,10 +10,14 @@ import { AtomicButton } from '../atomic/Button';
 import { CardHistrix } from '../atomic/Card';
 import { ItemHistrix } from '../atomic/Item';
 
+import { ActionesInformaation } from './ActionesInformation';
+
 interface props {
   labelFormat: [string, fieldsParmas][];
   valuesFormat?: paramsResponseGet[];
   paramsParent: { [key: string]: string };
+  isDelete: boolean;
+  isUpdate: boolean;
 }
 
 interface propsHandle {
@@ -24,6 +29,8 @@ export const TableHistrix: FC<props> = ({
   labelFormat,
   valuesFormat,
   paramsParent,
+  isDelete,
+  isUpdate,
 }): JSX.Element => {
   const [modalVisible, setModalVisible] = useState<boolean>(false);
   const [query, setQuery] = useState<string>('');
@@ -55,7 +62,7 @@ export const TableHistrix: FC<props> = ({
         }}
       >
         <Center>
-          {valuesFormat.map((value, index) => (
+          {valuesFormat.map((value: paramsResponseGet, index: number) => (
             <CardHistrix key={`card-${index}`}>
               {labelFormat.map((label) => (
                 <ItemHistrix
@@ -68,6 +75,11 @@ export const TableHistrix: FC<props> = ({
                   })}
                 />
               ))}
+              <ActionesInformaation
+                info={value}
+                isDelete={isDelete}
+                isUpdate={isUpdate}
+              />
             </CardHistrix>
           ))}
         </Center>

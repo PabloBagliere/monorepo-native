@@ -54,6 +54,7 @@ export const HistrixPages: FC<props> = ({
           fiels={data.schema.fields}
           url={query}
           params={params}
+          actions={data.resources}
           numberTotal={data.schema.number_of_fields}
         />
       );
